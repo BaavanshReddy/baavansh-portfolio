@@ -80,7 +80,7 @@ export const edges: Edge[] = [
   {
     title: "Ships real AI infrastructure",
     detail:
-      "AgentMem — an open-source memory library for AI agents — plus a document-ingestion layer built during an AI research internship.",
+      "AgentRecall — an open-source memory library for AI agents — plus a document-ingestion layer built during an AI research internship.",
   },
   {
     title: "Systems & compilers",
@@ -127,13 +127,13 @@ export const projects: Project[] = [
     flagship: true,
   },
   {
-    id: "agentmem",
-    name: "AgentMem — Memory for AI Agents",
+    id: "agentrecall",
+    name: "AgentRecall — Memory for AI Agents",
     tag: "AI / Open Source",
     blurb:
       "An open-source, local-first memory library for AI agents — SQLite, local embeddings, no cloud.",
     description:
-      "AgentMem is an open-source Python library that gives AI agents persistent memory without a cloud database. It stores memories in a single SQLite file, embeds them locally with sentence-transformers, and retrieves them by cosine similarity — plus an MMR mode for diverse results and per-agent namespacing so multiple agents can share one database safely. Roughly 500 lines, with 15 passing unit tests.",
+      "AgentRecall is an open-source Python library that gives AI agents persistent memory without a cloud database. It stores memories in a single SQLite file, embeds them locally with sentence-transformers, and retrieves them by cosine similarity — plus an MMR mode for diverse results and per-agent namespacing so multiple agents can share one database safely. Roughly 500 lines, with 15 passing unit tests.",
     tech: ["Python", "SQLite", "Embeddings", "Semantic Search", "sentence-transformers", "pytest"],
     highlights: [
       "Local-first: no cloud database, no API keys",
@@ -141,7 +141,7 @@ export const projects: Project[] = [
       "Per-agent namespacing inside one database file",
       "Clean public API covered by 15 passing unit tests",
     ],
-    links: [{ label: "Source", href: "https://github.com/BaavanshReddy/agentmem" }],
+    links: [{ label: "Source", href: "https://github.com/BaavanshReddy/agentrecall" }],
   },
   {
     id: "portfolio",
@@ -314,11 +314,11 @@ export const knowledgeChunks: KnowledgeChunk[] = [
     text: "What makes Baavansh different is ownership. He likes taking a problem end to end — mapping it, weighing two or three approaches, and shipping a solution rather than handing it off. He pairs that with rare range: he is comfortable from a SQL database up to a React UI, and from an LLM retrieval pipeline down to a CPU simulator in C.",
   },
   {
-    id: "agentmem",
-    title: "AgentMem — open-source memory for AI agents",
-    source: "Projects · AgentMem",
-    keywords: ["agentmem", "memory", "agent", "agents", "library", "open", "source", "sqlite", "embeddings", "package", "main", "best", "project"],
-    text: "AgentMem is Baavansh's open-source Python library that gives AI agents persistent memory without a cloud database. It stores memories in a single SQLite file, embeds them locally with sentence-transformers, and retrieves them by cosine similarity — with an MMR mode for diverse results and per-agent namespacing so multiple agents can share one database. It is roughly 500 lines of code with 15 passing unit tests.",
+    id: "agentrecall",
+    title: "AgentRecall — open-source memory for AI agents",
+    source: "Projects · AgentRecall",
+    keywords: ["agentrecall", "memory", "agent", "agents", "library", "open", "source", "sqlite", "embeddings", "package", "main", "best", "project"],
+    text: "AgentRecall is Baavansh's open-source Python library that gives AI agents persistent memory without a cloud database. It stores memories in a single SQLite file, embeds them locally with sentence-transformers, and retrieves them by cosine similarity — with an MMR mode for diverse results and per-agent namespacing so multiple agents can share one database. It is roughly 500 lines of code with 15 passing unit tests.",
   },
   {
     id: "velarro",
@@ -381,7 +381,7 @@ export const knowledgeChunks: KnowledgeChunk[] = [
     title: "AI & retrieval skills",
     source: "Skills",
     keywords: ["skills", "rag", "vector", "embeddings", "llm", "claude", "prompt", "eval", "evaluation", "retrieval", "machine", "learning", "ml"],
-    text: "Baavansh's AI work centers on retrieval and memory: RAG pipelines, vector search, embeddings, and semantic retrieval. He built AgentMem (an open-source memory library for AI agents), a document-ingestion pipeline at the Velarro AI Research Center, and this site — itself an embedded RAG agent. He also co-authored a research study evaluating LLM factual question-answering.",
+    text: "Baavansh's AI work centers on retrieval and memory: RAG pipelines, vector search, embeddings, and semantic retrieval. He built AgentRecall (an open-source memory library for AI agents), a document-ingestion pipeline at the Velarro AI Research Center, and this site — itself an embedded RAG agent. He also co-authored a research study evaluating LLM factual question-answering.",
   },
   {
     id: "research",
@@ -453,7 +453,7 @@ export const knowledgeChunks: KnowledgeChunk[] = [
 // ----------------------------------------------------------------------------
 
 export const suggestedQuestions: string[] = [
-  "What is AgentMem?",
+  "What is AgentRecall?",
   "Does Baavansh have backend experience?",
   "What's his systems background?",
   "Why should I hire him?",
