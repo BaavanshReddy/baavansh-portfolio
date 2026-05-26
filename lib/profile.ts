@@ -256,11 +256,11 @@ export const projects: Project[] = [
     blurb:
       "Perceptron + 3-layer neural net implemented from scratch — hand-coded forward + backprop.",
     description:
-      "I implemented a perceptron and a 3-layer neural network with hand-coded forward propagation and backpropagation in NumPy, reaching 89.1% face-recognition and 86.8% digit-classification accuracy — validated against a PyTorch baseline.",
+      "I implemented a perceptron and a 3-layer neural network with hand-coded forward propagation and backpropagation in NumPy, reaching 89.1% face-recognition and 86.7% digit-classification accuracy — validated against a PyTorch baseline.",
     tech: ["Python", "NumPy", "PyTorch"],
     highlights: [
       "Hand-coded forward + backprop, no ML framework for the core",
-      "89.1% face recognition, 86.8% digit classification",
+      "89.1% face recognition, 86.7% digit classification",
       "Validated against a PyTorch baseline",
     ],
     links: [
@@ -358,7 +358,7 @@ export const experience: ExperienceItem[] = [
     summary: "Built backend systems for a safety-focused rideshare platform.",
     points: [
       "Engineered secure authentication with role-based login and credential management for separate rider and driver accounts.",
-      "Built driver session tracking and real-time geolocation handling that supported dispatch coordination and passenger-safety workflows.",
+      "Built driver session tracking and real-time geolocation handling on AWS-deployed services, supporting dispatch coordination and passenger-safety workflows.",
     ],
   },
   {
@@ -409,7 +409,19 @@ export const skills: SkillGroup[] = [
   },
   {
     label: "Databases & Storage",
-    items: ["PostgreSQL", "MySQL", "SQLite", "MinIO (S3)"],
+    items: ["PostgreSQL", "MySQL", "SQLite", "Supabase", "AWS S3", "MinIO"],
+  },
+  {
+    label: "Cloud & DevOps",
+    items: [
+      "AWS (S3)",
+      "Vercel",
+      "Docker",
+      "CI/CD pipelines",
+      "Git",
+      "GitHub",
+      "Linux",
+    ],
   },
   {
     label: "Systems",
@@ -423,13 +435,12 @@ export const skills: SkillGroup[] = [
   {
     label: "Tools & Practice",
     items: [
-      "Git",
-      "Linux",
       "pytest",
       "JUnit",
       "Valgrind",
       "OOP",
       "System design",
+      "Microservices",
       "Agile",
     ],
   },
@@ -561,7 +572,7 @@ export const knowledgeChunks: KnowledgeChunk[] = [
       "geolocation",
       "extern",
     ],
-    text: "As a software engineering extern with Little Red Riding Hood Inc., I built backend systems for a safety-focused rideshare platform. I implemented secure login, credential management, and role-based authentication for separate rider and driver accounts, plus driver session tracking and real-time geolocation handling for dispatch coordination.",
+    text: "As a software engineering extern with Little Red Riding Hood Inc., I built backend systems for a safety-focused rideshare platform. I implemented secure login, credential management, and role-based authentication for separate rider and driver accounts, plus driver session tracking and real-time geolocation handling on AWS-deployed services for dispatch coordination.",
   },
   {
     id: "systems",
@@ -653,7 +664,7 @@ export const knowledgeChunks: KnowledgeChunk[] = [
       "learning",
       "scratch",
     ],
-    text: "I implemented a perceptron and a 3-layer neural network from scratch with hand-coded forward propagation and backpropagation in NumPy, reaching 89.1% face-recognition and 86.8% digit-classification accuracy — validated against a PyTorch baseline.",
+    text: "I implemented a perceptron and a 3-layer neural network from scratch with hand-coded forward propagation and backpropagation in NumPy, reaching 89.1% face-recognition and 86.7% digit-classification accuracy — validated against a PyTorch baseline.",
   },
   {
     id: "rupizza",
