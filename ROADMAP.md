@@ -183,4 +183,4 @@ The project is "done" for job-hunting purposes when:
 3. The URL is on your resume, LinkedIn headline, and GitHub profile.
 4. The code is public on GitHub with a clean README.
 
-Then move to Project #2 (AgentMem) — but keep linking everything back here.
+Then move to Project #2 (AgentMemry) — but keep linking everything back here.

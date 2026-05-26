@@ -241,10 +241,10 @@ Everything below is a `[[placeholder]]` in `lib/profile.ts` waiting on Baavansh:
 From `Ultimate_Project_Plan.docx`, a 90-day plan to land a 2026 AI role:
 
 1. **Portfolio + Chat-with-Baavansh** ← this project (the foundation)
-2. **AgentMem** — an open-source agent-memory framework with a niche
+2. **AgentMemry** — an open-source agent-memory framework with a niche
 3. **Voice Mock Interview Coach** — a viral-friendly demo
 
-After this site ships, Project #2 (AgentMem) is next.
+After this site ships, Project #2 (AgentMemry) is next.
 
 ---
 

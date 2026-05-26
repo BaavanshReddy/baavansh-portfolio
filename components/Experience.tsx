@@ -13,7 +13,7 @@ export default function Experience() {
           [ experience ]
         </p>
         <h2 className="mt-4 font-display text-[clamp(2rem,5.5vw,3.75rem)] font-bold uppercase leading-[0.95] tracking-tight">
-          Where he&apos;s <span className="text-lime">earned</span> it.
+          Where I&apos;ve <span className="text-lime">earned</span> it.
         </h2>
 
         <div className="mt-12 grid gap-14 lg:grid-cols-[1.4fr_1fr] lg:gap-16">

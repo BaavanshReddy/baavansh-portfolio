@@ -3,7 +3,7 @@ import "./globals.css";
 import { profile } from "@/lib/profile";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://example.com"),
+  metadataBase: new URL("https://baavansh-portfolio.vercel.app"),
   title: `${profile.name} — ${profile.headline}`,
   description: profile.summary,
   openGraph: {

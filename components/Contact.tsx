@@ -31,8 +31,8 @@ export default function Contact() {
         </h2>
 
         <p className="mt-6 max-w-xl text-muted md:text-lg">
-          {profile.status}. The fastest way to reach Baavansh is email — or ask
-          the assistant up top and it will point you here.
+          {profile.status}. The fastest way to reach me is email — or ask the
+          assistant up top and it'll point you here.
         </p>
 
         <a
