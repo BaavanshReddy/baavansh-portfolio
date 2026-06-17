@@ -18,7 +18,7 @@ const TERMINAL_LINES = [
   { prompt: "$", text: "cat ./focus.txt", typed: true },
   { prompt: ">", text: "shipping things — apis, retrieval, agent memory", typed: false },
   { prompt: "$", text: "ls ./flagship", typed: true },
-  { prompt: ">", text: "agentmemry/   velarro/   chat-with-baavansh/", typed: false },
+  { prompt: ">", text: "agentmemry/   ai-document-pipeline/   chat-with-baavansh/", typed: false },
 ];
 
 function Typewriter({ text, speed = 32 }: { text: string; speed?: number }) {

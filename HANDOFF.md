@@ -25,7 +25,7 @@ Location on disk: `RESUME AND PROJECTS/CLAUDE/baavansh-portfolio/`
 Baavansh Reddy Gundlapalli is a Rutgers CS student job-hunting for AI / software
 engineering roles in 2026. In 2026, recruiters ask for **links before
 resumes**. The differentiator here: instead of a static portfolio, the site has
-an **AI chat agent** that answers recruiter questions ("tell me about Velarro",
+an **AI chat agent** that answers recruiter questions ("tell me about Metasys Global",
 "does he have backend experience?") from a structured knowledge base, with
 citations.
 
@@ -114,7 +114,7 @@ baavansh-portfolio/
 │   ├── Hero.tsx          Big hero + marquee strip
 │   ├── ChatBaavansh.tsx  ⭐ The chat widget  [client]
 │   ├── About.tsx         The "adaptable engineer" story (lime section)
-│   ├── Projects.tsx      Velarro flagship + 4 project cards
+│   ├── Projects.tsx      Metasys Global flagship + 4 project cards
 │   ├── GitHubActivity.tsx Live GitHub feed card  [client]
 │   ├── Experience.tsx    Timeline + skills
 │   ├── Contact.tsx       Email CTA + links
@@ -180,7 +180,7 @@ set a spend cap in the Anthropic console.
 
 **Content accuracy — needs Baavansh's confirmation.** The knowledge base in
 `profile.ts` was written from `Ultimate_Project_Plan.docx`. Some details were
-inferred and should be checked: the CS major is assumed; "Velarro" is treated
+inferred and should be checked: the CS major is assumed; "Metasys Global" is treated
 as a role/employer (could be a project); no fabricated metrics were inserted —
 metric/date fields are left as `[[placeholders]]`.
 
@@ -209,8 +209,8 @@ Everything below is a `[[placeholder]]` in `lib/profile.ts` waiting on Baavansh:
 - LinkedIn profile URL
 - City / State (location)
 - Graduation year (and confirm major is "Computer Science")
-- Velarro: exact role title + dates
-- Velarro: a real outcome metric (or remove that highlight line)
+- Metasys Global: exact role title + dates
+- Metasys Global: a real outcome metric (or remove that highlight line)
 - GitHub repo / demo links for RISC-V sim, TinyL compiler, Linux filesystem,
   and this portfolio
 - Fraternity name

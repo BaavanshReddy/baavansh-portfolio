@@ -13,7 +13,7 @@ interface Msg {
 const GREETING: Msg = {
   role: "assistant",
   content:
-    "Hey — it's me (well, an AI trained on me). Ask anything: AgentMemry, my Velarro RAG pipeline, my systems and compiler work, or what kind of role I'm chasing. Answers come with sources.",
+    "Hey — it's me (well, an AI trained on me). Ask anything: AgentMemry, my Metasys Global RAG pipeline, my systems and compiler work, or what kind of role I'm chasing. Answers come with sources.",
 };
 
 export default function ChatBaavansh() {
@@ -247,7 +247,7 @@ export default function ChatBaavansh() {
               ref={inputRef}
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Ask about AgentMemry, Velarro, why hire me…"
+              placeholder="Ask about AgentMemry, Metasys Global, why hire me…"
               className="flex-1 bg-transparent py-1.5 font-mono text-sm text-paper outline-none placeholder:text-muted/70"
               aria-label="Ask a question"
               autoComplete="off"

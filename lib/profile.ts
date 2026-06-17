@@ -58,7 +58,7 @@ export const profile = {
   initials: "BG",
   headline: "Backend & AI/ML Engineer",
   tagline:
-    "I build things that ship — from low-level systems in C to retrieval pipelines and memory for AI agents.",
+    "I build things that ship — backend APIs and data pipelines, plus retrieval and memory systems for AI agents.",
   status: "Open to backend & AI/ML engineering roles · 2026",
   location: "New Brunswick, NJ",
   university: "Rutgers University",
@@ -69,7 +69,7 @@ export const profile = {
   linkedin: "https://www.linkedin.com/in/baavansh",
   resumeUrl: "/resume.pdf",
   summary:
-    "I'm a Computer Science graduate from Rutgers University (Magna Cum Laude, 3.76 GPA) targeting backend and AI/ML engineering roles. I've shipped REST APIs, authentication systems, and data pipelines, with applied AI work in retrieval and embeddings — including AgentMemry, my open-source memory library for AI agents. I'm backed by a strong systems foundation in C and Python: CPU simulators, compilers, and a Unix-style filesystem.",
+    "I'm a Computer Science graduate from Rutgers University (Magna Cum Laude, 3.76 GPA) targeting backend and AI/ML engineering roles. I've shipped REST APIs, authentication systems, and data pipelines, with applied AI work in retrieval and embeddings — including AgentMemry, my open-source memory library for AI agents. I'm backed by a strong CS foundation in Python — compilers, computer architecture, and operating systems — that shapes how I build.",
 };
 
 // ----------------------------------------------------------------------------
@@ -91,17 +91,17 @@ export const edges: Edge[] = [
   {
     title: "Rare systems depth",
     detail:
-      "Single-cycle RISC-V CPU, a full compiler, and a Unix-style filesystem — all in C, verified leak-free under Valgrind and AddressSanitizer.",
+      "I built a full compiler — lexer, recursive-descent parser, AST, and code generation — and have hands-on computer-architecture and OS coursework, so I reason about how code actually runs, not just how to call an API.",
   },
   {
     title: "Full-stack range",
     detail:
-      "Comfortable from PostgreSQL up to a React UI — auth, REST APIs, real-time data, frontend, all in production codebases.",
+      "Comfortable across the stack — PostgreSQL, REST APIs, authentication, real-time data, and frontend UIs — all in production codebases.",
   },
   {
     title: "Tests what I build",
     detail:
-      "15-test pytest suite on AgentMemry, JUnit coverage on RuPizza, Valgrind/ASan on my C work. I don't ship code I haven't verified.",
+      "15-test pytest suite on AgentMemry, JUnit coverage on RuPizza. I don't ship code I haven't verified.",
   },
   {
     title: "Communicates like a senior",
@@ -144,13 +144,13 @@ export const projects: Project[] = [
     flagship: true,
   },
   {
-    id: "velarro",
-    name: "Velarro — AI Document Pipeline",
+    id: "metasys",
+    name: "AI Document Pipeline",
     tag: "AI / Retrieval",
     blurb:
-      "An AI document-ingestion pipeline I built during a backend internship at an AI research center.",
+      "An AI document-ingestion pipeline I built during my backend internship at Metasys Global.",
     description:
-      "During my backend internship at the Velarro AI Research Center (Metasys Global), I built the document-ingestion layer for an AI semantic-retrieval system. I integrated MinIO (S3-compatible) object storage to programmatically extract heterogeneous, mixed-format files, and engineered the file-processing workflow that staged extracted documents for downstream chunking, embedding, and vector search.",
+      "During my backend internship at Metasys Global, I built the document-ingestion layer for an AI semantic-retrieval system. I integrated MinIO (S3-compatible) object storage to programmatically extract heterogeneous, mixed-format files, and engineered the file-processing workflow that staged extracted documents for downstream chunking, embedding, and vector search.",
     tech: [
       "Python",
       "MinIO / S3",
@@ -187,26 +187,6 @@ export const projects: Project[] = [
     ],
   },
   {
-    id: "riscv",
-    name: "RISC-V CPU Simulator",
-    tag: "Systems / Architecture",
-    blurb: "A single-cycle RISC-V CPU simulator in C, with cache simulation.",
-    description:
-      "I implemented a single-cycle RISC-V CPU simulator in C with full instruction decode and datapath execution, backed by a 1KiB direct-mapped cache with hit/miss tracking to model a realistic memory hierarchy.",
-    tech: ["C", "Computer Architecture", "RISC-V", "Caches"],
-    highlights: [
-      "Full instruction decode and datapath execution",
-      "1KiB direct-mapped instruction/data cache with hit/miss tracking",
-      "Memory-mapped I/O and register-file modeling",
-    ],
-    links: [
-      {
-        label: "Source",
-        href: "https://github.com/BaavanshReddy/risc-v-simulator",
-      },
-    ],
-  },
-  {
     id: "tinyl",
     name: "TinyL Compiler",
     tag: "Compilers",
@@ -224,28 +204,6 @@ export const projects: Project[] = [
       {
         label: "Source",
         href: "https://github.com/BaavanshReddy/tinyl-compiler",
-      },
-    ],
-  },
-  {
-    id: "filesystem",
-    name: "Linux Filesystem Simulator",
-    tag: "Operating Systems",
-    blurb:
-      "A Unix-style virtual filesystem in C — inodes, permissions, persistence, Valgrind-clean.",
-    description:
-      "I engineered a Unix-style virtual filesystem in C11 — inode-based storage, rwx permission management, and binary serialization for persistence — exposing 15+ shell commands through an interactive REPL and verified leak-free under Valgrind and AddressSanitizer.",
-    tech: ["C11", "Operating Systems", "Filesystems", "Valgrind"],
-    highlights: [
-      "Inode-based file representation with Unix rwx permissions",
-      "15+ shell commands through an interactive REPL",
-      "Binary serialization for persistent state across sessions",
-      "Verified leak-free under Valgrind and AddressSanitizer",
-    ],
-    links: [
-      {
-        label: "Source",
-        href: "https://github.com/BaavanshReddy/linux-filesystem",
       },
     ],
   },
@@ -329,9 +287,9 @@ export const research = {
 
 export const experience: ExperienceItem[] = [
   {
-    id: "velarro",
+    id: "metasys",
     role: "Backend Developer Intern",
-    org: "Velarro AI Research Center (Metasys Global)",
+    org: "Metasys Global",
     period: "Jan 2026 – Feb 2026",
     summary: "Built an AI document-ingestion pipeline for semantic retrieval.",
     points: [
@@ -381,7 +339,7 @@ export const experience: ExperienceItem[] = [
 export const skills: SkillGroup[] = [
   {
     label: "Languages",
-    items: ["Python", "TypeScript", "JavaScript", "Java", "C++", "C", "SQL"],
+    items: ["Python", "JavaScript", "Java", "C++", "HTML", "CSS"],
   },
   {
     label: "AI & ML",
@@ -398,48 +356,28 @@ export const skills: SkillGroup[] = [
   },
   {
     label: "Frameworks & Web",
-    items: [
-      "Node.js",
-      "Express",
-      "FastAPI",
-      "React",
-      "Next.js",
-      "REST API design",
-    ],
+    items: ["Node.js", "Express", "FastAPI"],
   },
   {
     label: "Databases & Storage",
-    items: ["PostgreSQL", "MySQL", "SQLite", "Supabase", "AWS S3", "MinIO"],
+    items: ["PostgreSQL", "MySQL", "SQLite", "Supabase", "MinIO"],
   },
   {
     label: "Cloud & DevOps",
-    items: [
-      "AWS (S3)",
-      "Vercel",
-      "Docker",
-      "CI/CD pipelines",
-      "Git",
-      "GitHub",
-      "Linux",
-    ],
+    items: ["Vercel", "Git", "GitHub"],
   },
   {
     label: "Systems",
-    items: [
-      "Computer architecture",
-      "Compilers",
-      "Operating systems",
-      "Filesystems",
-    ],
+    items: ["Computer architecture", "Compilers", "Operating systems"],
   },
   {
     label: "Tools & Practice",
     items: [
       "pytest",
       "JUnit",
-      "Valgrind",
       "OOP",
       "System design",
+      "REST API design",
       "Microservices",
       "Agile",
     ],
@@ -489,7 +427,7 @@ export const knowledgeChunks: KnowledgeChunk[] = [
       "special",
       "unique",
     ],
-    text: "What sets me apart is ownership. I like taking a problem end to end — mapping it, weighing two or three approaches, then shipping a solution rather than handing it off. I also have unusual range: I'm comfortable from a SQL database up to a React UI, and from an LLM retrieval pipeline down to a CPU simulator in C.",
+    text: "What sets me apart is ownership. I like taking a problem end to end — mapping it, weighing two or three approaches, then shipping a solution rather than handing it off. I also have unusual range: I'm comfortable from the database and backend APIs up to the UI, and from an LLM retrieval pipeline down to the compiler and OS internals I studied.",
   },
   {
     id: "agentmemry",
@@ -516,11 +454,10 @@ export const knowledgeChunks: KnowledgeChunk[] = [
     text: "AgentMemry is my flagship project — a ~500-line open-source Python library that gives AI agents persistent memory without a cloud database or any API keys. It stores memories in a single SQLite file, embeds them locally with sentence-transformers, and retrieves them by cosine similarity. It also has an MMR diversity mode and per-agent namespacing so multiple agents can share one database safely. The public API is verified by 15 passing unit tests. Source: github.com/BaavanshReddy/agentmemry.",
   },
   {
-    id: "velarro",
-    title: "Velarro — AI document pipeline",
-    source: "Velarro · Experience",
+    id: "metasys",
+    title: "Metasys Global — AI document pipeline",
+    source: "Metasys Global · Experience",
     keywords: [
-      "velarro",
       "metasys",
       "rag",
       "retrieval",
@@ -534,7 +471,7 @@ export const knowledgeChunks: KnowledgeChunk[] = [
       "work",
       "experience",
     ],
-    text: "During my backend internship at the Velarro AI Research Center (Metasys Global), I built the document-ingestion layer for an AI semantic-retrieval system. I integrated MinIO (S3-compatible) object storage to programmatically extract heterogeneous, mixed-format files, and engineered the file-processing workflow that staged extracted documents for downstream chunking, embedding, and vector search.",
+    text: "During my backend internship at Metasys Global, I built the document-ingestion layer for an AI semantic-retrieval system. I integrated MinIO (S3-compatible) object storage to programmatically extract heterogeneous, mixed-format files, and engineered the file-processing workflow that staged extracted documents for downstream chunking, embedding, and vector search.",
   },
   {
     id: "fidelis",
@@ -584,32 +521,11 @@ export const knowledgeChunks: KnowledgeChunk[] = [
       "compilers",
       "architecture",
       "operating",
-      "filesystem",
       "low-level",
-      "hardware",
       "depth",
       "technical",
-      "c",
     ],
-    text: "I have an unusually deep systems background for an AI candidate. I built a RISC-V CPU simulator in C with cache simulation, a full compiler for the TinyL language, and a Unix-style filesystem in C11 (verified leak-free under Valgrind and AddressSanitizer). Very few engineers can reason about parsers, datapaths, and memory hierarchies and also build modern AI tooling — that combination is a real edge.",
-  },
-  {
-    id: "riscv",
-    title: "RISC-V CPU Simulator",
-    source: "Projects",
-    keywords: [
-      "risc",
-      "riscv",
-      "cpu",
-      "simulator",
-      "processor",
-      "datapath",
-      "architecture",
-      "assembly",
-      "instruction",
-      "cache",
-    ],
-    text: "My RISC-V CPU simulator is a single-cycle C program with full instruction decode and datapath execution. It models the processor datapath, runs the register file, handles memory-mapped I/O, and is backed by a 1KiB direct-mapped cache with hit/miss tracking.",
+    text: "I have a deeper systems background than most AI candidates. I built a full compiler for the TinyL language — lexer, recursive-descent parser, AST, intermediate representation, and code generation — and my coursework covers computer architecture and operating systems. Being able to reason about parsers, datapaths, and how code actually runs, while also building modern AI tooling, is a real edge.",
   },
   {
     id: "tinyl",
@@ -627,24 +543,6 @@ export const knowledgeChunks: KnowledgeChunk[] = [
       "language",
     ],
     text: "My TinyL compiler is a full pipeline: I wrote the lexer, a recursive-descent parser working from a formal grammar, AST construction, an intermediate representation, and a code generator targeting stack-based bytecode.",
-  },
-  {
-    id: "filesystem",
-    title: "Linux Filesystem Simulator in C",
-    source: "Projects",
-    keywords: [
-      "filesystem",
-      "file",
-      "linux",
-      "inode",
-      "inodes",
-      "operating",
-      "block",
-      "storage",
-      "disk",
-      "valgrind",
-    ],
-    text: "I engineered a Unix-style virtual filesystem in C11 — inode-based storage, rwx permission management, and binary serialization for persistence. It exposes 15+ shell commands through an interactive REPL and is verified leak-free under Valgrind and AddressSanitizer.",
   },
   {
     id: "neuralnet",
@@ -719,7 +617,7 @@ export const knowledgeChunks: KnowledgeChunk[] = [
       "ship",
       "code",
     ],
-    text: "Yes — I have hands-on backend experience. I've built REST API routes, authentication systems, and data pipelines: a document-ingestion pipeline at Velarro, secure role-based auth for a rideshare platform, and REST routes plus a Supabase/PostgreSQL backend for the LIVEY event platform. Combined with my C systems work, I'm comfortable from the API layer down to memory and filesystems.",
+    text: "Yes — I have hands-on backend experience. I've built REST API routes, authentication systems, and data pipelines: a document-ingestion pipeline at Metasys Global, secure role-based auth for a rideshare platform, and REST routes plus a Supabase/PostgreSQL backend for the LIVEY event platform. Combined with my compilers and systems background, I'm comfortable from the API layer down to how code actually runs.",
   },
   {
     id: "ai-skills",
@@ -740,7 +638,7 @@ export const knowledgeChunks: KnowledgeChunk[] = [
       "learning",
       "ml",
     ],
-    text: "My AI work centers on retrieval and memory: RAG pipelines, vector search, embeddings, and semantic retrieval. I built AgentMemry (open-source memory library for AI agents), the Velarro document-ingestion pipeline, this site's embedded RAG agent, and a perceptron + 3-layer neural net from scratch in NumPy. I also co-authored a research study evaluating LLM factual question-answering.",
+    text: "My AI work centers on retrieval and memory: RAG pipelines, vector search, embeddings, and semantic retrieval. I built AgentMemry (open-source memory library for AI agents), the Metasys Global document-ingestion pipeline, this site's embedded RAG agent, and a perceptron + 3-layer neural net from scratch in NumPy. I also co-authored a research study evaluating LLM factual question-answering.",
   },
   {
     id: "research",
@@ -819,7 +717,7 @@ export const knowledgeChunks: KnowledgeChunk[] = [
       "offer",
       "great",
     ],
-    text: "Hire me if you want an engineer with real range: I've shipped backend APIs and data pipelines, open-sourced a memory library for AI agents (AgentMemry), and can reason from the API layer down to compilers and filesystems. I pair rare systems depth with current AI/retrieval experience, I test what I build, and I take problems end to end. I'm looking for backend and AI/ML engineering roles in 2026.",
+    text: "Hire me if you want an engineer with real range: I've shipped backend APIs and data pipelines, open-sourced a memory library for AI agents (AgentMemry), and can reason from the API layer down to compilers and systems internals. I pair rare systems depth with current AI/retrieval experience, I test what I build, and I take problems end to end. I'm looking for backend and AI/ML engineering roles in 2026.",
   },
   {
     id: "looking-for",

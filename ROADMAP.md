@@ -14,7 +14,7 @@ how long each phase takes, and exactly what "done" looks like. The scaffold
 In 2026 recruiters ask for **links before resumes** and spend <10 seconds on a CV.
 The portfolio site is the first impression now. The twist that makes yours stand
 out: an embedded **RAG agent** — recruiters can *interrogate* your experience
-("tell me about Velarro", "does he have backend experience?") and get sourced
+("tell me about Metasys Global", "does he have backend experience?") and get sourced
 answers. Standard portfolios are everywhere; AI-chat portfolios are still rare in
 mid-2026. You're early enough to stand out, late enough that the tech is solid.
 
@@ -63,7 +63,7 @@ Replace them all:
 
 - [ ] `github`, `linkedin` — your real profile URLs
 - [ ] `location` — city/state
-- [ ] Velarro **role title** and **dates**
+- [ ] Metasys Global **role title** and **dates**
 - [ ] Real **metrics** for projects (retrieval accuracy %, latency, repo links, demo links)
 - [ ] University **grad year** and **major** (confirm "Computer Science")
 - [ ] Any extra skills, languages, or projects you want surfaced
@@ -179,7 +179,7 @@ is shippable. 5–6 are upside.
 The project is "done" for job-hunting purposes when:
 
 1. The site is live on a custom domain.
-2. The chat answers Velarro / systems / "why hire him" questions well.
+2. The chat answers Metasys Global / systems / "why hire him" questions well.
 3. The URL is on your resume, LinkedIn headline, and GitHub profile.
 4. The code is public on GitHub with a clean README.
 
