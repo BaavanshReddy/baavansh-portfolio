@@ -59,7 +59,8 @@ export const profile = {
   headline: "Backend & AI/ML Engineer",
   tagline:
     "I build things that ship — backend APIs and data pipelines, plus retrieval and memory systems for AI agents.",
-  status: "Open to backend & AI/ML engineering roles · 2026",
+  status:
+    "Backend & AI Systems Engineer at The AI Research Center (TAIRC) · open to backend & AI/ML roles",
   location: "New Brunswick, NJ",
   university: "Rutgers University",
   major: "Computer Science",
@@ -69,7 +70,7 @@ export const profile = {
   linkedin: "https://www.linkedin.com/in/baavansh",
   resumeUrl: "/resume.pdf",
   summary:
-    "I'm a Computer Science graduate from Rutgers University (Magna Cum Laude, 3.76 GPA) targeting backend and AI/ML engineering roles. I've shipped REST APIs, authentication systems, and data pipelines, with applied AI work in retrieval and embeddings — including AgentMemry, my open-source memory library for AI agents. I'm backed by a strong CS foundation in Python — compilers, computer architecture, and operating systems — that shapes how I build.",
+    "I'm a Computer Science graduate from Rutgers University (Magna Cum Laude, 3.76 GPA), currently a Backend & AI Systems Engineer at The AI Research Center (TAIRC). I've shipped REST APIs, authentication systems, and data pipelines, with applied AI work in retrieval and embeddings — including AgentMemry, my open-source memory library for AI agents. I'm backed by a strong CS foundation in Python — compilers, computer architecture, and operating systems — that shapes how I build.",
 };
 
 // ----------------------------------------------------------------------------
@@ -81,7 +82,7 @@ export const edges: Edge[] = [
   {
     title: "Ships production AI infra",
     detail:
-      "AgentMemry — my open-source memory library for AI agents (~500 LOC, 15 passing tests) — plus a real document-ingestion pipeline I built during an AI research internship.",
+      "I'm currently a Backend & AI Systems Engineer at The AI Research Center (TAIRC), building backend APIs and AI/ML systems. Plus AgentMemry — my open-source memory library for AI agents (~500 LOC, 15 passing tests) — and a real document-ingestion pipeline I built at Metasys Global.",
   },
   {
     title: "Owns problems end-to-end",
@@ -287,6 +288,18 @@ export const research = {
 
 export const experience: ExperienceItem[] = [
   {
+    id: "tairc",
+    role: "Backend & AI Systems Engineer",
+    org: "The AI Research Center (TAIRC)",
+    period: "Present",
+    summary:
+      "Currently building backend APIs and AI/ML systems infrastructure.",
+    points: [
+      "Building backend APIs and services that power the center's AI systems — REST endpoints and data pipelines that move data between models, storage, and applications.",
+      "Engineering AI/ML systems infrastructure — integrating LLM and retrieval components, embeddings, and vector search into production-ready backend services.",
+    ],
+  },
+  {
     id: "metasys",
     role: "Backend Developer Intern",
     org: "Metasys Global",
@@ -452,6 +465,31 @@ export const knowledgeChunks: KnowledgeChunk[] = [
       "project",
     ],
     text: "AgentMemry is my flagship project — a ~500-line open-source Python library that gives AI agents persistent memory without a cloud database or any API keys. It stores memories in a single SQLite file, embeds them locally with sentence-transformers, and retrieves them by cosine similarity. It also has an MMR diversity mode and per-agent namespacing so multiple agents can share one database safely. The public API is verified by 15 passing unit tests. Source: github.com/BaavanshReddy/agentmemry.",
+  },
+  {
+    id: "tairc",
+    title: "The AI Research Center (TAIRC) — current role",
+    source: "TAIRC · Experience",
+    keywords: [
+      "tairc",
+      "ai",
+      "research",
+      "center",
+      "current",
+      "currently",
+      "now",
+      "present",
+      "today",
+      "backend",
+      "systems",
+      "engineer",
+      "job",
+      "work",
+      "role",
+      "experience",
+      "where",
+    ],
+    text: "I'm currently a Backend & AI Systems Engineer at The AI Research Center (TAIRC). I build backend APIs and services that power the center's AI systems — REST endpoints and data pipelines that move data between models, storage, and applications — and I engineer the AI/ML systems infrastructure, integrating LLM and retrieval components, embeddings, and vector search into production-ready backend services.",
   },
   {
     id: "metasys",
