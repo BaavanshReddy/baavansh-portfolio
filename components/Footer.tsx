@@ -2,7 +2,7 @@ import { profile } from "@/lib/profile";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-line py-10">
+    <footer className="border-t border-line/30 py-10">
       <div className="mx-auto flex max-w-site flex-col gap-4 px-6 sm:flex-row sm:items-center sm:justify-between">
         <p className="font-mono text-xs text-muted">
           &copy; {new Date().getFullYear()} {profile.name}
@@ -35,7 +35,10 @@ export default function Footer() {
 
         <p className="font-mono text-xs text-muted">
           Built with Next.js &middot;{" "}
-          <span className="text-lime">Chat-with-Baavansh</span> RAG agent
+          <span className="bg-gradient-to-r from-lime to-cyan bg-clip-text text-transparent">
+            Chat-with-Baavansh
+          </span>{" "}
+          RAG agent
         </p>
       </div>
     </footer>

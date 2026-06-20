@@ -4,6 +4,7 @@ import { useEffect, useState, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { profile } from "@/lib/profile";
 import { Magnetic } from "@/lib/animations";
+import Scene3D from "./Scene3D";
 
 /* ------------------------------------------------------------------ */
 /*  CONSTANTS                                                         */
@@ -36,7 +37,7 @@ const ROLE_KEYWORDS = [
 ];
 
 /* ------------------------------------------------------------------ */
-/*  TYPEWRITER (framer-motion driven)                                 */
+/*  TYPEWRITER                                                        */
 /* ------------------------------------------------------------------ */
 
 function Typewriter({ text, speed = 32, onDone }: { text: string; speed?: number; onDone?: () => void }) {
@@ -90,7 +91,7 @@ function RoleCycler() {
       <AnimatePresence mode="wait">
         <motion.span
           key={ROLE_KEYWORDS[index]}
-          className="absolute left-0 whitespace-nowrap text-lime"
+          className="absolute left-0 whitespace-nowrap bg-gradient-to-r from-lime to-cyan bg-clip-text text-transparent"
           initial={{ y: 24, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: -24, opacity: 0 }}
@@ -110,7 +111,7 @@ function RoleCycler() {
 const container = {
   hidden: {},
   visible: {
-    transition: { staggerChildren: 0.08, delayChildren: 0.1 },
+    transition: { staggerChildren: 0.08, delayChildren: 0.3 },
   },
 };
 
@@ -121,7 +122,7 @@ const fadeUp = {
     y: 0,
     transition: {
       delay: i * 0.08,
-      duration: 0.6,
+      duration: 0.7,
       ease: [0.16, 1, 0.3, 1] as number[],
     },
   }),
@@ -133,7 +134,7 @@ const terminalLine = {
     opacity: 1,
     x: 0,
     transition: {
-      delay: 0.5 + i * 0.18,
+      delay: 0.6 + i * 0.18,
       duration: 0.45,
       ease: [0.16, 1, 0.3, 1] as number[],
     },
@@ -146,10 +147,8 @@ const terminalLine = {
 
 export default function Hero() {
   const heroRef = useRef<HTMLElement>(null);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [prefersReduced, setPrefersReduced] = useState(false);
 
-  // Detect reduced motion preference
   useEffect(() => {
     if (typeof window !== "undefined") {
       const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -160,20 +159,6 @@ export default function Hero() {
     }
   }, []);
 
-  // Mouse-following gradient
-  const handleMouseMove = useCallback(
-    (e: React.MouseEvent) => {
-      if (prefersReduced) return;
-      const rect = heroRef.current?.getBoundingClientRect();
-      if (!rect) return;
-      setMousePos({
-        x: e.clientX - rect.left,
-        y: e.clientY - rect.top,
-      });
-    },
-    [prefersReduced],
-  );
-
   const animateProps = prefersReduced
     ? { initial: undefined, animate: undefined }
     : { initial: "hidden" as const, animate: "visible" as const };
@@ -182,32 +167,26 @@ export default function Hero() {
     <section
       id="top"
       ref={heroRef}
-      className="relative overflow-hidden"
-      onMouseMove={handleMouseMove}
+      className="relative min-h-screen overflow-hidden"
     >
-      {/* ---- backgrounds ---- */}
-      <div className="grid-bg mask-fade-b absolute inset-0 opacity-70" />
-      <div className="code-rain absolute inset-0 opacity-[0.08] pointer-events-none" />
+      {/* ---- Three.js 3D background ---- */}
+      <Scene3D />
 
-      {/* Static radial glow */}
-      <div className="absolute -right-40 -top-32 h-[28rem] w-[28rem] rounded-full bg-lime/10 blur-3xl" />
-      <div className="absolute left-1/2 top-1/3 h-[32rem] w-[32rem] -translate-x-1/2 rounded-full bg-lime/[0.04] blur-[120px]" />
+      {/* ---- Gradient overlays for depth ---- */}
+      <div className="absolute inset-0 bg-gradient-to-b from-ink/30 via-transparent to-ink" />
+      <div className="absolute inset-0 bg-gradient-to-r from-ink/50 via-transparent to-ink/30" />
 
-      {/* Mouse-following gradient */}
-      {!prefersReduced && (
-        <motion.div
-          className="pointer-events-none absolute h-[600px] w-[600px] rounded-full bg-lime/[0.06] blur-[100px]"
-          animate={{
-            x: mousePos.x - 300,
-            y: mousePos.y - 300,
-          }}
-          transition={{ type: "tween", duration: 0.3, ease: "easeOut" }}
-        />
-      )}
+      {/* Grid background */}
+      <div className="grid-bg mask-fade-b absolute inset-0 opacity-40" />
 
-      {/* ---- content ---- */}
+      {/* Ambient glow orbs */}
+      <div className="absolute -right-32 top-20 h-[500px] w-[500px] rounded-full bg-lime/[0.04] blur-[120px]" />
+      <div className="absolute -left-20 bottom-40 h-[400px] w-[400px] rounded-full bg-cyan/[0.03] blur-[100px]" />
+      <div className="absolute left-1/3 top-1/4 h-[300px] w-[300px] rounded-full bg-violet/[0.03] blur-[80px]" />
+
+      {/* ---- Content ---- */}
       <motion.div
-        className="relative mx-auto max-w-site px-6 pb-16 pt-36 md:pt-44"
+        className="relative mx-auto flex min-h-screen max-w-site flex-col justify-center px-6 pb-32 pt-28"
         variants={container}
         {...animateProps}
       >
@@ -221,23 +200,23 @@ export default function Hero() {
         </motion.p>
 
         {/* Name */}
-        <h1 className="mt-6 font-display font-bold uppercase leading-[0.9] tracking-tight">
+        <h1 className="mt-6 font-display font-bold uppercase leading-[0.88] tracking-tight">
           <motion.span
-            className="block text-[clamp(2.6rem,10.5vw,7.5rem)]"
+            className="block text-[clamp(2.8rem,11vw,8rem)]"
             variants={fadeUp}
             custom={1}
           >
             Baavansh
           </motion.span>
           <motion.span
-            className="block text-[clamp(2.6rem,10.5vw,7.5rem)]"
+            className="block text-[clamp(2.8rem,11vw,8rem)]"
             variants={fadeUp}
             custom={2}
           >
             Reddy
           </motion.span>
           <motion.span
-            className="block text-[clamp(2.6rem,10.5vw,7.5rem)] text-transparent glitch"
+            className="glitch block text-[clamp(2.8rem,11vw,8rem)] text-transparent"
             style={{ WebkitTextStroke: "2px #CCFF00" }}
             data-text="Gundlapalli"
             variants={fadeUp}
@@ -258,16 +237,16 @@ export default function Hero() {
           AI-powered tools, retrieval pipelines, and practical software.
         </motion.p>
 
-        {/* Mini terminal */}
+        {/* Mini terminal — glassmorphic */}
         <motion.div
-          className="mt-10 max-w-2xl overflow-hidden border border-line bg-ink/70 backdrop-blur"
+          className="glass mt-10 max-w-2xl overflow-hidden rounded-lg shadow-[0_0_60px_-15px_rgba(204,255,0,0.08)]"
           variants={fadeUp}
           custom={5}
         >
-          <div className="flex items-center gap-1.5 border-b border-line bg-surface/60 px-3 py-2">
-            <span className="h-2.5 w-2.5 rounded-full bg-line" />
-            <span className="h-2.5 w-2.5 rounded-full bg-line" />
-            <span className="h-2.5 w-2.5 rounded-full bg-lime" />
+          <div className="flex items-center gap-1.5 border-b border-line/50 px-4 py-2.5">
+            <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f56]" />
+            <span className="h-2.5 w-2.5 rounded-full bg-[#ffbd2e]" />
+            <span className="h-2.5 w-2.5 rounded-full bg-[#27c93f]" />
             <span className="ml-3 font-mono text-[11px] text-muted">
               ~/baavansh &mdash; zsh
             </span>
@@ -280,7 +259,7 @@ export default function Hero() {
                 variants={terminalLine}
                 custom={i}
               >
-                <span className={line.typed ? "text-lime" : "text-muted"}>
+                <span className={line.typed ? "text-lime" : "text-cyan/60"}>
                   {line.prompt}
                 </span>
                 <span className={line.typed ? "text-paper" : "text-muted"}>
@@ -312,17 +291,19 @@ export default function Hero() {
           <Magnetic strength={0.15}>
             <a
               href="#chat"
-              className="group inline-flex items-center gap-2 bg-lime px-6 py-3.5 font-mono text-sm font-semibold uppercase tracking-wide text-ink transition-transform hover:-translate-y-0.5"
+              className="group relative inline-flex items-center gap-2 overflow-hidden bg-lime px-6 py-3.5 font-mono text-sm font-semibold uppercase tracking-wide text-ink transition-transform hover:-translate-y-0.5"
             >
-              Ask My AI Assistant
-              <span className="transition-transform group-hover:translate-x-1">
+              {/* Shine effect */}
+              <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
+              <span className="relative">Ask My AI Assistant</span>
+              <span className="relative transition-transform group-hover:translate-x-1">
                 &rarr;
               </span>
             </a>
           </Magnetic>
           <a
             href="#work"
-            className="inline-flex items-center border border-line px-6 py-3.5 font-mono text-sm uppercase tracking-wide text-paper transition-colors hover:border-lime hover:text-lime"
+            className="glass inline-flex items-center px-6 py-3.5 font-mono text-sm uppercase tracking-wide text-paper transition-all hover:border-lime/50 hover:text-lime hover:shadow-[0_0_20px_-5px_rgba(204,255,0,0.15)]"
           >
             View Projects
           </a>
@@ -344,16 +325,16 @@ export default function Hero() {
             <span className="text-lime">&diams;</span> {profile.status}
           </span>
           <span>
-            <span className="text-lime">&diams;</span> {profile.university}
+            <span className="text-cyan">&diams;</span> {profile.university}
           </span>
           <span>
-            <span className="text-lime">&diams;</span> {profile.location}
+            <span className="text-violet">&diams;</span> {profile.location}
           </span>
         </motion.div>
       </motion.div>
 
       {/* Marquee banner */}
-      <div className="overflow-hidden border-y border-line bg-lime py-3">
+      <div className="absolute bottom-0 left-0 right-0 overflow-hidden border-y border-lime/20 bg-lime py-3">
         <div className="flex w-max animate-marquee">
           {[0, 1].map((dup) => (
             <div key={dup} className="flex shrink-0">

@@ -6,7 +6,7 @@ import { profile } from "@/lib/profile";
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#0B0B0C",
+  themeColor: "#030304",
 };
 
 export const metadata: Metadata = {

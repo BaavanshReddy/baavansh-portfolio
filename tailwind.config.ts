@@ -9,14 +9,17 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: "#0B0B0C",
-        surface: "#141417",
-        "surface-2": "#1A1A1F",
-        line: "#2A2A2F",
-        paper: "#F2F2EE",
-        muted: "#8C8C86",
+        ink: "#030304",
+        surface: "#0a0a12",
+        "surface-2": "#111119",
+        "surface-3": "#18182a",
+        line: "#1e1e2e",
+        paper: "#e4e4e7",
+        muted: "#64648a",
         lime: "#CCFF00",
         "lime-dim": "#99CC00",
+        cyan: "#00e5ff",
+        violet: "#7c3aed",
       },
       fontFamily: {
         display: ['"Space Grotesk"', "system-ui", "sans-serif"],
@@ -32,6 +35,26 @@ const config: Config = {
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+      },
+      animation: {
+        float: "float 6s ease-in-out infinite",
+        "float-slow": "float 8s ease-in-out infinite",
+        "glow-pulse": "glowPulse 4s ease-in-out infinite",
+        marquee: "marquee 32s linear infinite",
+      },
+      keyframes: {
+        float: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-12px)" },
+        },
+        glowPulse: {
+          "0%, 100%": { opacity: "0.4" },
+          "50%": { opacity: "0.8" },
+        },
+        marquee: {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(-50%)" },
+        },
       },
     },
   },

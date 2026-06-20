@@ -2,6 +2,7 @@
 
 import { Reveal, Stagger, fadeUp } from "@/lib/animations";
 import { skills } from "@/lib/profile";
+import { motion } from "framer-motion";
 
 const real = (s: string) => !s.includes("[[");
 
@@ -14,9 +15,12 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="scroll-mt-20 border-t border-line py-24 md:py-32"
+      className="relative scroll-mt-20 py-24 md:py-32"
     >
-      <div className="mx-auto max-w-site px-6">
+      <div className="absolute inset-x-0 top-0 section-divider" />
+      <div className="absolute left-1/4 top-20 h-[350px] w-[350px] rounded-full bg-violet/[0.03] blur-[120px]" />
+
+      <div className="relative mx-auto max-w-site px-6">
         <Reveal variants={fadeUp}>
           <p className="font-mono text-xs uppercase tracking-[0.28em] text-lime">
             [ technical skills ]
@@ -24,7 +28,11 @@ export default function Skills() {
         </Reveal>
         <Reveal variants={fadeUp} custom={1}>
           <h2 className="mt-4 font-display text-[clamp(2rem,5.5vw,3.75rem)] font-bold uppercase leading-[0.95] tracking-tight">
-            What I <span className="text-lime">work</span> with.
+            What I{" "}
+            <span className="bg-gradient-to-r from-lime to-cyan bg-clip-text text-transparent">
+              work
+            </span>{" "}
+            with.
           </h2>
         </Reveal>
 
@@ -37,7 +45,7 @@ export default function Skills() {
                 key={g.label}
                 variants={fadeUp}
                 custom={gi}
-                className="border border-line bg-surface p-5"
+                className="glass rounded-lg p-5"
               >
                 <p className="font-display text-sm font-bold uppercase tracking-tight text-paper">
                   {g.label}
@@ -45,9 +53,16 @@ export default function Skills() {
                 <Stagger className="mt-3 flex flex-wrap gap-2">
                   {items.map((it, ii) => (
                     <Reveal key={it} variants={fadeUp} custom={ii} as="span">
-                      <span className="inline-block border border-line px-2.5 py-1 font-mono text-[11px] text-muted transition-all duration-200 hover:border-lime hover:text-paper cursor-default">
+                      <motion.span
+                        className="inline-block cursor-default rounded-sm border border-line/50 px-2.5 py-1 font-mono text-[11px] text-muted transition-all duration-200"
+                        whileHover={{
+                          borderColor: "rgba(204,255,0,0.5)",
+                          color: "#e4e4e7",
+                          scale: 1.05,
+                        }}
+                      >
                         {it}
-                      </span>
+                      </motion.span>
                     </Reveal>
                   ))}
                 </Stagger>
@@ -59,7 +74,7 @@ export default function Skills() {
         <Reveal variants={fadeUp} custom={skills.length}>
           <p className="mt-8 font-mono text-xs text-muted">
             <span className="text-lime">{totalCount}</span> technologies across{" "}
-            <span className="text-lime">{skills.length}</span> categories
+            <span className="text-cyan">{skills.length}</span> categories
           </p>
         </Reveal>
       </div>

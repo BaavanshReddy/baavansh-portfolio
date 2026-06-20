@@ -14,7 +14,7 @@ function TimelineDot() {
   return (
     <motion.span
       ref={ref}
-      className="absolute -left-[5px] top-1.5 h-2.5 w-2.5 bg-lime"
+      className="absolute -left-[5px] top-1.5 h-2.5 w-2.5 rounded-full bg-gradient-to-br from-lime to-cyan"
       initial={{ scale: 0, opacity: 0 }}
       animate={
         isInView
@@ -36,11 +36,9 @@ function TimelineLine() {
 
   return (
     <div ref={ref} className="absolute inset-y-0 left-0 w-px">
-      {/* base line (dim) */}
-      <div className="absolute inset-0 bg-line" />
-      {/* animated overlay */}
+      <div className="absolute inset-0 bg-line/50" />
       <motion.div
-        className="absolute inset-x-0 top-0 h-full origin-top bg-lime/40"
+        className="absolute inset-x-0 top-0 h-full origin-top bg-gradient-to-b from-lime via-cyan to-violet opacity-40"
         style={{ scaleY }}
       />
     </div>
@@ -51,9 +49,12 @@ export default function Experience() {
   return (
     <section
       id="experience"
-      className="scroll-mt-20 border-t border-line py-24 md:py-32"
+      className="relative scroll-mt-20 py-24 md:py-32"
     >
-      <div className="mx-auto max-w-site px-6">
+      <div className="absolute inset-x-0 top-0 section-divider" />
+      <div className="absolute -right-40 top-1/3 h-[400px] w-[400px] rounded-full bg-lime/[0.02] blur-[120px]" />
+
+      <div className="relative mx-auto max-w-site px-6">
         <Reveal variants={fadeUp}>
           <p className="font-mono text-xs uppercase tracking-[0.28em] text-lime">
             [ experience ]
@@ -61,7 +62,11 @@ export default function Experience() {
         </Reveal>
         <Reveal variants={fadeUp} custom={1}>
           <h2 className="mt-4 font-display text-[clamp(2rem,5.5vw,3.75rem)] font-bold uppercase leading-[0.95] tracking-tight">
-            Where I&apos;ve <span className="text-lime">earned</span> it.
+            Where I&apos;ve{" "}
+            <span className="bg-gradient-to-r from-lime to-cyan bg-clip-text text-transparent">
+              earned
+            </span>{" "}
+            it.
           </h2>
         </Reveal>
 
@@ -84,7 +89,7 @@ export default function Experience() {
                   <p className="font-mono text-xs uppercase tracking-wider text-muted">
                     {e.period}
                   </p>
-                  <h3 className="mt-1.5 font-display text-lg font-bold uppercase tracking-tight">
+                  <h3 className="mt-1.5 font-display text-lg font-bold uppercase tracking-tight text-paper">
                     {e.role}
                   </h3>
                   <p className="font-mono text-sm text-lime">{e.org}</p>

@@ -4,10 +4,6 @@ import { useEffect, useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { profile } from "@/lib/profile";
 
-/* ------------------------------------------------------------------ */
-/*  NAV LINKS                                                         */
-/* ------------------------------------------------------------------ */
-
 const LINKS = [
   { label: "Ask AI", href: "#chat" },
   { label: "About", href: "#about" },
@@ -16,10 +12,6 @@ const LINKS = [
   { label: "Skills", href: "#skills" },
   { label: "Contact", href: "#contact" },
 ];
-
-/* ------------------------------------------------------------------ */
-/*  NAV LINK WITH HOVER UNDERLINE                                     */
-/* ------------------------------------------------------------------ */
 
 function NavLink({
   href,
@@ -38,22 +30,17 @@ function NavLink({
       onClick={onClick}
       className="group relative px-3 py-2 font-mono text-xs uppercase tracking-wider transition-colors"
     >
-      <span className={active ? "text-lime" : "text-muted group-hover:text-lime"}>
+      <span className={active ? "text-lime" : "text-muted group-hover:text-paper"}>
         {label}
       </span>
-      {/* Hover underline: slides in from left */}
       <span
-        className={`absolute bottom-0.5 left-3 right-3 h-[2px] bg-lime transition-transform duration-300 origin-left ${
+        className={`absolute bottom-0.5 left-3 right-3 h-[2px] bg-gradient-to-r from-lime to-cyan transition-transform duration-300 origin-left ${
           active ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
         }`}
       />
     </a>
   );
 }
-
-/* ------------------------------------------------------------------ */
-/*  MOBILE MENU ANIMATION VARIANTS                                    */
-/* ------------------------------------------------------------------ */
 
 const mobileMenuVariants = {
   hidden: {
@@ -86,21 +73,15 @@ const mobileItemVariants = {
   },
 };
 
-/* ------------------------------------------------------------------ */
-/*  NAV COMPONENT                                                     */
-/* ------------------------------------------------------------------ */
-
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [open, setOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
 
-  // Scroll state: backdrop + progress bar
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 24);
-
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
       const progress = docHeight > 0 ? Math.min(window.scrollY / docHeight, 1) : 0;
       setScrollProgress(progress);
@@ -110,16 +91,13 @@ export default function Nav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Active section tracking via IntersectionObserver
   useEffect(() => {
     const sectionIds = LINKS.map((l) => l.href.replace("#", ""));
     const observers: IntersectionObserver[] = [];
 
     const handleIntersect = (id: string) => (entries: IntersectionObserverEntry[]) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActiveSection(id);
-        }
+        if (entry.isIntersecting) setActiveSection(id);
       });
     };
 
@@ -137,7 +115,6 @@ export default function Nav() {
     return () => observers.forEach((o) => o.disconnect());
   }, []);
 
-  // Close mobile menu on resize to desktop
   useEffect(() => {
     const onResize = () => {
       if (window.innerWidth >= 768) setOpen(false);
@@ -150,15 +127,15 @@ export default function Nav() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "border-b border-line bg-ink/90 backdrop-blur-md"
+          ? "glass-strong shadow-[0_4px_30px_rgba(0,0,0,0.3)]"
           : "border-b border-transparent bg-transparent"
       }`}
     >
-      {/* Scroll progress bar */}
+      {/* Scroll progress — gradient bar */}
       <motion.div
-        className="absolute inset-x-0 top-0 h-[2px] origin-left bg-lime"
+        className="absolute inset-x-0 top-0 h-[2px] origin-left bg-gradient-to-r from-lime via-cyan to-violet"
         style={{ scaleX: scrollProgress }}
         transition={{ duration: 0.1, ease: "linear" }}
       />
@@ -167,16 +144,16 @@ export default function Nav() {
         {/* Logo */}
         <a href="#top" className="group flex items-center gap-2.5">
           <motion.span
-            className="grid h-9 w-9 place-items-center bg-lime font-mono text-sm font-bold text-ink"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.97 }}
+            className="grid h-9 w-9 place-items-center bg-gradient-to-br from-lime to-cyan font-mono text-sm font-bold text-ink rounded-sm"
+            whileHover={{ scale: 1.08, rotate: 3 }}
+            whileTap={{ scale: 0.95 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
           >
             {profile.initials}
           </motion.span>
           <span className="font-mono text-sm tracking-tight text-paper">
             {profile.shortName.toLowerCase()}
-            <span className="text-lime">.dev</span>
+            <span className="bg-gradient-to-r from-lime to-cyan bg-clip-text text-transparent">.dev</span>
           </span>
         </a>
 
@@ -192,7 +169,7 @@ export default function Nav() {
           ))}
           <motion.a
             href={profile.resumeUrl}
-            className="ml-2 border border-line px-4 py-2 font-mono text-xs uppercase tracking-wider text-paper transition-colors hover:border-lime hover:text-lime"
+            className="glass ml-2 px-4 py-2 font-mono text-xs uppercase tracking-wider text-paper transition-all hover:border-lime/50 hover:text-lime hover:shadow-[0_0_15px_-3px_rgba(204,255,0,0.15)]"
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
@@ -204,7 +181,7 @@ export default function Nav() {
         {/* Mobile hamburger */}
         <motion.button
           onClick={() => setOpen((v) => !v)}
-          className="grid h-9 w-9 place-items-center border border-line text-paper md:hidden"
+          className="glass grid h-9 w-9 place-items-center text-paper md:hidden"
           aria-label="Toggle menu"
           aria-expanded={open}
           whileTap={{ scale: 0.92 }}
@@ -219,7 +196,7 @@ export default function Nav() {
       <AnimatePresence>
         {open && (
           <motion.nav
-            className="overflow-hidden border-t border-line bg-ink/95 backdrop-blur-md px-6 md:hidden"
+            className="glass-strong overflow-hidden px-6 md:hidden"
             variants={mobileMenuVariants}
             initial="hidden"
             animate="visible"
