@@ -21,18 +21,20 @@ const MARQUEE = [
 
 const TERMINAL_LINES = [
   { prompt: "$", text: "whoami", typed: true },
-  { prompt: ">", text: "baavansh — backend & ai/ml engineer", typed: false },
+  { prompt: ">", text: "baavansh — software engineer", typed: false },
   { prompt: "$", text: "cat ./focus.txt", typed: true },
-  { prompt: ">", text: "apis, retrieval systems, agent memory, data pipelines", typed: false },
+  { prompt: ">", text: "backend apis, ai/ml systems, python tooling, infrastructure", typed: false },
   { prompt: "$", text: "ls ./projects", typed: true },
-  { prompt: ">", text: "agentmemry/  ai-doc-pipeline/  chat-with-baavansh/", typed: false },
+  { prompt: ">", text: "agentmemry/  ai-doc-pipeline/  compiler/  chat-with-baavansh/", typed: false },
 ];
 
 const ROLE_KEYWORDS = [
   "Backend Systems",
   "AI Pipelines",
-  "Retrieval Systems",
+  "Python Tooling",
   "REST APIs",
+  "Infrastructure",
+  "Retrieval Systems",
   "Data Workflows",
 ];
 
@@ -234,7 +236,7 @@ export default function Hero() {
         >
           Computer Science graduate building{" "}
           <RoleCycler />,{" "}
-          AI-powered tools, retrieval pipelines, and practical software.
+          shipping production code, and solving real problems.
         </motion.p>
 
         {/* Mini terminal — glassmorphic */}

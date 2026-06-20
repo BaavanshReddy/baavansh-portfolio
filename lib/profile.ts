@@ -2,6 +2,14 @@
 //  SINGLE SOURCE OF TRUTH
 //  Everything the site renders AND everything the chat knows comes from here.
 //  Voice: first person ("I / me / my"). The chat answers in first person too.
+//
+//  POSITIONING: This portfolio targets FOUR role families:
+//    1. AI/ML Engineer — retrieval, embeddings, RAG, neural nets, LLM eval
+//    2. Backend Engineer — APIs, pipelines, auth, databases, system design
+//    3. Python Developer — automation, scripting, data processing, libraries
+//    4. IT / Systems — troubleshooting, infrastructure, security, AWS, auth
+//  The knowledge base is written so the chat can intelligently surface the
+//  right experience for whichever role a recruiter is asking about.
 // ============================================================================
 
 export interface ProfileLink {
@@ -56,11 +64,11 @@ export const profile = {
   name: "Baavansh Reddy Gundlapalli",
   shortName: "Baavansh",
   initials: "BG",
-  headline: "Backend & AI/ML Engineer",
+  headline: "Software Engineer",
   tagline:
-    "I build things that ship — backend APIs and data pipelines, plus retrieval and memory systems for AI agents.",
+    "I build things that ship — backend APIs, AI/ML systems, Python tooling, and production infrastructure.",
   status:
-    "Backend & AI Systems Engineer at The AI Research Center (TAIRC) · open to backend & AI/ML roles",
+    "Backend & AI Systems Engineer at TAIRC · open to software engineering roles",
   location: "New Brunswick, NJ",
   university: "Rutgers University",
   major: "Computer Science",
@@ -70,19 +78,18 @@ export const profile = {
   linkedin: "https://www.linkedin.com/in/baavansh",
   resumeUrl: "/resume.pdf",
   summary:
-    "I'm a Computer Science graduate from Rutgers University (Magna Cum Laude, 3.76 GPA), currently a Backend & AI Systems Engineer at The AI Research Center (TAIRC). I've shipped REST APIs, authentication systems, and data pipelines, with applied AI work in retrieval and embeddings — including AgentMemry, my open-source memory library for AI agents. I'm backed by a strong CS foundation in Python — compilers, computer architecture, and operating systems — that shapes how I build.",
+    "I'm a Computer Science graduate from Rutgers University (Magna Cum Laude, 3.76 GPA), currently a Backend & AI Systems Engineer at The AI Research Center (TAIRC). I've shipped REST APIs, authentication systems, data pipelines, and AI tooling — including AgentMemry, my open-source memory library for AI agents. I'm backed by a strong systems foundation — compilers, computer architecture, and operating systems — that shapes how I build software, debug problems, and reason about infrastructure.",
 };
 
 // ----------------------------------------------------------------------------
 //  WHAT MAKES ME DIFFERENT  (the "unfair edges")
-//  Re-ordered around what backend / AI-ML teams actually hire for in 2026.
 // ----------------------------------------------------------------------------
 
 export const edges: Edge[] = [
   {
-    title: "Ships production AI infra",
+    title: "Ships production systems",
     detail:
-      "I'm currently a Backend & AI Systems Engineer at The AI Research Center (TAIRC), building backend APIs and AI/ML systems. Plus AgentMemry — my open-source memory library for AI agents (~500 LOC, 15 passing tests) — and a real document-ingestion pipeline I built at Metasys Global.",
+      "I'm currently a Backend & AI Systems Engineer at TAIRC, building backend APIs and AI/ML infrastructure. I also open-sourced AgentMemry (~500 LOC, 15 tests) and built a real document-ingestion pipeline at Metasys Global.",
   },
   {
     title: "Owns problems end-to-end",
@@ -92,12 +99,12 @@ export const edges: Edge[] = [
   {
     title: "Rare systems depth",
     detail:
-      "I built a full compiler — lexer, recursive-descent parser, AST, and code generation — and have hands-on computer-architecture and OS coursework, so I reason about how code actually runs, not just how to call an API.",
+      "I built a full compiler — lexer, recursive-descent parser, AST, and code generation — and have hands-on computer-architecture and OS coursework. I reason about how code actually runs, not just how to call an API.",
   },
   {
     title: "Full-stack range",
     detail:
-      "Comfortable across the stack — PostgreSQL, REST APIs, authentication, real-time data, and frontend UIs — all in production codebases.",
+      "Comfortable across the stack — PostgreSQL, REST APIs, authentication, real-time data, AWS services, and frontend UIs — all in production codebases.",
   },
   {
     title: "Tests what I build",
@@ -250,7 +257,7 @@ export const projects: Project[] = [
   {
     id: "scraper",
     name: "Campus Event Scraper",
-    tag: "Backend / Scraping",
+    tag: "Python / Automation",
     blurb:
       "Python scraping pipeline → indexed SQLite — exponential-backoff retries, offline fallback.",
     description:
@@ -293,10 +300,11 @@ export const experience: ExperienceItem[] = [
     org: "The AI Research Center (TAIRC)",
     period: "Present",
     summary:
-      "Currently building backend APIs and AI/ML systems infrastructure.",
+      "Building backend APIs, AI/ML infrastructure, and production services.",
     points: [
-      "Building backend APIs and services that power the center's AI systems — REST endpoints and data pipelines that move data between models, storage, and applications.",
-      "Engineering AI/ML systems infrastructure — integrating LLM and retrieval components, embeddings, and vector search into production-ready backend services.",
+      "Design and build scalable backend systems, REST APIs, and database architectures powering AI-enabled research and production applications.",
+      "Integrate machine learning models and AI technologies into backend services, supporting end-to-end development from system requirements analysis through deployment.",
+      "Collaborate with research and engineering teams to translate technical requirements into production-grade AI solutions.",
     ],
   },
   {
@@ -313,11 +321,11 @@ export const experience: ExperienceItem[] = [
   {
     id: "fidelis",
     role: "Full-Stack Engineering Extern",
-    org: "Fidelis — LIVEY Event Platform",
+    org: "LIVELY — Jillcyn Enterprises, LLC",
     period: "Jan 2026 – May 2026",
-    summary: "Co-built LIVEY, a full-stack localized event-discovery platform.",
+    summary: "Co-built LIVEY, a full-stack event-discovery platform.",
     points: [
-      "Built React search and filtering components and engineered REST API routes across the front and back end.",
+      "Co-built LIVEY, a full-stack event-discovery platform, developing React search and filtering components and engineering REST API routes across the front and back end.",
       "Integrated Supabase (PostgreSQL) for real-time data storage, user authentication, and event management.",
     ],
   },
@@ -326,7 +334,7 @@ export const experience: ExperienceItem[] = [
     role: "Software Engineering Extern",
     org: "Little Red Riding Hood Inc.",
     period: "Sep 2025 – Dec 2025",
-    summary: "Built backend systems for a safety-focused rideshare platform.",
+    summary: "Built secure backend systems for a safety-focused rideshare platform.",
     points: [
       "Engineered secure authentication with role-based login and credential management for separate rider and driver accounts.",
       "Built driver session tracking and real-time geolocation handling on AWS-deployed services, supporting dispatch coordination and passenger-safety workflows.",
@@ -339,8 +347,7 @@ export const experience: ExperienceItem[] = [
     period: "Sep 2024 – Oct 2024",
     summary: "Wrote Python automation scripts and applied OOP fundamentals.",
     points: [
-      "Developed Python automation scripts for data processing and file handling.",
-      "Applied object-oriented design principles across structured engineering assignments.",
+      "Developed Python automation scripts for data processing and file handling, applying object-oriented design principles across structured engineering assignments.",
     ],
   },
 ];
@@ -377,7 +384,7 @@ export const skills: SkillGroup[] = [
   },
   {
     label: "Cloud & DevOps",
-    items: ["Vercel", "Git", "GitHub"],
+    items: ["AWS", "Vercel", "Git", "GitHub"],
   },
   {
     label: "Systems",
@@ -400,185 +407,101 @@ export const skills: SkillGroup[] = [
 // ----------------------------------------------------------------------------
 //  KNOWLEDGE BASE  — the retrievable units the chat answers from.
 //  All written in first person ("I / me / my").
+//
+//  ROLE-AWARE: chunks are written so the chat can tailor answers to
+//  whichever role family a recruiter asks about. The "role-fit-*" chunks
+//  explicitly map experience → role type.
 // ----------------------------------------------------------------------------
 
 export const knowledgeChunks: KnowledgeChunk[] = [
+  // ---- Identity & overview ----
   {
     id: "intro",
     title: "Who I am",
     source: "Profile",
     keywords: [
-      "who",
-      "baavansh",
-      "about",
-      "summary",
-      "introduce",
-      "yourself",
-      "background",
-      "overview",
-      "person",
+      "who", "baavansh", "about", "summary", "introduce", "yourself",
+      "background", "overview", "person", "tell",
     ],
-    text: "I'm Baavansh Reddy Gundlapalli — a Computer Science graduate from Rutgers University (Magna Cum Laude, 3.76 GPA). I have backend engineering experience, applied AI and retrieval work, and an unusually deep systems background. I'm currently open to backend and AI/ML engineering roles for 2026.",
+    text: "I'm Baavansh Reddy Gundlapalli — a Computer Science graduate from Rutgers University (Magna Cum Laude, 3.76 GPA). I have experience across backend engineering, AI/ML systems, Python development, and IT infrastructure. I'm currently a Backend & AI Systems Engineer at TAIRC and I'm open to software engineering roles for 2026.",
   },
   {
     id: "approach",
     title: "How I work",
     source: "About",
     keywords: [
-      "adaptable",
-      "resourceful",
-      "charge",
-      "leadership",
-      "approach",
-      "different",
-      "strength",
-      "stand",
-      "out",
-      "team",
-      "initiative",
-      "ownership",
-      "special",
-      "unique",
+      "adaptable", "resourceful", "charge", "leadership", "approach",
+      "different", "strength", "stand", "out", "team", "initiative",
+      "ownership", "special", "unique", "style",
     ],
-    text: "What sets me apart is ownership. I like taking a problem end to end — mapping it, weighing two or three approaches, then shipping a solution rather than handing it off. I also have unusual range: I'm comfortable from the database and backend APIs up to the UI, and from an LLM retrieval pipeline down to the compiler and OS internals I studied.",
+    text: "What sets me apart is ownership. I like taking a problem end to end — mapping it, weighing two or three approaches, then shipping a solution rather than handing it off. I also have unusual range: I'm comfortable from database and backend APIs up to the UI, and from an LLM retrieval pipeline down to the compiler and OS internals I studied. That range means I can debug across the full stack and understand how the pieces fit together.",
   },
+
+  // ---- ROLE-FIT CHUNKS — the smart part ----
+  {
+    id: "role-fit-aiml",
+    title: "Why I'm a fit for AI/ML roles",
+    source: "Role Fit",
+    keywords: [
+      "ai", "ml", "machine", "learning", "artificial", "intelligence",
+      "ai/ml", "aiml", "data", "scientist", "nlp", "deep", "model",
+      "training", "inference",
+    ],
+    text: "For AI/ML roles: I built AgentMemry, an open-source Python library that gives AI agents persistent memory using local embeddings and semantic retrieval (cosine similarity + MMR). At TAIRC, I integrate ML models into production backend services. At Metasys Global, I built a document-ingestion pipeline for RAG — staging files for chunking, embedding, and vector search. I implemented a neural network from scratch with hand-coded backpropagation (89.1% face recognition accuracy), and co-authored LLM FactCheck, a research study evaluating factual QA across prompting, BM25, and RAG. My AI work is hands-on and production-oriented, not just academic.",
+  },
+  {
+    id: "role-fit-backend",
+    title: "Why I'm a fit for backend roles",
+    source: "Role Fit",
+    keywords: [
+      "backend", "back-end", "server", "api", "apis", "microservices",
+      "services", "infrastructure", "distributed", "scalable", "rest",
+      "endpoint", "database", "sql",
+    ],
+    text: "For backend roles: I've built REST APIs and backend services at TAIRC (current — designing scalable backend systems and database architectures), at Metasys Global (document-ingestion pipeline with MinIO/S3 object storage), and at Little Red Riding Hood Inc. (secure authentication, session tracking, real-time geolocation on AWS). I've worked with PostgreSQL, MySQL, SQLite, Supabase, Express, and FastAPI. I also have a systems background — compilers, OS, computer architecture — so I reason about performance, memory, and how code actually executes, not just the API surface.",
+  },
+  {
+    id: "role-fit-python",
+    title: "Why I'm a fit for Python roles",
+    source: "Role Fit",
+    keywords: [
+      "python", "developer", "scripting", "automation", "script",
+      "programming", "django", "flask", "fastapi", "pandas",
+    ],
+    text: "For Python roles: Python is my primary language and runs through almost every project I've built. AgentMemry is a pure Python library (~500 lines, pytest-tested). My TinyL compiler is Python. My neural network is Python + NumPy. My campus event scraper is Python + BeautifulSoup + SQLite. At InternPe, I built Python automation scripts for data processing and file handling. I also use FastAPI for backend services. I think in Python — it's where I'm fastest and most comfortable.",
+  },
+  {
+    id: "role-fit-it",
+    title: "Why I'm a fit for IT roles",
+    source: "Role Fit",
+    keywords: [
+      "it", "information", "technology", "support", "helpdesk", "help",
+      "desk", "sysadmin", "admin", "administrator", "network",
+      "troubleshoot", "troubleshooting", "infrastructure", "security",
+      "devops", "operations", "cloud", "aws", "deploy", "deployment",
+    ],
+    text: "For IT and infrastructure roles: I have hands-on experience with AWS-deployed services (built session tracking and geolocation handling), S3-compatible object storage (MinIO at Metasys Global), PostgreSQL/MySQL database administration, authentication and credential management systems, and Git-based deployment workflows (Vercel, GitHub). My coursework in operating systems and computer architecture gives me a strong foundation for understanding system internals, debugging, and infrastructure management. As a Community Service Officer with Rutgers University Police, I also developed incident response and coordination skills that translate directly to IT operations.",
+  },
+
+  // ---- Projects ----
   {
     id: "agentmemry",
     title: "AgentMemry — open-source memory for AI agents",
     source: "Projects · AgentMemry",
     keywords: [
-      "agentmemry",
-      "agentrecall",
-      "memory",
-      "agent",
-      "agents",
-      "library",
-      "open",
-      "source",
-      "sqlite",
-      "embeddings",
-      "package",
-      "main",
-      "best",
-      "flagship",
-      "top",
-      "project",
+      "agentmemry", "memory", "agent", "agents", "library", "open",
+      "source", "sqlite", "embeddings", "package", "main", "best",
+      "flagship", "top", "project",
     ],
     text: "AgentMemry is my flagship project — a ~500-line open-source Python library that gives AI agents persistent memory without a cloud database or any API keys. It stores memories in a single SQLite file, embeds them locally with sentence-transformers, and retrieves them by cosine similarity. It also has an MMR diversity mode and per-agent namespacing so multiple agents can share one database safely. The public API is verified by 15 passing unit tests. Source: github.com/BaavanshReddy/agentmemry.",
-  },
-  {
-    id: "tairc",
-    title: "The AI Research Center (TAIRC) — current role",
-    source: "TAIRC · Experience",
-    keywords: [
-      "tairc",
-      "ai",
-      "research",
-      "center",
-      "current",
-      "currently",
-      "now",
-      "present",
-      "today",
-      "backend",
-      "systems",
-      "engineer",
-      "job",
-      "work",
-      "role",
-      "experience",
-      "where",
-    ],
-    text: "I'm currently a Backend & AI Systems Engineer at The AI Research Center (TAIRC). I build backend APIs and services that power the center's AI systems — REST endpoints and data pipelines that move data between models, storage, and applications — and I engineer the AI/ML systems infrastructure, integrating LLM and retrieval components, embeddings, and vector search into production-ready backend services.",
-  },
-  {
-    id: "metasys",
-    title: "Metasys Global — AI document pipeline",
-    source: "Metasys Global · Experience",
-    keywords: [
-      "metasys",
-      "rag",
-      "retrieval",
-      "pipeline",
-      "ingestion",
-      "minio",
-      "vector",
-      "embeddings",
-      "internship",
-      "job",
-      "work",
-      "experience",
-    ],
-    text: "During my backend internship at Metasys Global, I built the document-ingestion layer for an AI semantic-retrieval system. I integrated MinIO (S3-compatible) object storage to programmatically extract heterogeneous, mixed-format files, and engineered the file-processing workflow that staged extracted documents for downstream chunking, embedding, and vector search.",
-  },
-  {
-    id: "fidelis",
-    title: "Fidelis / LIVEY — full-stack event platform",
-    source: "Experience",
-    keywords: [
-      "fidelis",
-      "livey",
-      "event",
-      "fullstack",
-      "full-stack",
-      "react",
-      "supabase",
-      "postgres",
-      "frontend",
-      "extern",
-    ],
-    text: "As a full-stack engineering extern with Fidelis, I helped build LIVEY — a localized event-discovery platform. I built React search and filtering components, engineered REST API routes across the front and back end, and integrated Supabase (PostgreSQL) for real-time storage, user authentication, and event management.",
-  },
-  {
-    id: "rideshare",
-    title: "Rideshare backend — Little Red Riding Hood Inc.",
-    source: "Experience",
-    keywords: [
-      "rideshare",
-      "ride",
-      "little",
-      "red",
-      "riding",
-      "hood",
-      "auth",
-      "authentication",
-      "login",
-      "backend",
-      "geolocation",
-      "extern",
-    ],
-    text: "As a software engineering extern with Little Red Riding Hood Inc., I built backend systems for a safety-focused rideshare platform. I implemented secure login, credential management, and role-based authentication for separate rider and driver accounts, plus driver session tracking and real-time geolocation handling on AWS-deployed services for dispatch coordination.",
-  },
-  {
-    id: "systems",
-    title: "Systems & compilers background",
-    source: "Projects · Systems",
-    keywords: [
-      "systems",
-      "compiler",
-      "compilers",
-      "architecture",
-      "operating",
-      "low-level",
-      "depth",
-      "technical",
-    ],
-    text: "I have a deeper systems background than most AI candidates. I built a full compiler for the TinyL language — lexer, recursive-descent parser, AST, intermediate representation, and code generation — and my coursework covers computer architecture and operating systems. Being able to reason about parsers, datapaths, and how code actually runs, while also building modern AI tooling, is a real edge.",
   },
   {
     id: "tinyl",
     title: "TinyL Compiler",
     source: "Projects",
     keywords: [
-      "tinyl",
-      "compiler",
-      "compilers",
-      "lexer",
-      "parser",
-      "parsing",
-      "codegen",
-      "ast",
-      "language",
+      "tinyl", "compiler", "compilers", "lexer", "parser", "parsing",
+      "codegen", "ast", "language",
     ],
     text: "My TinyL compiler is a full pipeline: I wrote the lexer, a recursive-descent parser working from a formal grammar, AST construction, an intermediate representation, and a code generator targeting stack-based bytecode.",
   },
@@ -587,17 +510,8 @@ export const knowledgeChunks: KnowledgeChunk[] = [
     title: "Neural Network from Scratch",
     source: "Projects",
     keywords: [
-      "neural",
-      "net",
-      "network",
-      "perceptron",
-      "backprop",
-      "backpropagation",
-      "numpy",
-      "pytorch",
-      "ml",
-      "deep",
-      "learning",
+      "neural", "net", "network", "perceptron", "backprop",
+      "backpropagation", "numpy", "pytorch", "ml", "deep", "learning",
       "scratch",
     ],
     text: "I implemented a perceptron and a 3-layer neural network from scratch with hand-coded forward propagation and backpropagation in NumPy, reaching 89.1% face-recognition and 86.7% digit-classification accuracy — validated against a PyTorch baseline.",
@@ -607,15 +521,8 @@ export const knowledgeChunks: KnowledgeChunk[] = [
     title: "RuPizza — OOP Ordering App",
     source: "Projects",
     keywords: [
-      "rupizza",
-      "pizza",
-      "java",
-      "javafx",
-      "junit",
-      "oop",
-      "object",
-      "oriented",
-      "factory",
+      "rupizza", "pizza", "java", "javafx", "junit", "oop", "object",
+      "oriented", "factory",
     ],
     text: "RuPizza is a JavaFX desktop ordering application I built around object-oriented principles — inheritance, polymorphism, and the Factory pattern — featuring an order builder, store-order management, and JUnit test coverage.",
   },
@@ -624,196 +531,191 @@ export const knowledgeChunks: KnowledgeChunk[] = [
     title: "Campus Event Scraper",
     source: "Projects",
     keywords: [
-      "scraper",
-      "scrape",
-      "scraping",
-      "beautifulsoup",
-      "events",
-      "sqlite",
-      "pipeline",
-      "backoff",
-      "retry",
+      "scraper", "scrape", "scraping", "beautifulsoup", "events",
+      "sqlite", "pipeline", "backoff", "retry", "automation",
     ],
     text: "I built a Python web-scraping pipeline that collects and normalizes university event listings into an indexed SQLite database. It stays reliable through exponential-backoff retries, URL-based deduplication, and graceful offline fallback when sources are unavailable.",
   },
+
+  // ---- Experience ----
   {
-    id: "backend",
-    title: "Backend & engineering experience",
+    id: "tairc",
+    title: "The AI Research Center (TAIRC) — current role",
+    source: "TAIRC · Experience",
+    keywords: [
+      "tairc", "research", "center", "current", "currently", "now",
+      "present", "today", "engineer", "job", "work", "role", "experience",
+      "where",
+    ],
+    text: "I'm currently a Backend & AI Systems Engineer at The AI Research Center (TAIRC). I design and build scalable backend systems, REST APIs, and database architectures powering AI-enabled research and production applications. I integrate machine learning models and AI technologies into backend services, supporting end-to-end development from system requirements analysis through deployment. I collaborate with research and engineering teams to translate technical requirements into production-grade AI solutions.",
+  },
+  {
+    id: "metasys",
+    title: "Metasys Global — AI document pipeline",
+    source: "Metasys Global · Experience",
+    keywords: [
+      "metasys", "rag", "retrieval", "pipeline", "ingestion", "minio",
+      "vector", "embeddings", "internship",
+    ],
+    text: "During my backend internship at Metasys Global, I built the document-ingestion layer for an AI semantic-retrieval system. I integrated MinIO (S3-compatible) object storage to programmatically extract heterogeneous, mixed-format files, and engineered the file-processing workflow that staged extracted documents for downstream chunking, embedding, and vector search.",
+  },
+  {
+    id: "fidelis",
+    title: "LIVELY — full-stack event platform",
+    source: "Experience",
+    keywords: [
+      "fidelis", "livey", "lively", "event", "fullstack", "full-stack",
+      "react", "supabase", "postgres", "frontend", "extern",
+    ],
+    text: "As a full-stack engineering extern at LIVELY (Jillcyn Enterprises), I co-built LIVEY — a localized event-discovery platform. I developed React search and filtering components, engineered REST API routes across the front and back end, and integrated Supabase (PostgreSQL) for real-time storage, user authentication, and event management.",
+  },
+  {
+    id: "rideshare",
+    title: "Rideshare backend — Little Red Riding Hood Inc.",
+    source: "Experience",
+    keywords: [
+      "rideshare", "ride", "little", "red", "riding", "hood", "auth",
+      "authentication", "login", "geolocation", "extern", "aws",
+      "security", "session",
+    ],
+    text: "As a software engineering extern with Little Red Riding Hood Inc., I built backend systems for a safety-focused rideshare platform. I implemented secure login, credential management, and role-based authentication for separate rider and driver accounts, plus driver session tracking and real-time geolocation handling on AWS-deployed services for dispatch coordination.",
+  },
+  {
+    id: "internpe",
+    title: "InternPe — Python programming intern",
+    source: "Experience",
+    keywords: [
+      "internpe", "intern", "python", "automation", "scripting", "oop",
+      "data", "processing",
+    ],
+    text: "At InternPe, I worked as a Python Programming Intern developing automation scripts for data processing and file handling, applying object-oriented design principles across structured engineering assignments. This was my first engineering internship and where I formalized my Python development practices.",
+  },
+
+  // ---- Skills & depth ----
+  {
+    id: "systems",
+    title: "Systems & compilers background",
+    source: "Projects · Systems",
+    keywords: [
+      "systems", "compiler", "compilers", "architecture", "operating",
+      "low-level", "depth", "technical", "os", "cpu",
+    ],
+    text: "I have a deeper systems background than most candidates. I built a full compiler for the TinyL language — lexer, recursive-descent parser, AST, intermediate representation, and code generation — and my coursework covers computer architecture and operating systems. Being able to reason about parsers, datapaths, memory management, and how code actually runs is an edge whether I'm building an AI pipeline, debugging a backend service, or understanding infrastructure.",
+  },
+  {
+    id: "backend-skills",
+    title: "Backend & engineering skills",
     source: "Skills · Experience",
     keywords: [
-      "backend",
-      "server",
-      "node",
-      "nodejs",
-      "typescript",
-      "python",
-      "api",
-      "rest",
-      "fullstack",
-      "engineering",
-      "build",
-      "ship",
-      "code",
+      "node", "nodejs", "typescript", "express", "fastapi", "api", "rest",
+      "engineering", "build", "ship", "code", "stack",
     ],
-    text: "Yes — I have hands-on backend experience. I've built REST API routes, authentication systems, and data pipelines: a document-ingestion pipeline at Metasys Global, secure role-based auth for a rideshare platform, and REST routes plus a Supabase/PostgreSQL backend for the LIVEY event platform. Combined with my compilers and systems background, I'm comfortable from the API layer down to how code actually runs.",
+    text: "I have hands-on backend experience across multiple roles. I've built REST API routes, authentication systems, and data pipelines: a document-ingestion pipeline at Metasys Global, secure role-based auth for a rideshare platform at Little Red Riding Hood Inc., REST routes plus Supabase/PostgreSQL backend for the LIVEY event platform, and production backend services at TAIRC. My tech stack includes Python, Node.js, Express, FastAPI, PostgreSQL, MySQL, SQLite, Supabase, and MinIO.",
   },
   {
     id: "ai-skills",
     title: "AI & retrieval skills",
     source: "Skills",
     keywords: [
-      "skills",
-      "rag",
-      "vector",
-      "embeddings",
-      "llm",
-      "claude",
-      "prompt",
-      "eval",
-      "evaluation",
-      "retrieval",
-      "machine",
-      "learning",
-      "ml",
+      "skills", "rag", "vector", "embeddings", "llm", "claude", "prompt",
+      "eval", "evaluation", "retrieval", "semantic", "search",
     ],
     text: "My AI work centers on retrieval and memory: RAG pipelines, vector search, embeddings, and semantic retrieval. I built AgentMemry (open-source memory library for AI agents), the Metasys Global document-ingestion pipeline, this site's embedded RAG agent, and a perceptron + 3-layer neural net from scratch in NumPy. I also co-authored a research study evaluating LLM factual question-answering.",
   },
+  {
+    id: "python-skills",
+    title: "Python expertise",
+    source: "Skills",
+    keywords: [
+      "python", "language", "primary", "comfortable", "strongest",
+      "proficient", "fluent",
+    ],
+    text: "Python is my primary language. It's what I reach for first and where I'm most productive. I've used it for: building AgentMemry (open-source library with pytest test suite), data pipelines and file processing (Metasys Global, InternPe), compilers (TinyL), neural networks (NumPy + PyTorch), web scraping (BeautifulSoup), backend APIs (FastAPI), and research (LLM FactCheck). Basically — if it touches Python, I've probably built something with it.",
+  },
+
+  // ---- Research ----
   {
     id: "research",
     title: "Research — LLM factual QA evaluation",
     source: "Research",
     keywords: [
-      "research",
-      "paper",
-      "factcheck",
-      "fact",
-      "check",
-      "evaluation",
-      "rag",
-      "bm25",
-      "triviaqa",
-      "hallucination",
-      "study",
+      "research", "paper", "factcheck", "fact", "check", "evaluation",
+      "bm25", "triviaqa", "hallucination", "study",
     ],
     text: "I co-authored LLM FactCheck — a research study benchmarking LLM factual QA across direct prompting, BM25 retrieval, and RAG on a controlled 100-question TriviaQA evaluation set. We found that BM25 surfaced supporting evidence in 90% of cases while RAG improved exact-match accuracy by only 3 points (0.66 → 0.69), isolating generation quality — not retrieval — as the real bottleneck.",
   },
+
+  // ---- Portfolio ----
   {
     id: "portfolio",
     title: "This site — Chat-with-Baavansh",
     source: "Projects",
     keywords: [
-      "site",
-      "website",
-      "portfolio",
-      "this",
-      "chat",
-      "agent",
-      "nextjs",
-      "next",
-      "built",
-      "made",
-      "assistant",
+      "site", "website", "portfolio", "this", "chat", "nextjs", "next",
+      "built", "made", "assistant",
     ],
     text: "This site itself is a project — a Next.js portfolio with an embedded RAG agent I wrote. It runs a structured knowledge base, a retrieval engine, and a Claude-powered chat endpoint with an automatic in-browser fallback so it never breaks. The point is that recruiters can interrogate my work instead of just reading it.",
   },
+
+  // ---- Leadership ----
   {
     id: "leadership",
     title: "Leadership & activities",
     source: "Experience",
     keywords: [
-      "leadership",
-      "lead",
-      "rupd",
-      "police",
-      "campus",
-      "safety",
-      "officer",
-      "fraternity",
-      "greek",
-      "risk",
-      "judiciary",
-      "community",
-      "service",
+      "leadership", "lead", "rupd", "police", "campus", "safety",
+      "officer", "fraternity", "greek", "risk", "judiciary", "community",
+      "service", "volunteer", "extracurricular",
     ],
-    text: "I serve as a Community Service Officer with the Rutgers University Police Department, supporting incident response and crowd management for large-scale university events. I've also held three elected positions in Alpha Phi Delta Fraternity (Risk Management Chair, Head of Judiciary Board, Co-Brotherhood Chair), leading safety compliance, conduct governance, and member engagement.",
+    text: "I serve as a Community Service Officer with the Rutgers University Police Department, supporting incident response and crowd management for large-scale university events. I've also held three elected positions in Alpha Phi Delta Fraternity (Risk Management Chair, Head of Judiciary Board, Co-Brotherhood Chair), leading safety compliance, conduct governance, and member engagement. And I was Administration Secretary for ENIGMA Technical Society, organizing technical workshops and streamlining communication.",
   },
+
+  // ---- Pitch ----
   {
     id: "why-hire",
     title: "Why hire me",
     source: "Pitch",
     keywords: [
-      "why",
-      "hire",
-      "fit",
-      "best",
-      "good",
-      "reason",
-      "value",
-      "strong",
-      "candidate",
-      "recruit",
-      "offer",
-      "great",
+      "why", "hire", "fit", "best", "good", "reason", "value", "strong",
+      "candidate", "recruit", "offer", "great", "pick", "choose",
     ],
-    text: "Hire me if you want an engineer with real range: I've shipped backend APIs and data pipelines, open-sourced a memory library for AI agents (AgentMemry), and can reason from the API layer down to compilers and systems internals. I pair rare systems depth with current AI/retrieval experience, I test what I build, and I take problems end to end. I'm looking for backend and AI/ML engineering roles in 2026.",
+    text: "Hire me if you want an engineer with real range: I've shipped backend APIs and data pipelines, open-sourced a memory library for AI agents (AgentMemry), automated data workflows in Python, and can reason from the API layer down to compilers and systems internals. I pair rare systems depth with current AI/retrieval experience, I test what I build, and I take problems end to end. Whether you need someone to build backend services, ship AI/ML infrastructure, write Python tooling, or manage technical systems — I've done all four and I'm looking for roles where I can keep doing it.",
   },
   {
     id: "looking-for",
     title: "What I'm looking for",
     source: "Profile",
     keywords: [
-      "looking",
-      "want",
-      "seeking",
-      "roles",
-      "role",
-      "opportunity",
-      "opportunities",
-      "interested",
-      "available",
-      "open",
-      "job",
-      "hiring",
+      "looking", "want", "seeking", "roles", "role", "opportunity",
+      "opportunities", "interested", "available", "open", "job", "hiring",
+      "position", "type",
     ],
-    text: "I'm open to backend and AI/ML engineering roles for 2026 — work that lets me build APIs, data pipelines, and retrieval or LLM systems, or that draws on my systems and compilers background. I'm most excited by teams shipping real products to real users.",
+    text: "I'm open to software engineering roles for 2026 — specifically backend engineering, AI/ML engineering, Python development, and IT/infrastructure positions. I'm most excited by teams shipping real products to real users, and I bring experience that maps to all four of those role families. I'm not locked into one narrow lane — I want work that lets me build, ship, and solve real problems.",
   },
+
+  // ---- Contact ----
   {
     id: "contact",
     title: "How to contact me",
     source: "Contact",
     keywords: [
-      "contact",
-      "email",
-      "reach",
-      "connect",
-      "linkedin",
-      "github",
-      "resume",
-      "touch",
-      "message",
-      "available",
+      "contact", "email", "reach", "connect", "linkedin", "github",
+      "resume", "touch", "message", "available", "phone",
     ],
-    text: "The fastest way to reach me is email — baavanshreddy@gmail.com. My GitHub and LinkedIn are linked in the navigation and the contact section of this site, and you can download my résumé there too. I'm open to backend and AI/ML engineering opportunities for 2026.",
+    text: "The fastest way to reach me is email — baavanshreddy@gmail.com. My GitHub and LinkedIn are linked in the navigation and the contact section of this site, and you can download my résumé there too. I'm open to software engineering opportunities for 2026.",
   },
+
+  // ---- Education ----
   {
     id: "education",
     title: "Education",
     source: "Education",
     keywords: [
-      "education",
-      "school",
-      "college",
-      "university",
-      "rutgers",
-      "degree",
-      "study",
-      "student",
-      "major",
-      "graduate",
-      "gpa",
-      "coursework",
+      "education", "school", "college", "university", "rutgers", "degree",
+      "study", "student", "major", "graduate", "gpa", "coursework",
+      "magna", "cum", "laude", "deans", "list",
     ],
-    text: "I graduated from Rutgers University in May 2026 with a B.S. in Computer Science, Magna Cum Laude, with a 3.76 GPA and four semesters on the Dean's List (Fall '24, Spring '25, Fall '25, Spring '26). My coursework leans heavily into systems — computer architecture, compilers, operating systems — alongside AI, databases, and software engineering.",
+    text: "I graduated from Rutgers University in May 2026 with a B.S. in Computer Science, Magna Cum Laude, with a 3.76 GPA and four semesters on the Dean's List (Fall '24, Spring '25, Fall '25, Spring '26). My coursework leans heavily into systems — computer architecture, compilers, operating systems — alongside AI, databases, data structures & algorithms, and software engineering.",
   },
 ];
 
@@ -823,10 +725,10 @@ export const knowledgeChunks: KnowledgeChunk[] = [
 
 export const suggestedQuestions: string[] = [
   "What is AgentMemry?",
-  "Walk me through your AI work",
-  "What's your systems background?",
+  "What kind of roles are you targeting?",
   "Why should I hire you?",
-  "What roles are you looking for?",
+  "Walk me through your Python experience",
+  "What's your backend experience?",
 ];
 
 // ----------------------------------------------------------------------------
@@ -890,12 +792,19 @@ export function buildSystemPrompt(): string {
     "",
     "Your job: answer questions about my work accurately and concisely, using ONLY the knowledge base below.",
     "",
+    "ROLE-AWARE ANSWERING:",
+    "I'm targeting four role families: AI/ML Engineer, Backend Engineer, Python Developer, and IT/Infrastructure.",
+    "When a recruiter asks about my fit for a specific role, lean into the experience most relevant to THAT role.",
+    "Don't volunteer that I'm applying broadly unless directly asked — just confidently present the relevant experience.",
+    "If they ask 'what roles are you looking for,' be honest: I'm open to backend, AI/ML, Python, and IT roles.",
+    "",
     "Rules:",
     "- Be concise — usually 2 to 4 sentences. This is a chat, not an essay.",
     "- Use only facts from the knowledge base. Never invent employers, dates, metrics, or projects.",
     `- If something is not covered, say so plainly and suggest emailing me at ${profile.email}.`,
     "- Be warm and confident, never salesy or exaggerated — let the facts carry it.",
     "- If asked something unrelated to my career, gently redirect to what you can help with.",
+    "- When asked about a specific role type, use the relevant 'Role Fit' section to structure your answer.",
     "",
     "=== KNOWLEDGE BASE ===",
     buildKnowledgeText(),

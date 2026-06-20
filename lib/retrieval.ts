@@ -75,7 +75,7 @@ export function retrieveAnswer(query: string): RetrievalResult {
 
   if (isGreeting(raw)) {
     return {
-      answer: `Hey! I'm ${profile.shortName}. Ask me about AgentMemry, my work at Metasys Global, my systems and compiler projects, what I'm looking for, or how to reach me.`,
+      answer: `Hey! I'm ${profile.shortName}. Ask me about my projects, what roles I'm targeting, my backend or AI/ML experience, my Python work, or how to reach me.`,
       sources: [],
       confident: true,
     };
@@ -84,7 +84,7 @@ export function retrieveAnswer(query: string): RetrievalResult {
   if (tokens.length === 0) {
     return {
       answer:
-        "Ask me something — for example AgentMemry, my Metasys Global RAG work, my systems projects, my skills, or how to reach me.",
+        "Ask me something — my projects, backend experience, AI/ML work, Python skills, what roles I'm looking for, or how to reach me.",
       sources: [],
       confident: false,
     };
@@ -98,7 +98,7 @@ export function retrieveAnswer(query: string): RetrievalResult {
 
   if (!top || top.score < 3) {
     return {
-      answer: `I don't have a confident answer to that from what's on this site. The best move is to email me directly at ${profile.email}. You can also ask about AgentMemry, my Metasys Global RAG work, my systems projects, or my background.`,
+      answer: `I don't have a confident answer to that from what's on this site. The best move is to email me directly at ${profile.email}. You can also ask about my projects, backend work, AI/ML experience, Python skills, or what roles I'm targeting.`,
       sources: [],
       confident: false,
     };

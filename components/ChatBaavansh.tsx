@@ -15,7 +15,7 @@ interface Msg {
 const GREETING: Msg = {
   role: "assistant",
   content:
-    "Hey — it's me (well, an AI trained on me). Ask anything: AgentMemry, my Metasys Global RAG pipeline, my systems and compiler work, or what kind of role I'm chasing. Answers come with sources.",
+    "Hey — I'm Baavansh (well, an AI trained on me). Ask me anything — my projects, what roles I'm targeting, why you should hire me, or my experience with backend, AI/ML, Python, or infrastructure. Answers come with sources.",
 };
 
 const msgVariants = {
@@ -340,7 +340,7 @@ export default function ChatBaavansh() {
                   ref={inputRef}
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
-                  placeholder="Ask about AgentMemry, Metasys Global, why hire me..."
+                  placeholder="Ask about my projects, backend work, AI/ML, Python, why hire me..."
                   className="flex-1 bg-transparent py-1.5 font-mono text-sm text-paper outline-none placeholder:text-muted/50"
                   aria-label="Ask a question"
                   autoComplete="off"
