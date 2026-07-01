@@ -14,6 +14,7 @@ const MARQUEE = [
   "Open-source AI memory",
   "Production RAG",
   "Systems & Compilers in C",
+  "Cloud-deployed services",
   "Full-stack: Postgres to React",
   "Tests what I build",
   "Owns problems end-to-end",
@@ -23,19 +24,20 @@ const TERMINAL_LINES = [
   { prompt: "$", text: "whoami", typed: true },
   { prompt: ">", text: "baavansh — software engineer", typed: false },
   { prompt: "$", text: "cat ./focus.txt", typed: true },
-  { prompt: ">", text: "backend apis, ai/ml systems, python tooling, infrastructure", typed: false },
+  { prompt: ">", text: "backend apis, ai/ml systems, low-level C, cloud platforms", typed: false },
   { prompt: "$", text: "ls ./projects", typed: true },
-  { prompt: ">", text: "agentmemry/  ai-doc-pipeline/  compiler/  chat-with-baavansh/", typed: false },
+  { prompt: ">", text: "agentmemry/  risc-v-cpu/  linux-fs/  ai-doc-pipeline/  compiler/", typed: false },
 ];
 
 const ROLE_KEYWORDS = [
   "Backend Systems",
   "AI Pipelines",
+  "Connected Systems",
+  "Cloud Platforms",
   "Python Tooling",
   "REST APIs",
-  "Infrastructure",
+  "Systems in C",
   "Retrieval Systems",
-  "Data Workflows",
 ];
 
 /* ------------------------------------------------------------------ */

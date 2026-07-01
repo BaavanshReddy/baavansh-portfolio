@@ -3,11 +3,13 @@
 //  Everything the site renders AND everything the chat knows comes from here.
 //  Voice: first person ("I / me / my"). The chat answers in first person too.
 //
-//  POSITIONING: This portfolio targets FOUR role families:
+//  POSITIONING: This portfolio targets FIVE role families:
 //    1. AI/ML Engineer — retrieval, embeddings, RAG, neural nets, LLM eval
 //    2. Backend Engineer — APIs, pipelines, auth, databases, system design
 //    3. Python Developer — automation, scripting, data processing, libraries
 //    4. IT / Systems — troubleshooting, infrastructure, security, AWS, auth
+//    5. IoT / Connected Systems — C/C++ systems work, cloud-platform exposure
+//       (AWS, S3-compatible storage), OS internals, embedded-adjacent depth
 //  The knowledge base is written so the chat can intelligently surface the
 //  right experience for whichever role a recruiter is asking about.
 // ============================================================================
@@ -66,9 +68,9 @@ export const profile = {
   initials: "BG",
   headline: "Software Engineer",
   tagline:
-    "I build things that ship — backend APIs, AI/ML systems, Python tooling, and production infrastructure.",
+    "I build things that ship — backend APIs, AI/ML systems, Python tooling, and the systems work underneath them.",
   status:
-    "Backend & AI Systems Engineer at TAIRC · open to software engineering roles",
+    "Backend & AI Systems Engineer at TAIRC · open to backend, AI/ML, and IoT/connected-systems roles",
   location: "New Brunswick, NJ",
   university: "Rutgers University",
   major: "Computer Science",
@@ -78,7 +80,7 @@ export const profile = {
   linkedin: "https://www.linkedin.com/in/baavansh",
   resumeUrl: "/resume.pdf",
   summary:
-    "I'm a Computer Science graduate from Rutgers University (Magna Cum Laude, 3.76 GPA), currently a Backend & AI Systems Engineer at The AI Research Center (TAIRC). I've shipped REST APIs, authentication systems, data pipelines, and AI tooling — including AgentMemry, my open-source memory library for AI agents. I'm backed by a strong systems foundation — compilers, computer architecture, and operating systems — that shapes how I build software, debug problems, and reason about infrastructure.",
+    "I'm a Computer Science graduate from Rutgers University (Magna Cum Laude, 3.76 GPA), currently a Backend & AI Systems Engineer at The AI Research Center (TAIRC). I've shipped REST APIs, authentication systems, data pipelines, and AI tooling — including AgentMemry, my open-source memory library for AI agents. I'm backed by a strong systems foundation — compilers, computer architecture, operating systems, and low-level C — that shapes how I build software, debug across the stack, and reason about infrastructure, cloud services, and the kind of connected-systems work that lives between hardware and the cloud.",
 };
 
 // ----------------------------------------------------------------------------
@@ -99,12 +101,12 @@ export const edges: Edge[] = [
   {
     title: "Rare systems depth",
     detail:
-      "I built a full compiler — lexer, recursive-descent parser, AST, and code generation — and have hands-on computer-architecture and OS coursework. I reason about how code actually runs, not just how to call an API.",
+      "I built a full compiler — lexer, recursive-descent parser, AST, and code generation — a single-cycle RISC-V CPU in C, and a Unix-style filesystem with inodes and persistence. I reason about how code actually runs on real hardware, not just how to call an API.",
   },
   {
-    title: "Full-stack range",
+    title: "Full-stack and cloud range",
     detail:
-      "Comfortable across the stack — PostgreSQL, REST APIs, authentication, real-time data, AWS services, and frontend UIs — all in production codebases.",
+      "Comfortable across the stack — PostgreSQL, REST APIs, authentication, real-time data, AWS-deployed services, S3-compatible object storage (MinIO), Vercel, and frontend UIs — all in production codebases.",
   },
   {
     title: "Tests what I build",
@@ -359,7 +361,7 @@ export const experience: ExperienceItem[] = [
 export const skills: SkillGroup[] = [
   {
     label: "Languages",
-    items: ["Python", "JavaScript", "Java", "C++", "HTML", "CSS"],
+    items: ["Python", "C", "C++", "Java", "JavaScript", "TypeScript", "SQL", "HTML", "CSS"],
   },
   {
     label: "AI & ML",
@@ -384,11 +386,11 @@ export const skills: SkillGroup[] = [
   },
   {
     label: "Cloud & DevOps",
-    items: ["AWS", "Vercel", "Git", "GitHub"],
+    items: ["AWS", "S3-compatible (MinIO)", "Vercel", "Git", "GitHub"],
   },
   {
-    label: "Systems",
-    items: ["Computer architecture", "Compilers", "Operating systems"],
+    label: "Systems & low-level",
+    items: ["C", "Computer architecture", "RISC-V", "Compilers", "Operating systems", "Memory hierarchies"],
   },
   {
     label: "Tools & Practice",
@@ -423,7 +425,7 @@ export const knowledgeChunks: KnowledgeChunk[] = [
       "who", "baavansh", "about", "summary", "introduce", "yourself",
       "background", "overview", "person", "tell",
     ],
-    text: "I'm Baavansh Reddy Gundlapalli — a Computer Science graduate from Rutgers University (Magna Cum Laude, 3.76 GPA). I have experience across backend engineering, AI/ML systems, Python development, and IT infrastructure. I'm currently a Backend & AI Systems Engineer at TAIRC and I'm open to software engineering roles for 2026.",
+    text: "I'm Baavansh Reddy Gundlapalli — a Computer Science graduate from Rutgers University (Magna Cum Laude, 3.76 GPA). I have experience across backend engineering, AI/ML systems, Python development, IT infrastructure, and low-level systems work in C — the kind of foundation that maps cleanly onto IoT and connected-systems engineering. I'm currently a Backend & AI Systems Engineer at TAIRC and I'm open to software engineering roles for 2026.",
   },
   {
     id: "approach",
@@ -469,6 +471,19 @@ export const knowledgeChunks: KnowledgeChunk[] = [
       "programming", "django", "flask", "fastapi", "pandas",
     ],
     text: "For Python roles: Python is my primary language and runs through almost every project I've built. AgentMemry is a pure Python library (~500 lines, pytest-tested). My TinyL compiler is Python. My neural network is Python + NumPy. My campus event scraper is Python + BeautifulSoup + SQLite. At InternPe, I built Python automation scripts for data processing and file handling. I also use FastAPI for backend services. I think in Python — it's where I'm fastest and most comfortable.",
+  },
+  {
+    id: "role-fit-iot",
+    title: "Why I'm a fit for IoT / connected-systems roles",
+    source: "Role Fit",
+    keywords: [
+      "iot", "internet", "of", "things", "connected", "device", "devices",
+      "embedded", "edge", "firmware", "sensor", "sensors", "telemetry",
+      "azure", "google", "gcp", "aws", "cloud", "platform", "platforms",
+      "level", "3", "production", "support", "scale", "performance",
+      "cognizant",
+    ],
+    text: "For IoT and connected-systems roles: I bring three things the role actually needs. First, the language coverage — C, C++, Java, and Python are all in projects I've shipped (RISC-V CPU and Linux filesystem in C, RuPizza in Java with the Factory pattern, AgentMemry and the document pipeline in Python). Second, the systems foundation IoT lives on top of — computer architecture, operating systems, memory hierarchies, and how code actually runs on real hardware, all from coursework and hands-on C projects rather than just textbook reading. Third, cloud-platform exposure — AWS-deployed services at Little Red Riding Hood Inc., S3-compatible object storage with MinIO at Metasys Global, and Vercel/Supabase across portfolio and event-platform work. Add fluency with AI tools (Claude, Copilot, Codex) used daily in my development workflow, plus SQL, design patterns, OOP, and data structures, and that's the skill stack the role profile asks for. I'm explicitly looking to extend this foundation into IoT and connected-systems engineering.",
   },
   {
     id: "role-fit-it",
@@ -679,7 +694,7 @@ export const knowledgeChunks: KnowledgeChunk[] = [
       "why", "hire", "fit", "best", "good", "reason", "value", "strong",
       "candidate", "recruit", "offer", "great", "pick", "choose",
     ],
-    text: "Hire me if you want an engineer with real range: I've shipped backend APIs and data pipelines, open-sourced a memory library for AI agents (AgentMemry), automated data workflows in Python, and can reason from the API layer down to compilers and systems internals. I pair rare systems depth with current AI/retrieval experience, I test what I build, and I take problems end to end. Whether you need someone to build backend services, ship AI/ML infrastructure, write Python tooling, or manage technical systems — I've done all four and I'm looking for roles where I can keep doing it.",
+    text: "Hire me if you want an engineer with real range: I've shipped backend APIs and data pipelines, open-sourced a memory library for AI agents (AgentMemry), automated data workflows in Python, and can reason from the API layer down to compilers, operating systems, and the hardware underneath. I pair rare systems depth — C, RISC-V, Linux filesystems — with current AI/retrieval and cloud-platform experience, I test what I build, and I take problems end to end. Whether you need someone to build backend services, ship AI/ML infrastructure, write Python tooling, support and scale IoT/cloud-platform applications, or manage technical systems — I bring the foundation for all of it and the appetite to learn the rest fast.",
   },
   {
     id: "looking-for",
@@ -690,7 +705,7 @@ export const knowledgeChunks: KnowledgeChunk[] = [
       "opportunities", "interested", "available", "open", "job", "hiring",
       "position", "type",
     ],
-    text: "I'm open to software engineering roles for 2026 — specifically backend engineering, AI/ML engineering, Python development, and IT/infrastructure positions. I'm most excited by teams shipping real products to real users, and I bring experience that maps to all four of those role families. I'm not locked into one narrow lane — I want work that lets me build, ship, and solve real problems.",
+    text: "I'm open to software engineering roles for 2026 — backend engineering, AI/ML engineering, Python development, IoT and connected-systems engineering, and IT/infrastructure positions. I'm most excited by teams shipping real products to real users, and I bring experience that maps across all of those role families: production backend, AI retrieval pipelines, low-level C systems work, and cloud-platform deployments. I'm not locked into one narrow lane — I want work that lets me build, ship, and solve real problems.",
   },
 
   // ---- Contact ----
