@@ -2,7 +2,7 @@
 
 import { Reveal, Stagger, fadeUp } from "@/lib/animations";
 import { skills } from "@/lib/profile";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 const real = (s: string) => !s.includes("[[");
 
@@ -53,7 +53,7 @@ export default function Skills() {
                 <Stagger className="mt-3 flex flex-wrap gap-2">
                   {items.map((it, ii) => (
                     <Reveal key={it} variants={fadeUp} custom={ii} as="span">
-                      <motion.span
+                      <m.span
                         className="inline-block cursor-default rounded-sm border border-line/50 px-2.5 py-1 font-mono text-[11px] text-muted transition-all duration-200"
                         whileHover={{
                           borderColor: "rgba(204,255,0,0.5)",
@@ -62,7 +62,7 @@ export default function Skills() {
                         }}
                       >
                         {it}
-                      </motion.span>
+                      </m.span>
                     </Reveal>
                   ))}
                 </Stagger>

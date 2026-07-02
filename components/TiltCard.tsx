@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState, type ReactNode, useCallback } from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 /* ------------------------------------------------------------------ */
 /*  3D Tilt Card — perspective transform + spotlight on hover          */
@@ -54,7 +54,7 @@ export default function TiltCard({
   }, []);
 
   return (
-    <motion.div
+    <m.div
       ref={cardRef}
       className={`relative overflow-hidden ${className}`}
       onMouseMove={handleMouseMove}
@@ -90,6 +90,6 @@ export default function TiltCard({
       />
 
       {children}
-    </motion.div>
+    </m.div>
   );
 }

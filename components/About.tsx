@@ -8,7 +8,7 @@ import {
   fadeUp,
   slideInRight,
 } from "@/lib/animations";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 const hireSignals = [
   { k: "Production AI", v: "shipped", num: null },
@@ -85,9 +85,9 @@ export default function About() {
 
               {/* Hire signals grid — glassmorphic cards */}
               <Stagger className="mt-8 grid grid-cols-2 gap-3 text-sm md:grid-cols-3">
-                {hireSignals.map((m, i) => (
-                  <Reveal key={m.k} variants={fadeUp} custom={i} as="div">
-                    <motion.div
+                {hireSignals.map((sig, i) => (
+                  <Reveal key={sig.k} variants={fadeUp} custom={i} as="div">
+                    <m.div
                       className="glass rounded-lg p-3"
                       whileHover={{
                         scale: 1.04,
@@ -96,20 +96,20 @@ export default function About() {
                       transition={{ type: "spring", stiffness: 400, damping: 20 }}
                     >
                       <p className="font-mono text-[10px] uppercase tracking-wider text-muted">
-                        {m.k}
+                        {sig.k}
                       </p>
                       <p className="mt-0.5 font-display text-base font-bold uppercase tracking-tight text-paper">
-                        {m.num !== null ? (
+                        {sig.num !== null ? (
                           <Counter
-                            target={m.num}
-                            suffix={m.suffix}
+                            target={sig.num}
+                            suffix={sig.suffix}
                             className=""
                           />
                         ) : (
-                          m.v
+                          sig.v
                         )}
                       </p>
-                    </motion.div>
+                    </m.div>
                   </Reveal>
                 ))}
               </Stagger>

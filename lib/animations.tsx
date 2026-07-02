@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import {
-  motion,
+  m,
   useInView,
   useScroll,
   useTransform,
@@ -110,7 +110,7 @@ export function Reveal({
 }: RevealProps) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once, amount });
-  const Component = motion[as] as typeof motion.div;
+  const Component = m[as] as typeof m.div;
 
   return (
     <Component
@@ -148,7 +148,7 @@ export function Stagger({
 }: StaggerProps) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once, amount });
-  const Component = motion[as] as typeof motion.div;
+  const Component = m[as] as typeof m.div;
 
   return (
     <Component
@@ -182,9 +182,9 @@ export function Parallax({ children, className, offset = 50 }: ParallaxProps) {
   const y = useTransform(scrollYProgress, [0, 1], [offset, -offset]);
 
   return (
-    <motion.div ref={ref} style={{ y }} className={className}>
+    <m.div ref={ref} style={{ y }} className={className}>
       {children}
-    </motion.div>
+    </m.div>
   );
 }
 
@@ -212,7 +212,7 @@ export function TextReveal({
   return (
     <span ref={ref} className={className}>
       {words.map((word, i) => (
-        <motion.span
+        <m.span
           key={i}
           className="inline-block"
           initial={{ opacity: 0, y: 12 }}
@@ -227,7 +227,7 @@ export function TextReveal({
         >
           {word}
           {i < words.length - 1 ? " " : ""}
-        </motion.span>
+        </m.span>
       ))}
     </span>
   );
@@ -264,7 +264,7 @@ export function Magnetic({
   };
 
   return (
-    <motion.div
+    <m.div
       ref={ref}
       onMouseMove={handleMove}
       onMouseLeave={() => setPos({ x: 0, y: 0 })}
@@ -273,7 +273,7 @@ export function Magnetic({
       className={className}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }
 

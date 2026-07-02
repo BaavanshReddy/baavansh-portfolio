@@ -22,9 +22,9 @@ const config: Config = {
         violet: "#7c3aed",
       },
       fontFamily: {
-        display: ['"Space Grotesk"', "system-ui", "sans-serif"],
+        display: ["var(--font-display)", "system-ui", "sans-serif"],
         mono: [
-          '"JetBrains Mono"',
+          "var(--font-mono)",
           "ui-monospace",
           "SFMono-Regular",
           "monospace",

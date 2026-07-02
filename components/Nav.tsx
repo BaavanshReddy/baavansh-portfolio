@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { profile } from "@/lib/profile";
 
 const LINKS = [
@@ -134,7 +134,7 @@ export default function Nav() {
       }`}
     >
       {/* Scroll progress — gradient bar */}
-      <motion.div
+      <m.div
         className="absolute inset-x-0 top-0 h-[2px] origin-left bg-gradient-to-r from-lime via-cyan to-violet"
         style={{ scaleX: scrollProgress }}
         transition={{ duration: 0.1, ease: "linear" }}
@@ -143,14 +143,14 @@ export default function Nav() {
       <div className="mx-auto flex max-w-site items-center justify-between px-6 py-4">
         {/* Logo */}
         <a href="#top" className="group flex items-center gap-2.5">
-          <motion.span
+          <m.span
             className="grid h-9 w-9 place-items-center bg-gradient-to-br from-lime to-cyan font-mono text-sm font-bold text-ink rounded-sm"
             whileHover={{ scale: 1.08, rotate: 3 }}
             whileTap={{ scale: 0.95 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
           >
             {profile.initials}
-          </motion.span>
+          </m.span>
           <span className="font-mono text-sm tracking-tight text-paper">
             {profile.shortName.toLowerCase()}
             <span className="bg-gradient-to-r from-lime to-cyan bg-clip-text text-transparent">.dev</span>
@@ -167,7 +167,7 @@ export default function Nav() {
               active={activeSection === l.href.replace("#", "")}
             />
           ))}
-          <motion.a
+          <m.a
             href={profile.resumeUrl}
             className="glass ml-2 px-4 py-2 font-mono text-xs uppercase tracking-wider text-paper transition-all hover:border-lime/50 hover:text-lime hover:shadow-[0_0_15px_-3px_rgba(204,255,0,0.15)]"
             whileHover={{ scale: 1.03 }}
@@ -175,11 +175,11 @@ export default function Nav() {
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
           >
             R&eacute;sum&eacute;
-          </motion.a>
+          </m.a>
         </nav>
 
         {/* Mobile hamburger */}
-        <motion.button
+        <m.button
           onClick={() => setOpen((v) => !v)}
           className="glass grid h-9 w-9 place-items-center text-paper md:hidden"
           aria-label="Toggle menu"
@@ -189,13 +189,13 @@ export default function Nav() {
           <span className="font-mono text-base leading-none">
             {open ? "✕" : "≡"}
           </span>
-        </motion.button>
+        </m.button>
       </div>
 
       {/* Mobile menu */}
       <AnimatePresence>
         {open && (
-          <motion.nav
+          <m.nav
             className="glass-strong overflow-hidden px-6 md:hidden"
             variants={mobileMenuVariants}
             initial="hidden"
@@ -203,7 +203,7 @@ export default function Nav() {
             exit="hidden"
           >
             {LINKS.map((l) => (
-              <motion.a
+              <m.a
                 key={l.href}
                 href={l.href}
                 onClick={closeMobile}
@@ -213,17 +213,17 @@ export default function Nav() {
                 variants={mobileItemVariants}
               >
                 {l.label}
-              </motion.a>
+              </m.a>
             ))}
-            <motion.a
+            <m.a
               href={profile.resumeUrl}
               onClick={closeMobile}
               className="mt-1 block py-2.5 font-mono text-sm uppercase tracking-wider text-lime"
               variants={mobileItemVariants}
             >
               R&eacute;sum&eacute; &darr;
-            </motion.a>
-          </motion.nav>
+            </m.a>
+          </m.nav>
         )}
       </AnimatePresence>
     </header>

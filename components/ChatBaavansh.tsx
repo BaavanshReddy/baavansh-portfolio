@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { Reveal, fadeUp } from "@/lib/animations";
 import { profile, suggestedQuestions } from "@/lib/profile";
 import { retrieveAnswer } from "@/lib/retrieval";
@@ -202,9 +202,9 @@ export default function ChatBaavansh() {
                 className="scanlines h-[460px] space-y-5 overflow-y-auto px-4 py-6 md:px-6"
               >
                 <AnimatePresence mode="popLayout">
-                  {messages.map((m, i) =>
-                    m.role === "assistant" ? (
-                      <motion.div
+                  {messages.map((msg, i) =>
+                    msg.role === "assistant" ? (
+                      <m.div
                         key={`msg-${i}`}
                         variants={msgVariants}
                         initial="hidden"
@@ -218,11 +218,11 @@ export default function ChatBaavansh() {
                         </span>
                         <div className="max-w-[88%]">
                           <div className="glass rounded-lg px-4 py-3 text-sm leading-relaxed text-paper md:text-[15px]">
-                            {m.content}
+                            {msg.content}
                           </div>
-                          {m.sources && m.sources.length > 0 && (
+                          {msg.sources && msg.sources.length > 0 && (
                             <div className="mt-2 flex flex-wrap gap-1.5">
-                              {m.sources.map((s) => (
+                              {msg.sources.map((s) => (
                                 <span
                                   key={s}
                                   className="rounded-sm border border-line/40 px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-muted"
@@ -233,9 +233,9 @@ export default function ChatBaavansh() {
                             </div>
                           )}
                         </div>
-                      </motion.div>
+                      </m.div>
                     ) : (
-                      <motion.div
+                      <m.div
                         key={`msg-${i}`}
                         variants={msgVariants}
                         initial="hidden"
@@ -245,14 +245,14 @@ export default function ChatBaavansh() {
                         className="flex justify-end"
                       >
                         <div className="max-w-[88%] rounded-lg bg-gradient-to-r from-lime to-lime-dim px-4 py-3 text-sm font-medium leading-relaxed text-ink md:text-[15px]">
-                          {m.content}
+                          {msg.content}
                         </div>
-                      </motion.div>
+                      </m.div>
                     ),
                   )}
 
                   {loading && (
-                    <motion.div
+                    <m.div
                       key="typing"
                       variants={msgVariants}
                       initial="hidden"
@@ -265,7 +265,7 @@ export default function ChatBaavansh() {
                       </span>
                       <div className="glass flex items-center gap-2 rounded-lg px-4 py-4">
                         {[0, 1, 2].map((d) => (
-                          <motion.span
+                          <m.span
                             key={d}
                             className="h-1.5 w-1.5 rounded-full bg-lime"
                             animate={{
@@ -284,13 +284,13 @@ export default function ChatBaavansh() {
                           thinking...
                         </span>
                       </div>
-                    </motion.div>
+                    </m.div>
                   )}
                 </AnimatePresence>
 
                 {/* Empty state */}
                 {isEmptyState && !loading && (
-                  <motion.div
+                  <m.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.5, duration: 0.6 }}
@@ -300,7 +300,7 @@ export default function ChatBaavansh() {
                     <p className="mt-4 font-mono text-[11px] uppercase tracking-wider text-muted/60">
                       Ask a question below or pick a starter
                     </p>
-                  </motion.div>
+                  </m.div>
                 )}
               </div>
 
@@ -310,7 +310,7 @@ export default function ChatBaavansh() {
                   try:
                 </span>
                 {suggestedQuestions.map((q, i) => (
-                  <motion.button
+                  <m.button
                     key={q}
                     custom={i}
                     variants={chipVariants}
@@ -323,7 +323,7 @@ export default function ChatBaavansh() {
                     className="rounded-sm border border-line/40 px-3 py-1.5 font-mono text-[11px] text-muted transition-colors hover:border-lime hover:text-lime disabled:opacity-40"
                   >
                     {q}
-                  </motion.button>
+                  </m.button>
                 ))}
               </div>
 
@@ -345,7 +345,7 @@ export default function ChatBaavansh() {
                   aria-label="Ask a question"
                   autoComplete="off"
                 />
-                <motion.button
+                <m.button
                   type="submit"
                   disabled={loading || !input.trim()}
                   whileHover={{ scale: 1.03 }}
@@ -353,7 +353,7 @@ export default function ChatBaavansh() {
                   className="rounded-sm bg-lime px-5 py-2.5 font-mono text-xs font-bold uppercase tracking-wider text-ink shadow-[0_0_20px_-4px_rgba(204,255,0,0.25)] transition-all disabled:translate-y-0 disabled:opacity-30 disabled:shadow-none"
                 >
                   Send
-                </motion.button>
+                </m.button>
               </form>
             </div>
           </div>

@@ -6,7 +6,7 @@
 html { scroll-behavior: smooth; }
 html, body { background-color: #030304; color: #e4e4e7; }
 body {
-  font-family: "Space Grotesk", system-ui, -apple-system, sans-serif;
+  font-family: var(--font-display), system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;

@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import { m, useInView, useScroll, useTransform } from "framer-motion";
 import { Reveal, Stagger, fadeUp, slideInLeft } from "@/lib/animations";
 import { experience } from "@/lib/profile";
 
@@ -12,7 +12,7 @@ function TimelineDot() {
   const isInView = useInView(ref, { once: true, amount: 0.5 });
 
   return (
-    <motion.span
+    <m.span
       ref={ref}
       className="absolute -left-[5px] top-1.5 h-2.5 w-2.5 rounded-full bg-gradient-to-br from-lime to-cyan"
       initial={{ scale: 0, opacity: 0 }}
@@ -37,7 +37,7 @@ function TimelineLine() {
   return (
     <div ref={ref} className="absolute inset-y-0 left-0 w-px">
       <div className="absolute inset-0 bg-line/50" />
-      <motion.div
+      <m.div
         className="absolute inset-x-0 top-0 h-full origin-top bg-gradient-to-b from-lime via-cyan to-violet opacity-40"
         style={{ scaleY }}
       />

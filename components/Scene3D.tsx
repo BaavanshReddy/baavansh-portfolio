@@ -142,7 +142,21 @@ export default function Scene3D() {
     // ---- Animation ----
     const clock = new THREE.Clock();
 
+    // Pause rendering when the hero is scrolled out of view — no reason to
+    // burn GPU on a canvas the user can't see.
+    let inView = true;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        const wasInView = inView;
+        inView = entry.isIntersecting;
+        if (inView && !wasInView) animate();
+      },
+      { threshold: 0 }
+    );
+    observer.observe(canvas);
+
     function animate() {
+      if (!inView) return;
       frameRef.current = requestAnimationFrame(animate);
       const elapsed = clock.getElapsedTime();
       const mouse = mouseRef.current;
@@ -194,6 +208,7 @@ export default function Scene3D() {
     // ---- Cleanup ----
     return () => {
       cancelAnimationFrame(frameRef.current);
+      observer.disconnect();
       window.removeEventListener("resize", onResize);
       window.removeEventListener("mousemove", handleMouseMove);
       renderer.dispose();

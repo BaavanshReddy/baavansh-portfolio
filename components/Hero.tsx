@@ -1,10 +1,14 @@
 "use client";
 
 import { useEffect, useState, useRef, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import dynamic from "next/dynamic";
+import { m, AnimatePresence } from "framer-motion";
 import { profile } from "@/lib/profile";
 import { Magnetic } from "@/lib/animations";
-import Scene3D from "./Scene3D";
+
+// Code-split three.js out of the initial bundle; render client-side only,
+// after hydration, so the hero paints instantly.
+const Scene3D = dynamic(() => import("./Scene3D"), { ssr: false });
 
 /* ------------------------------------------------------------------ */
 /*  CONSTANTS                                                         */
@@ -93,7 +97,7 @@ function RoleCycler() {
   return (
     <span className="relative inline-block h-[1.2em] w-[14ch] overflow-hidden align-bottom sm:w-[18ch]">
       <AnimatePresence mode="wait">
-        <motion.span
+        <m.span
           key={ROLE_KEYWORDS[index]}
           className="absolute left-0 whitespace-nowrap bg-gradient-to-r from-lime to-cyan bg-clip-text text-transparent"
           initial={{ y: 24, opacity: 0 }}
@@ -102,7 +106,7 @@ function RoleCycler() {
           transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
         >
           {ROLE_KEYWORDS[index]}
-        </motion.span>
+        </m.span>
       </AnimatePresence>
     </span>
   );
@@ -189,37 +193,37 @@ export default function Hero() {
       <div className="absolute left-1/3 top-1/4 h-[300px] w-[300px] rounded-full bg-violet/[0.03] blur-[80px]" />
 
       {/* ---- Content ---- */}
-      <motion.div
+      <m.div
         className="relative mx-auto flex min-h-screen max-w-site flex-col justify-center px-6 pb-32 pt-28"
         variants={container}
         {...animateProps}
       >
         {/* Headline label */}
-        <motion.p
+        <m.p
           className="font-mono text-xs uppercase tracking-[0.28em] text-lime"
           variants={fadeUp}
           custom={0}
         >
           <span className="cursor-blink">&#9613;</span> {profile.headline}
-        </motion.p>
+        </m.p>
 
         {/* Name */}
         <h1 className="mt-6 font-display font-bold uppercase leading-[0.88] tracking-tight">
-          <motion.span
+          <m.span
             className="block text-[clamp(2.8rem,11vw,8rem)]"
             variants={fadeUp}
             custom={1}
           >
             Baavansh
-          </motion.span>
-          <motion.span
+          </m.span>
+          <m.span
             className="block text-[clamp(2.8rem,11vw,8rem)]"
             variants={fadeUp}
             custom={2}
           >
             Reddy
-          </motion.span>
-          <motion.span
+          </m.span>
+          <m.span
             className="glitch block text-[clamp(2.8rem,11vw,8rem)] text-transparent"
             style={{ WebkitTextStroke: "2px #CCFF00" }}
             data-text="Gundlapalli"
@@ -227,11 +231,11 @@ export default function Hero() {
             custom={3}
           >
             Gundlapalli
-          </motion.span>
+          </m.span>
         </h1>
 
         {/* Sub-headline with cycling keyword */}
-        <motion.p
+        <m.p
           className="mt-8 max-w-2xl text-balance text-lg text-muted md:text-2xl"
           variants={fadeUp}
           custom={4}
@@ -239,10 +243,10 @@ export default function Hero() {
           Computer Science graduate building{" "}
           <RoleCycler />,{" "}
           shipping production code, and solving real problems.
-        </motion.p>
+        </m.p>
 
         {/* Mini terminal — glassmorphic */}
-        <motion.div
+        <m.div
           className="glass mt-10 max-w-2xl overflow-hidden rounded-lg shadow-[0_0_60px_-15px_rgba(204,255,0,0.08)]"
           variants={fadeUp}
           custom={5}
@@ -257,7 +261,7 @@ export default function Hero() {
           </div>
           <div className="space-y-1 px-4 py-3 font-mono text-[12.5px] leading-relaxed md:text-sm">
             {TERMINAL_LINES.map((line, i) => (
-              <motion.div
+              <m.div
                 key={i}
                 className="flex gap-2"
                 variants={terminalLine}
@@ -273,21 +277,21 @@ export default function Hero() {
                     line.text
                   )}
                 </span>
-              </motion.div>
+              </m.div>
             ))}
-            <motion.div
+            <m.div
               className="flex gap-2"
               variants={terminalLine}
               custom={TERMINAL_LINES.length}
             >
               <span className="text-lime">$</span>
               <span className="cursor-blink text-lime">&#9613;</span>
-            </motion.div>
+            </m.div>
           </div>
-        </motion.div>
+        </m.div>
 
         {/* CTAs */}
-        <motion.div
+        <m.div
           className="mt-10 flex flex-wrap items-center gap-4"
           variants={fadeUp}
           custom={7}
@@ -317,10 +321,10 @@ export default function Hero() {
           >
             R&eacute;sum&eacute; &darr;
           </a>
-        </motion.div>
+        </m.div>
 
         {/* Status chips */}
-        <motion.div
+        <m.div
           className="mt-12 flex flex-wrap gap-x-8 gap-y-2 font-mono text-xs uppercase tracking-wider text-muted"
           variants={fadeUp}
           custom={8}
@@ -334,8 +338,8 @@ export default function Hero() {
           <span>
             <span className="text-violet">&diams;</span> {profile.location}
           </span>
-        </motion.div>
-      </motion.div>
+        </m.div>
+      </m.div>
 
       {/* Marquee banner */}
       <div className="absolute bottom-0 left-0 right-0 overflow-hidden border-y border-lime/20 bg-lime py-3">
