@@ -15,10 +15,11 @@ const Scene3D = dynamic(() => import("./Scene3D"), { ssr: false });
 /* ------------------------------------------------------------------ */
 
 const MARQUEE = [
-  "Open-source AI memory",
-  "Production RAG",
+  "Published on PyPI",
+  "Production REST APIs",
+  "LLM & ML integration",
+  "IoT telemetry to cloud",
   "Systems & Compilers in C",
-  "Cloud-deployed services",
   "Full-stack: Postgres to React",
   "Tests what I build",
   "Owns problems end-to-end",
@@ -26,18 +27,18 @@ const MARQUEE = [
 
 const TERMINAL_LINES = [
   { prompt: "$", text: "whoami", typed: true },
-  { prompt: ">", text: "baavansh — software engineer", typed: false },
+  { prompt: ">", text: "baavansh — backend & ai systems engineer", typed: false },
   { prompt: "$", text: "cat ./focus.txt", typed: true },
-  { prompt: ">", text: "backend apis, ai/ml systems, low-level C, cloud platforms", typed: false },
+  { prompt: ">", text: "rest apis, llm/ml integration, iot platforms, low-level C", typed: false },
   { prompt: "$", text: "ls ./projects", typed: true },
-  { prompt: ">", text: "agentmemry/  risc-v-cpu/  linux-fs/  ai-doc-pipeline/  compiler/", typed: false },
+  { prompt: ">", text: "agentmemry/  risc-v-cpu/  linux-fs/  tinyl-compiler/  llm-factcheck/", typed: false },
 ];
 
 const ROLE_KEYWORDS = [
   "Backend Systems",
-  "AI Pipelines",
-  "Connected Systems",
-  "Cloud Platforms",
+  "AI & LLM Pipelines",
+  "IoT Platforms",
+  "Cloud Services",
   "Python Tooling",
   "REST APIs",
   "Systems in C",

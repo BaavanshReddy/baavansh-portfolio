@@ -29,18 +29,18 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://baavansh-portfolio.vercel.app"),
-  title: "Baavansh Reddy Gundlapalli — Software Engineer",
+  title: "Baavansh Reddy Gundlapalli — Backend & AI Systems Engineer",
   description:
-    "Portfolio of Baavansh Reddy Gundlapalli — Rutgers CS graduate building backend systems, AI/ML infrastructure, and Python tooling. Features projects, experience, and an embedded AI assistant you can chat with.",
+    "Portfolio of Baavansh Reddy Gundlapalli — backend and AI systems engineer with four years across production REST APIs, LLM/ML integration, and IoT platforms. Projects, experience, and an embedded AI assistant you can chat with.",
   openGraph: {
-    title: "Baavansh Reddy Gundlapalli — Software Engineer",
+    title: "Baavansh Reddy Gundlapalli — Backend & AI Systems Engineer",
     description: profile.tagline,
     type: "website",
     url: "https://baavansh-portfolio.vercel.app",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Baavansh Reddy Gundlapalli — Software Engineer",
+    title: "Baavansh Reddy Gundlapalli — Backend & AI Systems Engineer",
     description: profile.tagline,
   },
 };

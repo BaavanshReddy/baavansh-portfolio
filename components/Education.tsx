@@ -4,12 +4,13 @@ import { Reveal, fadeUp } from "@/lib/animations";
 import TiltCard from "./TiltCard";
 
 const coursework = [
+  "Data Structures & Algorithms",
   "Computer Architecture",
-  "Compilers",
   "Operating Systems",
-  "Artificial Intelligence",
-  "Databases",
+  "Compilers",
   "Software Engineering",
+  "Databases",
+  "Artificial Intelligence",
 ];
 
 const deansListSemesters = [

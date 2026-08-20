@@ -11,12 +11,12 @@ import {
 import { m } from "framer-motion";
 
 const hireSignals = [
-  { k: "Production AI", v: "shipped", num: null },
-  { k: "Open source", v: "1 library", num: 1, suffix: " library" },
+  { k: "Experience", v: "4 years", num: 4, suffix: " years" },
+  { k: "Open source", v: "1 on PyPI", num: 1, suffix: " on PyPI" },
+  { k: "IoT platform", v: "2 years", num: 2, suffix: " years" },
   { k: "Systems in C", v: "3 projects", num: 3, suffix: " projects" },
   { k: "Test coverage", v: "pytest + JUnit", num: null },
-  { k: "Stack range", v: "DB → UI", num: null },
-  { k: "Internships", v: "4 completed", num: 4, suffix: " completed" },
+  { k: "Stack range", v: "device → cloud", num: null },
 ];
 
 export default function About() {
@@ -55,31 +55,34 @@ export default function About() {
             <div className="mt-7 space-y-5 text-base leading-relaxed text-muted md:text-lg">
               <Reveal variants={fadeUp} custom={2}>
                 <p>
-                  I&apos;m a Computer Science graduate from Rutgers University
-                  (Magna Cum Laude, 3.76 GPA) who builds backend services, APIs,
-                  authentication systems, data pipelines, and AI tooling. My
-                  applied work spans retrieval, embeddings, and semantic
-                  search&nbsp;&mdash; from an open-source memory library for AI
-                  agents to a production document-ingestion pipeline.
+                  I&apos;m a backend and AI systems engineer with four years of
+                  engineering experience across production REST APIs, LLM and ML
+                  integration, and IoT platforms&nbsp;&mdash; and a Computer
+                  Science graduate from Rutgers University (Magna Cum Laude,
+                  3.76 GPA). I&apos;ve built authentication systems, data
+                  pipelines, and AI tooling, including AgentMemry, my
+                  open-source memory library for AI agents published on PyPI.
                 </p>
               </Reveal>
               <Reveal variants={fadeUp} custom={3}>
                 <p>
-                  I work across{" "}
+                  My core stack is{" "}
                   <strong className="font-semibold text-paper">
-                    Python, Node.js, FastAPI, PostgreSQL, SQLite, Supabase, and
-                    MinIO
+                    Python, Java, and C
                   </strong>
-                  , backed by a systems foundation most AI candidates
-                  don&apos;t have&nbsp;&mdash; compilers, computer architecture,
-                  and operating systems. I reason about how code actually runs,
-                  not just how to call an API.
+                  &nbsp;&mdash; FastAPI and Spring Boot, PostgreSQL, MySQL,
+                  SQLite, and Supabase, deployed with Docker, AWS, and
+                  Vercel&nbsp;&mdash; backed by a systems foundation most AI
+                  candidates don&apos;t have: compilers, a RISC-V CPU, and a
+                  Unix-style filesystem written from scratch. I reason about how
+                  code actually runs, not just how to call an API.
                 </p>
               </Reveal>
               <Reveal variants={fadeUp} custom={4}>
                 <p>
-                  I&apos;m looking for early-career backend and AI/ML engineering
-                  roles where I can ship real products to real users.
+                  I&apos;m looking for backend, AI/ML, Python, and
+                  IoT/connected-systems engineering roles where I can ship real
+                  products to real users.
                 </p>
               </Reveal>
 

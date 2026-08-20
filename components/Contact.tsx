@@ -7,6 +7,7 @@ export default function Contact() {
   const links = [
     { label: "GitHub", href: profile.github },
     { label: "LinkedIn", href: profile.linkedin },
+    { label: "PyPI", href: profile.pypi },
     { label: "Résumé", href: profile.resumeUrl },
   ];
 
