@@ -6,16 +6,18 @@ import ChatBaavansh from "@/components/ChatBaavansh";
 import Experience from "@/components/Experience";
 import Skills from "@/components/Skills";
 import Education from "@/components/Education";
+import Leadership from "@/components/Leadership";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-import CustomCursor from "@/components/CustomCursor";
 
 export default function Home() {
   return (
     <>
-      <CustomCursor />
+      <a href="#main" className="skip-link">
+        Skip to content
+      </a>
       <Nav />
-      <main>
+      <main id="main">
         <Hero />
         <About />
         <Projects />
@@ -23,6 +25,7 @@ export default function Home() {
         <Experience />
         <Skills />
         <Education />
+        <Leadership />
         <Contact />
       </main>
       <Footer />

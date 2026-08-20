@@ -98,7 +98,7 @@ export default function About() {
                       }}
                       transition={{ type: "spring", stiffness: 400, damping: 20 }}
                     >
-                      <p className="font-mono text-[10px] uppercase tracking-wider text-muted">
+                      <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-faint">
                         {sig.k}
                       </p>
                       <p className="mt-0.5 font-display text-base font-bold uppercase tracking-tight text-paper">
@@ -126,7 +126,7 @@ export default function About() {
                 Unfair edges
               </p>
             </Reveal>
-            <ul className="mt-4 border-t border-line/50">
+            <ul className="mt-4 border-t border-line">
               {edges.map((e, i) => (
                 <Reveal
                   key={e.title}
@@ -134,9 +134,9 @@ export default function About() {
                   custom={i}
                   as="li"
                 >
-                  <div className="group border-b border-line/50 py-4 transition-all hover:bg-lime/[0.02] hover:pl-2">
+                  <div className="group border-b border-line py-4 transition-all hover:bg-lime/[0.02] hover:pl-2">
                     <div className="flex items-baseline gap-3">
-                      <span className="font-mono text-[10px] text-muted/40">
+                      <span className="font-mono text-[11px] text-faint">
                         0{i + 1}
                       </span>
                       <p className="font-display text-lg font-bold uppercase tracking-tight text-paper">

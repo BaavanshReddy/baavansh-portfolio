@@ -54,10 +54,10 @@ export default function Skills() {
                   {items.map((it, ii) => (
                     <Reveal key={it} variants={fadeUp} custom={ii} as="span">
                       <m.span
-                        className="inline-block cursor-default rounded-sm border border-line/50 px-2.5 py-1 font-mono text-[11px] text-muted transition-all duration-200"
+                        className="inline-block cursor-default rounded-sm border border-line px-2.5 py-1 font-mono text-xs text-muted transition-all duration-200"
                         whileHover={{
                           borderColor: "rgba(204,255,0,0.5)",
-                          color: "#e4e4e7",
+                          color: "#e8e8ef",
                           scale: 1.05,
                         }}
                       >

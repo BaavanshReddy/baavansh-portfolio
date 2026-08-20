@@ -83,6 +83,39 @@ export const staggerContainer: Variants = {
   },
 };
 
+
+// ---------------------------------------------------------------------------
+//  REVEAL STATE
+//
+//  Scroll-triggered reveals are a nice-to-have, never a gate on content.
+//  If IntersectionObserver is unavailable, throttled by a fast scroll, or the
+//  visitor prefers reduced motion, the content shows anyway: the hook flips to
+//  visible after a short timeout regardless of viewport state, so nothing on
+//  the page can end up permanently stuck at opacity 0.
+// ---------------------------------------------------------------------------
+
+const REVEAL_FALLBACK_MS = 1400;
+
+function useRevealed(
+  ref: React.RefObject<Element>,
+  { once, amount }: { once: boolean; amount: number },
+) {
+  const inView = useInView(ref, { once, amount });
+  const [forced, setForced] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setForced(true);
+      return;
+    }
+    const id = window.setTimeout(() => setForced(true), REVEAL_FALLBACK_MS);
+    return () => window.clearTimeout(id);
+  }, []);
+
+  return inView || forced;
+}
+
 // ---------------------------------------------------------------------------
 //  SCROLL-TRIGGERED SECTION WRAPPER
 // ---------------------------------------------------------------------------
@@ -109,7 +142,7 @@ export function Reveal({
   as = "div",
 }: RevealProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once, amount });
+  const isInView = useRevealed(ref, { once, amount });
   const Component = m[as] as typeof m.div;
 
   return (
@@ -147,7 +180,7 @@ export function Stagger({
   as = "div",
 }: StaggerProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once, amount });
+  const isInView = useRevealed(ref, { once, amount });
   const Component = m[as] as typeof m.div;
 
   return (

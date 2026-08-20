@@ -15,7 +15,7 @@ interface Msg {
 const GREETING: Msg = {
   role: "assistant",
   content:
-    "Hey — I'm Baavansh (well, an AI trained on me). Ask me anything — my projects, what roles I'm targeting, why you should hire me, or my experience with backend, AI/ML, Python, or infrastructure. Answers come with sources.",
+    "Hey — I'm Baavansh (well, an AI trained on me). Ask me anything — my projects, what roles I'm targeting, why you should hire me, or my experience with backend, AI/ML, Python, or IoT. Answers come with sources.",
 };
 
 const msgVariants = {
@@ -161,7 +161,7 @@ export default function ChatBaavansh() {
 
             <div className="glass-strong relative overflow-hidden rounded-xl shadow-[0_0_80px_-20px_rgba(204,255,0,0.08)]">
               {/* Terminal header */}
-              <div className="flex items-center justify-between border-b border-line/40 px-4 py-3">
+              <div className="flex items-center justify-between border-b border-line px-4 py-3">
                 <div className="flex items-center gap-1.5">
                   <button
                     onClick={clearChat}
@@ -225,7 +225,7 @@ export default function ChatBaavansh() {
                               {msg.sources.map((s) => (
                                 <span
                                   key={s}
-                                  className="rounded-sm border border-line/40 px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-muted"
+                                  className="rounded-sm border border-line px-2 py-0.5 font-mono text-[11px] uppercase tracking-wider text-muted"
                                 >
                                   <span className="text-lime">&#9670;</span> {s}
                                 </span>
@@ -297,7 +297,7 @@ export default function ChatBaavansh() {
                     className="mt-8 flex flex-col items-center text-center"
                   >
                     <div className="h-px w-16 bg-gradient-to-r from-transparent via-lime/40 to-transparent" />
-                    <p className="mt-4 font-mono text-[11px] uppercase tracking-wider text-muted/60">
+                    <p className="mt-4 font-mono text-[11px] uppercase tracking-wider text-faint">
                       Ask a question below or pick a starter
                     </p>
                   </m.div>
@@ -305,8 +305,8 @@ export default function ChatBaavansh() {
               </div>
 
               {/* Suggested questions */}
-              <div className="flex flex-wrap gap-2 border-t border-line/30 px-4 py-3 md:px-6">
-                <span className="self-center font-mono text-[10px] uppercase tracking-wider text-muted/60">
+              <div className="flex flex-wrap gap-2 border-t border-line px-4 py-3 md:px-6">
+                <span className="self-center font-mono text-[11px] uppercase tracking-wider text-faint">
                   try:
                 </span>
                 {suggestedQuestions.map((q, i) => (
@@ -320,7 +320,7 @@ export default function ChatBaavansh() {
                     whileTap={{ scale: 0.97 }}
                     onClick={() => send(q)}
                     disabled={loading}
-                    className="rounded-sm border border-line/40 px-3 py-1.5 font-mono text-[11px] text-muted transition-colors hover:border-lime hover:text-lime disabled:opacity-40"
+                    className="rounded-sm border border-line px-3 py-1.5 font-mono text-[11px] text-muted transition-colors hover:border-lime hover:text-lime disabled:opacity-40"
                   >
                     {q}
                   </m.button>
@@ -333,7 +333,7 @@ export default function ChatBaavansh() {
                   e.preventDefault();
                   send(input);
                 }}
-                className="flex items-center gap-3 border-t border-line/30 bg-surface/30 px-4 py-3 md:px-6"
+                className="flex items-center gap-3 border-t border-line bg-surface/30 px-4 py-3 md:px-6"
               >
                 <span className="font-mono text-sm text-lime">{">"}</span>
                 <input
@@ -341,7 +341,7 @@ export default function ChatBaavansh() {
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   placeholder="Ask about my projects, backend work, AI/ML, Python, why hire me..."
-                  className="flex-1 bg-transparent py-1.5 font-mono text-sm text-paper outline-none placeholder:text-muted/50"
+                  className="flex-1 bg-transparent py-1.5 font-mono text-sm text-paper outline-none placeholder:text-faint"
                   aria-label="Ask a question"
                   autoComplete="off"
                 />

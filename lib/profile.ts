@@ -39,6 +39,7 @@ export interface ExperienceItem {
   period: string;
   summary: string;
   points: string[];
+  current?: boolean;
 }
 
 export interface SkillGroup {
@@ -81,9 +82,21 @@ export const profile = {
   linkedin: "https://www.linkedin.com/in/baavansh-reddy-gundlapalli",
   pypi: "https://pypi.org/project/agentmemry/",
   resumeUrl: "/resume.pdf",
+  availability: "Open to 2026 roles",
   summary:
     "I'm a backend and AI systems engineer with four years of engineering experience across production REST APIs, LLM and ML integration, and IoT platforms. My core stack is Python, Java, and C, and my work ranges from authentication systems and data pipelines to compilers, CPU simulators, and operating systems. I'm a Computer Science graduate from Rutgers University (Magna Cum Laude, 3.76 GPA), currently a Backend & AI Systems Engineer at The AI Research Center (TAIRC). I'm the author of AgentMemry, an open-source memory library for AI agents published on PyPI, and co-author of a retrieval evaluation study benchmarking BM25 against RAG. This site hosts an AI assistant you can chat with about any of it.",
 };
+
+// ----------------------------------------------------------------------------
+//  HERO PROOF STRIP — the four numbers a recruiter scans for
+// ----------------------------------------------------------------------------
+
+export const heroStats: { label: string; value: string }[] = [
+  { label: "Experience", value: "4 years" },
+  { label: "Open source", value: "Live on PyPI" },
+  { label: "IoT platform", value: "2 years" },
+  { label: "Systems in C", value: "3 projects" },
+];
 
 // ----------------------------------------------------------------------------
 //  WHAT MAKES ME DIFFERENT  (the "unfair edges")
@@ -221,6 +234,48 @@ export const projects: Project[] = [
     ],
   },
   {
+    id: "riscv",
+    name: "RISC-V CPU Simulator",
+    tag: "Systems / C",
+    blurb:
+      "A single-cycle RV32I processor in C — full instruction decode, datapath, and a 1 KiB direct-mapped cache.",
+    description:
+      "I wrote a single-cycle RISC-V RV32I CPU simulator in C: instruction fetch and decode, the datapath and register file, and a 1 KiB direct-mapped cache with the memory hierarchy modelled around it. This is the project that turned computer architecture from a lecture topic into something I can reason about while debugging real systems.",
+    tech: ["C", "RISC-V", "Computer Architecture", "Caches"],
+    highlights: [
+      "Full RV32I instruction decode and single-cycle datapath",
+      "1 KiB direct-mapped cache with hit/miss accounting",
+      "Memory hierarchy simulation end to end",
+    ],
+    links: [
+      {
+        label: "Source",
+        href: "https://github.com/BaavanshReddy/risc-v-simulator",
+      },
+    ],
+  },
+  {
+    id: "filesystem",
+    name: "Unix-Style Filesystem",
+    tag: "Systems / C",
+    blurb:
+      "A Linux-like virtual filesystem in C — inodes, Unix permissions, persistence, and an interactive shell.",
+    description:
+      "I built a Linux-like virtual filesystem in C around a real inode architecture, with Unix-style permissions, serialization so the filesystem persists across runs, and an interactive shell to drive it. Writing it is why system calls, file descriptors, and permission bits stopped being abstractions.",
+    tech: ["C", "Operating Systems", "Inodes", "Serialization"],
+    highlights: [
+      "Inode-based layout with directory and file allocation",
+      "Unix permission model and ownership checks",
+      "Persistent serialization plus an interactive shell",
+    ],
+    links: [
+      {
+        label: "Source",
+        href: "https://github.com/BaavanshReddy/linux-filesystem",
+      },
+    ],
+  },
+  {
     id: "rupizza",
     name: "RuPizza — OOP Ordering App",
     tag: "OOP / Java",
@@ -269,7 +324,7 @@ export const research = {
   title: "LLM FactCheck — Factual QA Evaluation Framework",
   tech: ["Python", "RAG", "BM25", "TriviaQA"],
   description:
-    "I co-authored a research study benchmarking LLM factual question-answering across direct prompting, BM25 retrieval, and RAG on a controlled 100-question TriviaQA evaluation set. We found that BM25 surfaced supporting evidence in 90% of cases while RAG improved exact-match accuracy by only 3 points (0.66 → 0.69), isolating generation quality — not retrieval — as the bottleneck.",
+    "I co-authored a research study benchmarking LLM factual question-answering across direct prompting, BM25 retrieval, and RAG on a controlled 100-question TriviaQA evaluation set. We found that BM25 surfaced supporting evidence in 90% of cases while RAG improved exact-match accuracy by only 3 points (0.66 → 0.69), isolating generation quality — not retrieval — as the bottleneck. The framework is reproducible end to end, with an 11-class error taxonomy and a Streamlit dashboard for inspecting individual failures.",
   repo: "https://github.com/BaavanshReddy/LLM_factcheck",
 };
 
@@ -283,6 +338,7 @@ export const experience: ExperienceItem[] = [
     role: "Backend & AI Systems Engineer",
     org: "TAIRC — The AI Research Center",
     period: "June 2026 – Present",
+    current: true,
     summary:
       "Building Python backend services, REST APIs, and the LLM/ML layer on top of them.",
     points: [
@@ -352,6 +408,43 @@ export const experience: ExperienceItem[] = [
     ],
   },
 ];
+
+// ----------------------------------------------------------------------------
+//  LEADERSHIP & ACTIVITIES
+// ----------------------------------------------------------------------------
+
+export interface LeadershipItem {
+  role: string;
+  org: string;
+  period: string;
+  detail: string;
+}
+
+export const leadership: LeadershipItem[] = [
+  {
+    role: "Community Service Officer",
+    org: "Rutgers University Police Department",
+    period: "Jan 2025 – May 2026",
+    detail:
+      "Supported incident response and crowd management for large-scale university events.",
+  },
+  {
+    role: "Risk Management Chair · Head of Judiciary Board · Co-Brotherhood Chair",
+    org: "Alpha Phi Delta Fraternity",
+    period: "May 2024 – May 2026",
+    detail:
+      "Three elected positions across two years, leading safety compliance, conduct governance, and member engagement.",
+  },
+  {
+    role: "Administration Secretary",
+    org: "ENIGMA Technical Society",
+    period: "Aug 2023 – May 2024",
+    detail:
+      "Organized technical workshops and streamlined communication across society events.",
+  },
+];
+
+export const languages = ["English", "Hindi", "Telugu"];
 
 // ----------------------------------------------------------------------------
 //  SKILLS — aligned to the current résumé
@@ -607,7 +700,7 @@ export const knowledgeChunks: KnowledgeChunk[] = [
       "filesystem", "file", "system", "inode", "unix", "linux", "c",
       "low-level", "kernel", "os",
     ],
-    text: "Beyond the compiler, I've written a single-cycle RISC-V CPU simulator in C — instruction decode, datapath, and register file — and a Unix-style filesystem with inodes and persistence. These are the projects that taught me how code actually executes on hardware: memory hierarchies, instruction cycles, and what an operating system is really doing underneath a system call.",
+    text: "Beyond the compiler, I've written a single-cycle RISC-V RV32I CPU simulator in C — instruction decode, datapath, register file, and a 1 KiB direct-mapped cache (github.com/BaavanshReddy/risc-v-simulator) — and a Linux-like virtual filesystem in C with inode architecture, Unix permissions, persistent serialization, and an interactive shell (github.com/BaavanshReddy/linux-filesystem). These are the projects that taught me how code actually executes on hardware: memory hierarchies, instruction cycles, and what an operating system is really doing underneath a system call.",
   },
 
   // ---- Experience ----

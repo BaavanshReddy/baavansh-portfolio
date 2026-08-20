@@ -86,14 +86,22 @@ export default function Experience() {
                 >
                   <TimelineDot />
 
-                  <p className="font-mono text-xs uppercase tracking-wider text-muted">
-                    {e.period}
-                  </p>
+                  <div className="flex flex-wrap items-center gap-3">
+                    <p className="font-mono text-xs uppercase tracking-wider text-faint">
+                      {e.period}
+                    </p>
+                    {e.current && (
+                      <span className="inline-flex items-center gap-1.5 rounded-full border border-lime/30 bg-lime/[0.07] px-2.5 py-0.5 font-mono text-[11px] uppercase tracking-wider text-lime">
+                        <span className="h-1.5 w-1.5 rounded-full bg-lime" />
+                        Current
+                      </span>
+                    )}
+                  </div>
                   <h3 className="mt-1.5 font-display text-lg font-bold uppercase tracking-tight text-paper">
                     {e.role}
                   </h3>
                   <p className="font-mono text-sm text-lime">{e.org}</p>
-                  <p className="mt-2 text-sm text-paper/70">{e.summary}</p>
+                  <p className="mt-2 text-sm text-muted">{e.summary}</p>
 
                   {points.length > 0 && (
                     <ul className="mt-3 space-y-1.5">

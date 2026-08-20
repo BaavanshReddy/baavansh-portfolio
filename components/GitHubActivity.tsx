@@ -10,7 +10,7 @@ interface GitHubEvent {
   payload: { commits?: { message: string }[] };
 }
 
-const USERNAME = process.env.NEXT_PUBLIC_GITHUB_USERNAME ?? "";
+const USERNAME = process.env.NEXT_PUBLIC_GITHUB_USERNAME || "BaavanshReddy";
 
 function timeAgo(iso: string): string {
   const diff = Date.now() - new Date(iso).getTime();
@@ -57,7 +57,7 @@ export default function GitHubActivity() {
   }, [configured]);
 
   return (
-    <div className="border border-line bg-surface p-7">
+    <div className="glass rounded-lg p-7">
       <div className="flex items-center justify-between">
         <span className="font-mono text-xs uppercase tracking-wider text-lime">
           [ live · github ]
@@ -70,15 +70,6 @@ export default function GitHubActivity() {
       <h3 className="mt-3 font-display text-xl font-bold uppercase tracking-tight">
         Latest from GitHub
       </h3>
-
-      {!configured && (
-        <p className="mt-4 font-mono text-xs leading-relaxed text-muted">
-          Set <span className="text-lime">NEXT_PUBLIC_GITHUB_USERNAME</span> in
-          your environment to stream live commits here. This card proves the
-          portfolio is live, not stale — the chat tool-use upgrade (ROADMAP
-          Phase 5) wires the same feed into the AI.
-        </p>
-      )}
 
       {configured && error && (
         <p className="mt-4 font-mono text-xs text-muted">
@@ -123,7 +114,7 @@ export default function GitHubActivity() {
                       {commit.message}
                     </p>
                   )}
-                  <p className="mt-0.5 font-mono text-[10px] uppercase tracking-wider text-muted/70">
+                  <p className="mt-0.5 font-mono text-[11px] uppercase tracking-[0.14em] text-faint">
                     {timeAgo(ev.created_at)}
                   </p>
                 </div>

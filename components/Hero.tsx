@@ -1,17 +1,12 @@
 "use client";
 
 import { useEffect, useState, useRef, useCallback } from "react";
-import dynamic from "next/dynamic";
 import { m, AnimatePresence } from "framer-motion";
-import { profile } from "@/lib/profile";
+import { profile, heroStats } from "@/lib/profile";
 import { Magnetic } from "@/lib/animations";
 
-// Code-split three.js out of the initial bundle; render client-side only,
-// after hydration, so the hero paints instantly.
-const Scene3D = dynamic(() => import("./Scene3D"), { ssr: false });
-
 /* ------------------------------------------------------------------ */
-/*  CONSTANTS                                                         */
+/*  STATIC CONTENT                                                     */
 /* ------------------------------------------------------------------ */
 
 const MARQUEE = [
@@ -19,8 +14,8 @@ const MARQUEE = [
   "Production REST APIs",
   "LLM & ML integration",
   "IoT telemetry to cloud",
-  "Systems & Compilers in C",
-  "Full-stack: Postgres to React",
+  "Compilers & CPUs in C",
+  "Postgres to React",
   "Tests what I build",
   "Owns problems end-to-end",
 ];
@@ -34,76 +29,74 @@ const TERMINAL_LINES = [
   { prompt: ">", text: "agentmemry/  risc-v-cpu/  linux-fs/  tinyl-compiler/  llm-factcheck/", typed: false },
 ];
 
+// Keep each phrase under the 20ch slot the cycler reserves, so nothing clips.
 const ROLE_KEYWORDS = [
-  "Backend Systems",
-  "AI & LLM Pipelines",
-  "IoT Platforms",
-  "Cloud Services",
-  "Python Tooling",
+  "backend systems",
+  "LLM pipelines",
+  "IoT integrations",
+  "Python tooling",
   "REST APIs",
-  "Systems in C",
-  "Retrieval Systems",
+  "systems in C",
 ];
 
 /* ------------------------------------------------------------------ */
-/*  TYPEWRITER                                                        */
+/*  TYPEWRITER                                                         */
 /* ------------------------------------------------------------------ */
 
-function Typewriter({ text, speed = 32, onDone }: { text: string; speed?: number; onDone?: () => void }) {
+function Typewriter({ text, speed = 30 }: { text: string; speed?: number }) {
   const [out, setOut] = useState("");
   const [prefersReduced, setPrefersReduced] = useState(false);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      setPrefersReduced(window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+      setPrefersReduced(
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+      );
     }
   }, []);
 
   useEffect(() => {
     if (prefersReduced) {
       setOut(text);
-      onDone?.();
       return;
     }
     let i = 0;
     setOut("");
     const id = window.setInterval(() => {
-      i++;
+      i += 1;
       setOut(text.slice(0, i));
-      if (i >= text.length) {
-        window.clearInterval(id);
-        onDone?.();
-      }
+      if (i >= text.length) window.clearInterval(id);
     }, speed);
     return () => window.clearInterval(id);
-  }, [text, speed, prefersReduced, onDone]);
+  }, [text, speed, prefersReduced]);
 
   return <>{out}</>;
 }
 
 /* ------------------------------------------------------------------ */
-/*  CYCLING ROLE KEYWORD                                              */
+/*  ROLE CYCLER                                                        */
 /* ------------------------------------------------------------------ */
 
 function RoleCycler() {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
-    const id = setInterval(() => {
-      setIndex((prev) => (prev + 1) % ROLE_KEYWORDS.length);
-    }, 2400);
+    const id = setInterval(
+      () => setIndex((i) => (i + 1) % ROLE_KEYWORDS.length),
+      2600,
+    );
     return () => clearInterval(id);
   }, []);
 
   return (
-    <span className="relative inline-block h-[1.2em] w-[14ch] overflow-hidden align-bottom sm:w-[18ch]">
+    <span className="relative inline-block h-[1.4em] w-[20ch] overflow-hidden align-bottom">
       <AnimatePresence mode="wait">
         <m.span
           key={ROLE_KEYWORDS[index]}
-          className="absolute left-0 whitespace-nowrap bg-gradient-to-r from-lime to-cyan bg-clip-text text-transparent"
-          initial={{ y: 24, opacity: 0 }}
+          className="absolute left-0 top-0 whitespace-nowrap text-lime"
+          initial={{ y: 22, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          exit={{ y: -24, opacity: 0 }}
+          exit={{ y: -22, opacity: 0 }}
           transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
         >
           {ROLE_KEYWORDS[index]}
@@ -114,57 +107,63 @@ function RoleCycler() {
 }
 
 /* ------------------------------------------------------------------ */
-/*  ANIMATION VARIANTS                                                */
+/*  ANIMATION VARIANTS                                                 */
 /* ------------------------------------------------------------------ */
 
 const container = {
   hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.08, delayChildren: 0.3 },
-  },
+  visible: { transition: { staggerChildren: 0.07, delayChildren: 0.15 } },
 };
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 28 },
+  hidden: { opacity: 0, y: 24 },
   visible: (i: number = 0) => ({
     opacity: 1,
     y: 0,
     transition: {
-      delay: i * 0.08,
-      duration: 0.7,
+      delay: i * 0.07,
+      duration: 0.65,
       ease: [0.16, 1, 0.3, 1] as number[],
     },
   }),
 };
 
 const terminalLine = {
-  hidden: { opacity: 0, x: -12 },
+  hidden: { opacity: 0, x: -10 },
   visible: (i: number = 0) => ({
     opacity: 1,
     x: 0,
     transition: {
-      delay: 0.6 + i * 0.18,
-      duration: 0.45,
+      delay: 0.5 + i * 0.16,
+      duration: 0.4,
       ease: [0.16, 1, 0.3, 1] as number[],
     },
   }),
 };
 
 /* ------------------------------------------------------------------ */
-/*  HERO COMPONENT                                                    */
+/*  HERO                                                               */
 /* ------------------------------------------------------------------ */
 
 export default function Hero() {
-  const heroRef = useRef<HTMLElement>(null);
   const [prefersReduced, setPrefersReduced] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-      setPrefersReduced(mq.matches);
-      const handler = (e: MediaQueryListEvent) => setPrefersReduced(e.matches);
-      mq.addEventListener("change", handler);
-      return () => mq.removeEventListener("change", handler);
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setPrefersReduced(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setPrefersReduced(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+
+  const copyEmail = useCallback(async () => {
+    try {
+      await navigator.clipboard.writeText(profile.email);
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 1800);
+    } catch {
+      window.location.href = `mailto:${profile.email}`;
     }
   }, []);
 
@@ -173,107 +172,112 @@ export default function Hero() {
     : { initial: "hidden" as const, animate: "visible" as const };
 
   return (
-    <section
-      id="top"
-      ref={heroRef}
-      className="relative min-h-screen overflow-hidden"
-    >
-      {/* ---- Three.js 3D background ---- */}
-      <Scene3D />
-
-      {/* ---- Gradient overlays for depth ---- */}
-      <div className="absolute inset-0 bg-gradient-to-b from-ink/30 via-transparent to-ink" />
-      <div className="absolute inset-0 bg-gradient-to-r from-ink/50 via-transparent to-ink/30" />
-
-      {/* Grid background */}
-      <div className="grid-bg mask-fade-b absolute inset-0 opacity-40" />
-
-      {/* Ambient glow orbs */}
-      <div className="absolute -right-32 top-20 h-[500px] w-[500px] rounded-full bg-lime/[0.04] blur-[120px]" />
-      <div className="absolute -left-20 bottom-40 h-[400px] w-[400px] rounded-full bg-cyan/[0.03] blur-[100px]" />
-      <div className="absolute left-1/3 top-1/4 h-[300px] w-[300px] rounded-full bg-violet/[0.03] blur-[80px]" />
+    <section id="top" className="relative overflow-hidden">
+      {/* ---- Background: aurora wash + fine dot grid, nothing that fights
+              the type for attention ---- */}
+      <div className="aurora pointer-events-none absolute inset-0" />
+      <div className="dot-grid mask-fade-b pointer-events-none absolute inset-0 opacity-60" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-64 bg-gradient-to-b from-transparent to-ink" />
 
       {/* ---- Content ---- */}
       <m.div
-        className="relative mx-auto flex min-h-screen max-w-site flex-col justify-center px-6 pb-32 pt-28"
+        className="relative mx-auto flex min-h-[calc(100svh-4rem)] max-w-site flex-col justify-center px-6 pb-40 pt-32"
         variants={container}
         {...animateProps}
       >
-        {/* Headline label */}
-        <m.p
-          className="font-mono text-xs uppercase tracking-[0.28em] text-lime"
-          variants={fadeUp}
-          custom={0}
-        >
-          <span className="cursor-blink">&#9613;</span> {profile.headline}
-        </m.p>
+        {/* Availability pill */}
+        <m.div variants={fadeUp} custom={0}>
+          <span className="inline-flex items-center gap-2 rounded-full border border-lime/30 bg-lime/[0.07] px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.18em] text-lime">
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-lime opacity-60" />
+              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-lime" />
+            </span>
+            {profile.availability}
+          </span>
+        </m.div>
 
         {/* Name */}
-        <h1 className="mt-6 font-display font-bold uppercase leading-[0.88] tracking-tight">
+        <h1 className="mt-7 font-display font-bold uppercase leading-[0.86] tracking-tight">
           <m.span
-            className="block text-[clamp(2.8rem,11vw,8rem)]"
+            className="block text-[clamp(2.6rem,10.5vw,7.5rem)] text-paper"
             variants={fadeUp}
             custom={1}
           >
-            Baavansh
+            Baavansh Reddy
           </m.span>
           <m.span
-            className="block text-[clamp(2.8rem,11vw,8rem)]"
+            className="block bg-gradient-to-r from-lime via-lime to-cyan bg-clip-text text-[clamp(2.6rem,10.5vw,7.5rem)] text-transparent [background-size:150%_100%]"
             variants={fadeUp}
             custom={2}
-          >
-            Reddy
-          </m.span>
-          <m.span
-            className="glitch block text-[clamp(2.8rem,11vw,8rem)] text-transparent"
-            style={{ WebkitTextStroke: "2px #CCFF00" }}
-            data-text="Gundlapalli"
-            variants={fadeUp}
-            custom={3}
           >
             Gundlapalli
           </m.span>
         </h1>
 
-        {/* Sub-headline with cycling keyword */}
+        {/* Positioning line */}
         <m.p
-          className="mt-8 max-w-2xl text-balance text-lg text-muted md:text-2xl"
+          className="mt-7 max-w-3xl text-balance text-lg leading-relaxed text-muted md:text-2xl"
+          variants={fadeUp}
+          custom={3}
+        >
+          Backend &amp; AI systems engineer with four years across production
+          REST APIs, LLM and ML integration, and IoT platforms.
+        </m.p>
+
+        <m.p
+          className="mt-4 font-mono text-xs uppercase tracking-[0.16em] text-faint sm:text-sm"
           variants={fadeUp}
           custom={4}
         >
-          Computer Science graduate building{" "}
-          <RoleCycler />,{" "}
-          shipping production code, and solving real problems.
+          Currently building <RoleCycler />
         </m.p>
 
-        {/* Mini terminal — glassmorphic */}
-        <m.div
-          className="glass mt-10 max-w-2xl overflow-hidden rounded-lg shadow-[0_0_60px_-15px_rgba(204,255,0,0.08)]"
+        {/* Proof strip — the numbers a recruiter scans for */}
+        <m.dl
+          className="mt-10 grid max-w-3xl grid-cols-2 gap-px overflow-hidden rounded-lg border border-line bg-line sm:grid-cols-4"
           variants={fadeUp}
           custom={5}
         >
-          <div className="flex items-center gap-1.5 border-b border-line/50 px-4 py-2.5">
+          {heroStats.map((s) => (
+            <div key={s.label} className="bg-surface px-4 py-4">
+              <dt className="font-mono text-[11px] uppercase tracking-[0.14em] text-faint">
+                {s.label}
+              </dt>
+              <dd className="mt-1.5 font-display text-lg font-bold uppercase tracking-tight text-paper">
+                {s.value}
+              </dd>
+            </div>
+          ))}
+        </m.dl>
+
+        {/* Terminal */}
+        <m.div
+          className="glass mt-10 max-w-2xl overflow-hidden rounded-lg"
+          variants={fadeUp}
+          custom={6}
+        >
+          <div className="flex items-center gap-1.5 border-b border-line px-4 py-2.5">
             <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f56]" />
             <span className="h-2.5 w-2.5 rounded-full bg-[#ffbd2e]" />
             <span className="h-2.5 w-2.5 rounded-full bg-[#27c93f]" />
-            <span className="ml-3 font-mono text-[11px] text-muted">
+            <span className="ml-3 font-mono text-[11px] text-faint">
               ~/baavansh &mdash; zsh
             </span>
           </div>
-          <div className="space-y-1 px-4 py-3 font-mono text-[12.5px] leading-relaxed md:text-sm">
+          <div className="space-y-1 overflow-x-auto px-4 py-3 font-mono text-[12.5px] leading-relaxed md:text-[13px]">
             {TERMINAL_LINES.map((line, i) => (
               <m.div
                 key={i}
-                className="flex gap-2"
+                className="flex gap-2 whitespace-nowrap"
                 variants={terminalLine}
                 custom={i}
               >
-                <span className={line.typed ? "text-lime" : "text-cyan/60"}>
+                <span className={line.typed ? "text-lime" : "text-cyan"}>
                   {line.prompt}
                 </span>
                 <span className={line.typed ? "text-paper" : "text-muted"}>
                   {line.typed ? (
-                    <Typewriter text={line.text} speed={28} />
+                    <Typewriter text={line.text} speed={26} />
                   ) : (
                     line.text
                   )}
@@ -293,18 +297,17 @@ export default function Hero() {
 
         {/* CTAs */}
         <m.div
-          className="mt-10 flex flex-wrap items-center gap-4"
+          className="mt-10 flex flex-wrap items-center gap-3"
           variants={fadeUp}
           custom={7}
         >
-          <Magnetic strength={0.15}>
+          <Magnetic strength={0.12}>
             <a
               href="#chat"
-              className="group relative inline-flex items-center gap-2 overflow-hidden bg-lime px-6 py-3.5 font-mono text-sm font-semibold uppercase tracking-wide text-ink transition-transform hover:-translate-y-0.5"
+              className="group relative inline-flex items-center gap-2 overflow-hidden rounded-sm bg-lime px-6 py-3.5 font-mono text-sm font-semibold uppercase tracking-wide text-ink transition-transform hover:-translate-y-0.5"
             >
-              {/* Shine effect */}
-              <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
-              <span className="relative">Ask My AI Assistant</span>
+              <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
+              <span className="relative">Ask my AI assistant</span>
               <span className="relative transition-transform group-hover:translate-x-1">
                 &rarr;
               </span>
@@ -312,52 +315,57 @@ export default function Hero() {
           </Magnetic>
           <a
             href="#work"
-            className="glass inline-flex items-center px-6 py-3.5 font-mono text-sm uppercase tracking-wide text-paper transition-all hover:border-lime/50 hover:text-lime hover:shadow-[0_0_20px_-5px_rgba(204,255,0,0.15)]"
+            className="glass card-hover inline-flex items-center rounded-sm px-6 py-3.5 font-mono text-sm uppercase tracking-wide text-paper"
           >
-            View Projects
+            View projects
           </a>
           <a
             href={profile.resumeUrl}
-            className="font-mono text-sm uppercase tracking-wide text-muted underline underline-offset-4 transition-colors hover:text-lime"
+            className="inline-flex items-center rounded-sm px-4 py-3.5 font-mono text-sm uppercase tracking-wide text-muted underline underline-offset-4 transition-colors hover:text-lime"
           >
             R&eacute;sum&eacute; &darr;
           </a>
+          <button
+            type="button"
+            onClick={copyEmail}
+            className="inline-flex items-center gap-2 rounded-sm px-4 py-3.5 font-mono text-sm uppercase tracking-wide text-muted transition-colors hover:text-lime"
+          >
+            {copied ? "Email copied ✓" : "Copy email"}
+          </button>
         </m.div>
 
-        {/* Status chips */}
-        <m.div
-          className="mt-12 flex flex-wrap gap-x-8 gap-y-2 font-mono text-xs uppercase tracking-wider text-muted"
+        {/* Meta line */}
+        <m.p
+          className="mt-10 flex flex-wrap gap-x-6 gap-y-2 font-mono text-[11px] uppercase tracking-[0.14em] text-faint"
           variants={fadeUp}
           custom={8}
         >
-          <span>
-            <span className="text-lime">&diams;</span> {profile.status}
-          </span>
-          <span>
-            <span className="text-cyan">&diams;</span> {profile.university}
-          </span>
-          <span>
-            <span className="text-violet">&diams;</span> {profile.location}
-          </span>
-        </m.div>
+          <span>{profile.location}</span>
+          <span aria-hidden>·</span>
+          <span>{profile.university}, B.S. Computer Science</span>
+          <span aria-hidden>·</span>
+          <span>Magna Cum Laude · 3.76 GPA</span>
+        </m.p>
       </m.div>
 
-      {/* Marquee banner */}
-      <div className="absolute bottom-0 left-0 right-0 overflow-hidden border-y border-lime/20 bg-lime py-3">
-        <div className="flex w-max animate-marquee">
-          {[0, 1].map((dup) => (
-            <div key={dup} className="flex shrink-0">
-              {MARQUEE.map((m) => (
-                <span
-                  key={m}
-                  className="flex items-center gap-6 px-6 font-display text-sm font-bold uppercase tracking-wide text-ink"
-                >
-                  {m}
-                  <span className="text-ink/35">&diams;</span>
-                </span>
-              ))}
-            </div>
-          ))}
+      {/* Marquee — quiet band, lets the lime CTA stay the loudest thing */}
+      <div className="relative border-y border-line bg-surface/80 py-3">
+        <div className="mask-fade-x overflow-hidden">
+          <div className="flex w-max animate-marquee">
+            {[0, 1].map((dup) => (
+              <div key={dup} className="flex shrink-0" aria-hidden={dup === 1}>
+                {MARQUEE.map((item) => (
+                  <span
+                    key={item}
+                    className="flex items-center gap-6 px-6 font-mono text-xs uppercase tracking-[0.16em] text-muted"
+                  >
+                    {item}
+                    <span className="text-lime">&diams;</span>
+                  </span>
+                ))}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

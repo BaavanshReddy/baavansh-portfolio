@@ -12,7 +12,7 @@ import TiltCard from "./TiltCard";
 
 function TechChip({ label }: { label: string }) {
   return (
-    <span className="border border-line/60 px-2.5 py-1 font-mono text-[11px] uppercase tracking-wider text-muted transition-all duration-300 group-hover:border-lime/40 group-hover:text-paper rounded-sm">
+    <span className="border border-line px-2.5 py-1 font-mono text-[11px] uppercase tracking-wider text-muted transition-all duration-300 group-hover:border-lime/40 group-hover:text-paper rounded-sm">
       {label}
     </span>
   );
@@ -75,14 +75,14 @@ export default function Projects() {
                 <div className="relative p-7 md:p-10">
                   {/* Badges row */}
                   <div className="flex flex-wrap items-center gap-3">
-                    <span className="relative inline-flex items-center gap-1.5 rounded-sm bg-gradient-to-r from-lime to-cyan px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-wider text-ink">
+                    <span className="relative inline-flex items-center gap-1.5 rounded-sm bg-gradient-to-r from-lime to-cyan px-2.5 py-1 font-mono text-[11px] font-bold uppercase tracking-wider text-ink">
                       <span className="relative flex h-1.5 w-1.5">
                         <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-ink/60 opacity-75" />
                         <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-ink" />
                       </span>
                       Flagship
                     </span>
-                    <span className="font-mono text-xs uppercase tracking-wider text-muted">
+                    <span className="font-mono text-xs uppercase tracking-wider text-faint">
                       {flagship.tag}
                     </span>
                   </div>
@@ -210,7 +210,7 @@ export default function Projects() {
           >
             <div className="relative p-7">
               <div className="flex flex-wrap items-center gap-3">
-                <span className="rounded-sm bg-paper/10 px-2 py-1 font-mono text-[10px] font-bold uppercase tracking-wider text-paper">
+                <span className="rounded-sm bg-paper/10 px-2 py-1 font-mono text-[11px] font-bold uppercase tracking-wider text-paper">
                   Research
                 </span>
                 <span className="font-mono text-xs uppercase tracking-wider text-muted">
@@ -227,7 +227,7 @@ export default function Projects() {
                 {research.tech.map((t) => (
                   <span
                     key={t}
-                    className="border border-line/60 px-2.5 py-1 font-mono text-[11px] uppercase tracking-wider text-muted transition-colors duration-300 group-hover:border-cyan/40 group-hover:text-paper rounded-sm"
+                    className="border border-line px-2.5 py-1 font-mono text-[11px] uppercase tracking-wider text-muted transition-colors duration-300 group-hover:border-cyan/40 group-hover:text-paper rounded-sm"
                   >
                     {t}
                   </span>

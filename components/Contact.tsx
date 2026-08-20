@@ -8,7 +8,6 @@ export default function Contact() {
     { label: "GitHub", href: profile.github },
     { label: "LinkedIn", href: profile.linkedin },
     { label: "PyPI", href: profile.pypi },
-    { label: "Résumé", href: profile.resumeUrl },
   ];
 
   return (
@@ -78,7 +77,7 @@ export default function Contact() {
               href={profile.resumeUrl}
               className="rounded-sm border border-lime bg-lime/10 px-5 py-3 font-mono text-xs uppercase tracking-wider text-lime transition-all hover:bg-lime hover:text-ink hover:shadow-[0_0_20px_-4px_rgba(204,255,0,0.3)]"
             >
-              View Resume ↗
+              Download résumé ↓
             </a>
           </div>
         </Reveal>

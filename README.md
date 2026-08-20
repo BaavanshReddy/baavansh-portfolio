@@ -34,11 +34,24 @@ cp .env.example .env.local
 # then edit .env.local and set ANTHROPIC_API_KEY
 ```
 
-## Everything about you lives in one file
+## Everything lives in one file
 
 Edit **`lib/profile.ts`**. It is the single source of truth for the rendered
-page *and* the chat (both engines). Placeholders are marked with
-`[[ double brackets ]]` — search for those and replace them.
+page *and* the chat (both engines): profile, hero stats, projects, research,
+experience, skills, leadership, and every knowledge chunk the assistant
+answers from. Change it there and the whole site follows.
+
+## Design constraints worth keeping
+
+- **Contrast is measured, not eyeballed.** `tailwind.config.ts` documents the
+  ratio of every text tone against the page and card backgrounds. `muted` is
+  for body copy (8.5:1), `faint` is for micro-labels only (5.5:1), and
+  `violet` is decorative — never text.
+- **Reveal animations never gate content.** `lib/animations.tsx` forces every
+  section visible after a short timeout, so a missed IntersectionObserver
+  can't leave a section stuck at opacity 0.
+- **Fonts are vendored** in `app/fonts/`, so the build does not depend on
+  fonts.googleapis.com being reachable.
 
 ## Environment variables
 
@@ -46,7 +59,7 @@ page *and* the chat (both engines). Placeholders are marked with
 |---|---|---|
 | `ANTHROPIC_API_KEY` | No | Enables live Claude-powered chat. Omit for offline mode. |
 | `CHAT_MODEL` | No | Override the model. Defaults to Claude Haiku. |
-| `NEXT_PUBLIC_GITHUB_USERNAME` | No | Powers the live "Latest from GitHub" card. |
+| `NEXT_PUBLIC_GITHUB_USERNAME` | No | Overrides the GitHub handle for the live activity card (defaults to `BaavanshReddy`). |
 
 ## Project structure
 
@@ -56,7 +69,8 @@ app/
   page.tsx            Assembles all sections
   globals.css         Tailwind + custom styles
   api/chat/route.ts   The chat backend (live engine + fallback signal)
-components/           Nav, Hero, ChatBaavansh, About, Projects, ...
+app/fonts/            Vendored Space Grotesk + JetBrains Mono
+components/           Nav, Hero, ChatBaavansh, About, Projects, Leadership, ...
 lib/
   profile.ts          ← EDIT THIS: all content + knowledge base
   retrieval.ts        In-browser fallback retrieval engine

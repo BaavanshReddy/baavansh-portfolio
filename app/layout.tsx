@@ -1,22 +1,30 @@
 import type { Metadata, Viewport } from "next";
-import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { profile } from "@/lib/profile";
 import MotionProvider from "@/components/MotionProvider";
 
-// Self-hosted via next/font: no render-blocking Google Fonts request,
-// zero layout shift, served from the same domain.
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+// Fonts are vendored into the repo (app/fonts) and served from our own
+// domain: no render-blocking Google Fonts request, no layout shift, and the
+// build never depends on fonts.googleapis.com being reachable.
+const spaceGrotesk = localFont({
+  src: [
+    { path: "./fonts/space-grotesk-latin-400-normal.woff2", weight: "400", style: "normal" },
+    { path: "./fonts/space-grotesk-latin-500-normal.woff2", weight: "500", style: "normal" },
+    { path: "./fonts/space-grotesk-latin-600-normal.woff2", weight: "600", style: "normal" },
+    { path: "./fonts/space-grotesk-latin-700-normal.woff2", weight: "700", style: "normal" },
+  ],
   variable: "--font-display",
   display: "swap",
 });
 
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500", "700"],
+const jetbrainsMono = localFont({
+  src: [
+    { path: "./fonts/jetbrains-mono-latin-400-normal.woff2", weight: "400", style: "normal" },
+    { path: "./fonts/jetbrains-mono-latin-500-normal.woff2", weight: "500", style: "normal" },
+    { path: "./fonts/jetbrains-mono-latin-700-normal.woff2", weight: "700", style: "normal" },
+  ],
   variable: "--font-mono",
   display: "swap",
 });
@@ -24,25 +32,72 @@ const jetbrainsMono = JetBrains_Mono({
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#030304",
+  themeColor: "#05050a",
 };
 
+const SITE = "https://baavansh-portfolio.vercel.app";
+const TITLE = "Baavansh Reddy Gundlapalli — Backend & AI Systems Engineer";
+const DESCRIPTION =
+  "Backend and AI systems engineer with four years across production REST APIs, LLM/ML integration, and IoT platforms. Projects, experience, and an AI assistant you can ask about any of it.";
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://baavansh-portfolio.vercel.app"),
-  title: "Baavansh Reddy Gundlapalli — Backend & AI Systems Engineer",
-  description:
-    "Portfolio of Baavansh Reddy Gundlapalli — backend and AI systems engineer with four years across production REST APIs, LLM/ML integration, and IoT platforms. Projects, experience, and an embedded AI assistant you can chat with.",
+  metadataBase: new URL(SITE),
+  title: TITLE,
+  description: DESCRIPTION,
+  applicationName: "Baavansh Reddy Gundlapalli",
+  authors: [{ name: profile.name, url: SITE }],
+  creator: profile.name,
+  keywords: [
+    "backend engineer",
+    "AI systems engineer",
+    "LLM integration",
+    "RAG",
+    "Python",
+    "FastAPI",
+    "Java",
+    "Spring Boot",
+    "IoT",
+    "Rutgers",
+    "software engineer 2026",
+  ],
+  alternates: { canonical: SITE },
   openGraph: {
-    title: "Baavansh Reddy Gundlapalli — Backend & AI Systems Engineer",
-    description: profile.tagline,
-    type: "website",
-    url: "https://baavansh-portfolio.vercel.app",
+    title: TITLE,
+    description: DESCRIPTION,
+    type: "profile",
+    url: SITE,
+    siteName: profile.name,
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: TITLE }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Baavansh Reddy Gundlapalli — Backend & AI Systems Engineer",
-    description: profile.tagline,
+    title: TITLE,
+    description: DESCRIPTION,
+    images: ["/og.png"],
   },
+  robots: { index: true, follow: true },
+};
+
+// Structured data: lets Google and LinkedIn read the profile properly.
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: profile.name,
+  url: SITE,
+  email: `mailto:${profile.email}`,
+  jobTitle: profile.headline,
+  description: profile.summary,
+  address: { "@type": "PostalAddress", addressLocality: "New Brunswick", addressRegion: "NJ", addressCountry: "US" },
+  alumniOf: { "@type": "CollegeOrUniversity", name: profile.university },
+  sameAs: [profile.github, profile.linkedin, profile.pypi],
+  knowsAbout: [
+    "Backend engineering",
+    "REST API design",
+    "LLM and ML integration",
+    "Retrieval-augmented generation",
+    "IoT platforms",
+    "Compilers and computer architecture",
+  ],
 };
 
 export default function RootLayout({
@@ -53,6 +108,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${spaceGrotesk.variable} ${jetbrainsMono.variable}`}>
       <body className="bg-ink text-paper antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
         <MotionProvider>{children}</MotionProvider>
         <Analytics />
       </body>
