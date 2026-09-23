@@ -13,6 +13,7 @@ const MARQUEE = [
   "Published on PyPI",
   "Production REST APIs",
   "LLM & ML integration",
+  "MLflow, Feast, ONNX",
   "IoT telemetry to cloud",
   "Compilers & CPUs in C",
   "Postgres to React",
@@ -22,17 +23,30 @@ const MARQUEE = [
 
 const TERMINAL_LINES = [
   { prompt: "$", text: "whoami", typed: true },
-  { prompt: ">", text: "baavansh — backend & ai systems engineer", typed: false },
+  {
+    prompt: ">",
+    text: "baavansh: backend & ai systems engineer",
+    typed: false,
+  },
   { prompt: "$", text: "cat ./focus.txt", typed: true },
-  { prompt: ">", text: "rest apis, llm/ml integration, iot platforms, low-level C", typed: false },
+  {
+    prompt: ">",
+    text: "rest apis, llm/ml integration, ml systems, iot platforms, low-level C",
+    typed: false,
+  },
   { prompt: "$", text: "ls ./projects", typed: true },
-  { prompt: ">", text: "agentmemry/  risc-v-cpu/  linux-fs/  tinyl-compiler/  llm-factcheck/", typed: false },
+  {
+    prompt: ">",
+    text: "mlops-lab/  nn-benchmark/  agentmemry/  llm-factcheck/  risc-v-cpu/  tinyl-compiler/",
+    typed: false,
+  },
 ];
 
 // Keep each phrase under the 20ch slot the cycler reserves, so nothing clips.
 const ROLE_KEYWORDS = [
   "backend systems",
   "LLM pipelines",
+  "ML systems",
   "IoT integrations",
   "Python tooling",
   "REST APIs",
@@ -146,16 +160,7 @@ const terminalLine = {
 /* ------------------------------------------------------------------ */
 
 export default function Hero() {
-  const [prefersReduced, setPrefersReduced] = useState(false);
   const [copied, setCopied] = useState(false);
-
-  useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setPrefersReduced(mq.matches);
-    const handler = (e: MediaQueryListEvent) => setPrefersReduced(e.matches);
-    mq.addEventListener("change", handler);
-    return () => mq.removeEventListener("change", handler);
-  }, []);
 
   const copyEmail = useCallback(async () => {
     try {
@@ -167,9 +172,14 @@ export default function Hero() {
     }
   }, []);
 
-  const animateProps = prefersReduced
-    ? { initial: undefined, animate: undefined }
-    : { initial: "hidden" as const, animate: "visible" as const };
+  // Always animate to "visible". The previous version dropped the animate
+  // prop once reduced motion was detected, which left the hero stuck at
+  // opacity 0 for visitors who prefer reduced motion. MotionConfig (see
+  // MotionProvider) already removes the movement for those visitors.
+  const animateProps = {
+    initial: "hidden" as const,
+    animate: "visible" as const,
+  };
 
   return (
     <section id="top" className="relative overflow-hidden">
@@ -220,8 +230,9 @@ export default function Hero() {
           variants={fadeUp}
           custom={3}
         >
-          Backend &amp; AI systems engineer with four years across production
-          REST APIs, LLM and ML integration, and IoT platforms.
+          Backend &amp; AI systems engineer with four years across REST APIs and
+          IoT platforms, now integrating LLM and ML components, with ML systems
+          projects built and measured end to end.
         </m.p>
 
         <m.p
@@ -261,7 +272,7 @@ export default function Hero() {
             <span className="h-2.5 w-2.5 rounded-full bg-[#ffbd2e]" />
             <span className="h-2.5 w-2.5 rounded-full bg-[#27c93f]" />
             <span className="ml-3 font-mono text-[11px] text-faint">
-              ~/baavansh &mdash; zsh
+              ~/baavansh: zsh
             </span>
           </div>
           <div className="space-y-1 overflow-x-auto px-4 py-3 font-mono text-[12.5px] leading-relaxed md:text-[13px]">

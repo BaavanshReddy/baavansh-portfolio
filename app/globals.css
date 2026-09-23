@@ -8,24 +8,38 @@
   --paper: #e8e8ef;
 }
 
-html { scroll-behavior: smooth; }
-html, body { background-color: var(--ink); color: var(--paper); }
+html {
+  scroll-behavior: smooth;
+}
+html,
 body {
-  font-family: var(--font-display), system-ui, -apple-system, sans-serif;
+  background-color: var(--ink);
+  color: var(--paper);
+}
+body {
+  font-family:
+    var(--font-display),
+    system-ui,
+    -apple-system,
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
 }
-::selection { background: #CCFF00; color: #05050a; }
+::selection {
+  background: #ccff00;
+  color: #05050a;
+}
 
 /* ---- Keyboard focus: visible on every interactive element ---- */
 :focus-visible {
-  outline: 2px solid #CCFF00;
+  outline: 2px solid #ccff00;
   outline-offset: 3px;
   border-radius: 2px;
 }
-a:focus-visible, button:focus-visible {
-  outline: 2px solid #CCFF00;
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #ccff00;
   outline-offset: 3px;
 }
 
@@ -40,7 +54,7 @@ a:focus-visible, button:focus-visible {
   left: 1rem;
   top: 1rem;
   padding: 0.6rem 1rem;
-  background: #CCFF00;
+  background: #ccff00;
   color: #05050a;
   font-family: var(--font-mono), monospace;
   font-size: 0.8rem;
@@ -49,13 +63,25 @@ a:focus-visible, button:focus-visible {
 }
 
 /* ---- Scrollbar ---- */
-::-webkit-scrollbar { width: 8px; height: 8px; }
-::-webkit-scrollbar-track { background: #0c0c14; }
-::-webkit-scrollbar-thumb { background: #32324e; border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: #CCFF00; }
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0c0c14;
+}
+::-webkit-scrollbar-thumb {
+  background: #32324e;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ccff00;
+}
 
 @layer utilities {
-  .text-balance { text-wrap: balance; }
+  .text-balance {
+    text-wrap: balance;
+  }
 
   /* Glassmorphic panel — borders are now actually visible */
   .glass {
@@ -73,7 +99,10 @@ a:focus-visible, button:focus-visible {
 
   /* Card hover lift, used across project / experience cards */
   .card-hover {
-    transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    transition:
+      border-color 0.3s ease,
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
   }
   .card-hover:hover {
     border-color: rgba(204, 255, 0, 0.35);
@@ -83,16 +112,31 @@ a:focus-visible, button:focus-visible {
 
   /* Fine dot grid — calm, structural, unlike the old block field */
   .dot-grid {
-    background-image: radial-gradient(circle at 1px 1px, rgba(165, 165, 192, 0.16) 1px, transparent 0);
+    background-image: radial-gradient(
+      circle at 1px 1px,
+      rgba(165, 165, 192, 0.16) 1px,
+      transparent 0
+    );
     background-size: 32px 32px;
   }
 
   /* Soft aurora wash behind the hero */
   .aurora {
-    background:
-      radial-gradient(60% 55% at 15% 10%, rgba(204, 255, 0, 0.10), transparent 60%),
-      radial-gradient(50% 50% at 85% 15%, rgba(0, 229, 255, 0.09), transparent 60%),
-      radial-gradient(60% 60% at 60% 90%, rgba(124, 58, 237, 0.10), transparent 65%);
+    background: radial-gradient(
+        60% 55% at 15% 10%,
+        rgba(204, 255, 0, 0.1),
+        transparent 60%
+      ),
+      radial-gradient(
+        50% 50% at 85% 15%,
+        rgba(0, 229, 255, 0.09),
+        transparent 60%
+      ),
+      radial-gradient(
+        60% 60% at 60% 90%,
+        rgba(124, 58, 237, 0.1),
+        transparent 65%
+      );
   }
 
   .mask-fade-b {
@@ -101,28 +145,71 @@ a:focus-visible, button:focus-visible {
   }
 
   .mask-fade-x {
-    -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
-    mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 8%,
+      black 92%,
+      transparent
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 8%,
+      black 92%,
+      transparent
+    );
   }
 }
 
 /* Blinking caret */
-@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-.cursor-blink { animation: blink 1.1s step-end infinite; }
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+.cursor-blink {
+  animation: blink 1.1s step-end infinite;
+}
 
 /* Typing dots */
-@keyframes typingDot { 0%, 60%, 100% { transform: translateY(0); opacity: 0.4; } 30% { transform: translateY(-4px); opacity: 1; } }
-.typing-dot { animation: typingDot 1.2s infinite ease-in-out; }
+@keyframes typingDot {
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.4;
+  }
+  30% {
+    transform: translateY(-4px);
+    opacity: 1;
+  }
+}
+.typing-dot {
+  animation: typingDot 1.2s infinite ease-in-out;
+}
 
 /* Section rule */
 .section-divider {
   height: 1px;
-  background: linear-gradient(to right, transparent, rgba(204,255,0,0.28), rgba(0,229,255,0.2), transparent);
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(204, 255, 0, 0.28),
+    rgba(0, 229, 255, 0.2),
+    transparent
+  );
 }
 
 /* Reduced motion: kill animation, but never hide content */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
@@ -132,6 +219,11 @@ a:focus-visible, button:focus-visible {
 
 /* Print: a recruiter hitting Cmd-P should get something readable */
 @media print {
-  body { background: #fff; color: #000; }
-  .no-print { display: none !important; }
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .no-print {
+    display: none !important;
+  }
 }

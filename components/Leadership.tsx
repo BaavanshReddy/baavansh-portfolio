@@ -27,7 +27,7 @@ export default function Leadership() {
         <Reveal variants={fadeUp} custom={2}>
           <p className="mt-5 max-w-2xl text-muted">
             Elected and appointed roles across campus safety, conduct
-            governance, and technical community — the part of the job that is
+            governance, and technical community: the part of the job that is
             about people rather than code.
           </p>
         </Reveal>

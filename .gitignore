@@ -23,3 +23,7 @@
 
 # typescript
 *.tsbuildinfo
+
+# tests
+/test-results
+/playwright-report

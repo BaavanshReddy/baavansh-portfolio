@@ -1,6 +1,8 @@
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
+import MLSummary from "@/components/MLSummary";
+import MLSystems from "@/components/MLSystems";
 import Projects from "@/components/Projects";
 import ChatBaavansh from "@/components/ChatBaavansh";
 import Experience from "@/components/Experience";
@@ -19,7 +21,9 @@ export default function Home() {
       <Nav />
       <main id="main">
         <Hero />
+        <MLSummary />
         <About />
+        <MLSystems />
         <Projects />
         <ChatBaavansh />
         <Experience />

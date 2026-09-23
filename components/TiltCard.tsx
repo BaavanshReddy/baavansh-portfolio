@@ -45,7 +45,7 @@ export default function TiltCard({
         y: (y / rect.height) * 100,
       });
     },
-    [tiltStrength]
+    [tiltStrength],
   );
 
   const handleMouseLeave = useCallback(() => {

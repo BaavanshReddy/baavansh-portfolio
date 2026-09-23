@@ -13,18 +13,13 @@ const coursework = [
   "Artificial Intelligence",
 ];
 
-const deansListSemesters = [
-  "Fall '24",
-  "Spring '25",
-  "Fall '25",
-  "Spring '26",
-];
+const deansListSemesters = ["Fall '24", "Spring '25", "Fall '25", "Spring '26"];
 
 export default function Education() {
   return (
     <section
       id="education"
-      className="relative scroll-mt-20 py-24 md:py-32"
+      className="relative scroll-mt-20 overflow-x-clip py-24 md:py-32"
     >
       <div className="absolute inset-x-0 top-0 section-divider" />
       <div className="absolute -right-20 bottom-0 h-[300px] w-[300px] rounded-full bg-cyan/[0.02] blur-[100px]" />
@@ -100,10 +95,10 @@ export default function Education() {
                   </p>
                   <p className="mt-2 text-sm text-muted">
                     Co-authored{" "}
-                    <span className="text-paper">LLM FactCheck</span> &mdash; a
-                    research study benchmarking LLM factual QA across direct
-                    prompting, BM25 retrieval, and RAG on a TriviaQA evaluation
-                    set.
+                    <span className="text-paper">LLM FactCheck</span>, a
+                    two-person course research paper benchmarking LLM factual QA
+                    across direct prompting, BM25 retrieval, and RAG on a
+                    TriviaQA evaluation set.
                   </p>
                 </div>
               </div>
@@ -138,10 +133,9 @@ export default function Education() {
                     Focus Areas
                   </p>
                   <p className="mt-2 text-sm text-muted">
-                    Heavy emphasis on{" "}
-                    <span className="text-lime">systems</span> &mdash; computer
-                    architecture, compilers, and operating systems &mdash; alongside AI,
-                    databases, and software engineering.
+                    Heavy emphasis on <span className="text-lime">systems</span>{" "}
+                    (computer architecture, compilers, and operating systems)
+                    alongside AI, databases, and software engineering.
                   </p>
                 </div>
               </div>

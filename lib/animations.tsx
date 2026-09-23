@@ -83,7 +83,6 @@ export const staggerContainer: Variants = {
   },
 };
 
-
 // ---------------------------------------------------------------------------
 //  REVEAL STATE
 //
@@ -249,9 +248,7 @@ export function TextReveal({
           key={i}
           className="inline-block"
           initial={{ opacity: 0, y: 12 }}
-          animate={
-            isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }
-          }
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
           transition={{
             delay: delay + i * 0.04,
             duration: 0.4,
@@ -325,10 +322,24 @@ export function Counter({
 }) {
   const ref = useRef<HTMLSpanElement>(null);
   const isInView = useInView(ref, { once: true });
-  const [count, setCount] = useState(0);
+  // Render the real value on the server and for reduced-motion visitors, so
+  // crawlers, no-JS readers, and screenshots never see "0 years". The count-up
+  // animation only runs after hydration, when motion is allowed.
+  const [count, setCount] = useState(target);
+  const [animate, setAnimate] = useState(false);
 
   useEffect(() => {
-    if (!isInView) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const el = ref.current;
+    const alreadyVisible =
+      el !== null && el.getBoundingClientRect().top < window.innerHeight;
+    if (alreadyVisible) return;
+    setCount(0);
+    setAnimate(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isInView || !animate) return;
     let frame: number;
     const duration = 1200;
     const start = performance.now();
@@ -341,7 +352,7 @@ export function Counter({
     };
     frame = requestAnimationFrame(step);
     return () => cancelAnimationFrame(frame);
-  }, [isInView, target]);
+  }, [isInView, animate, target]);
 
   return (
     <span ref={ref} className={className}>

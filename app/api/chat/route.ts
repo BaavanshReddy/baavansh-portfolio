@@ -5,11 +5,15 @@
 //    base as context and returns a generated answer.
 //  - If the key is missing, the API errors, or the rate limit is hit, it
 //    returns { fallback: true } and the client runs its in-browser engine.
+//  - Every live reply is screened by lib/guardrails.ts. A reply that makes a
+//    forbidden claim (for example five-plus years, production ML, or GPU
+//    training) is discarded and the client falls back to the offline answer.
 //
 //  GET /api/chat -> { live: boolean }   (used to show the mode badge)
 // ============================================================================
 
-import { buildSystemPrompt } from "@/lib/profile";
+import { buildSystemPrompt } from "@/lib/prompt";
+import { findClaimViolations } from "@/lib/guardrails";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -119,6 +123,15 @@ export async function POST(req: Request) {
 
     if (!reply) {
       return Response.json({ fallback: true, reason: "empty" });
+    }
+
+    const violations = findClaimViolations(reply);
+    if (violations.length > 0) {
+      console.warn(
+        "chat guardrail blocked a live reply:",
+        violations.map((v) => v.rule).join(", "),
+      );
+      return Response.json({ fallback: true, reason: "guardrail" });
     }
 
     return Response.json({ reply, mode: "live" });

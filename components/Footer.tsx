@@ -38,7 +38,7 @@ export default function Footer() {
           <span className="bg-gradient-to-r from-lime to-cyan bg-clip-text text-transparent">
             Chat-with-Baavansh
           </span>{" "}
-          RAG agent
+          knowledge-base assistant
         </p>
       </div>
     </footer>

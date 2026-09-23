@@ -35,12 +35,10 @@ export default function Contact() {
             </span>
           </h2>
 
-          <p className="mt-4 font-mono text-sm text-muted">
-            {profile.status}
-          </p>
+          <p className="mt-4 font-mono text-sm text-muted">{profile.status}</p>
 
           <p className="mt-4 max-w-xl text-muted md:text-lg">
-            The fastest way to reach me is email — or ask the assistant up top
+            The fastest way to reach me is email, or ask the assistant up top
             and it&apos;ll point you here.
           </p>
         </Reveal>
