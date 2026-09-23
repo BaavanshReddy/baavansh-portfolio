@@ -9,13 +9,13 @@ const real = (s: string) => !s.includes("[[");
 export default function Skills() {
   const totalCount = skills.reduce(
     (acc, g) => acc + g.items.filter(real).length,
-    0
+    0,
   );
 
   return (
     <section
       id="skills"
-      className="relative scroll-mt-20 py-24 md:py-32"
+      className="relative scroll-mt-20 overflow-x-clip py-24 md:py-32"
     >
       <div className="absolute inset-x-0 top-0 section-divider" />
       <div className="absolute left-1/4 top-20 h-[350px] w-[350px] rounded-full bg-violet/[0.03] blur-[120px]" />

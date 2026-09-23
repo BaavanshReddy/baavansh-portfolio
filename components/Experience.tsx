@@ -49,7 +49,7 @@ export default function Experience() {
   return (
     <section
       id="experience"
-      className="relative scroll-mt-20 py-24 md:py-32"
+      className="relative scroll-mt-20 overflow-x-clip py-24 md:py-32"
     >
       <div className="absolute inset-x-0 top-0 section-divider" />
       <div className="absolute -right-40 top-1/3 h-[400px] w-[400px] rounded-full bg-lime/[0.02] blur-[120px]" />
@@ -106,10 +106,7 @@ export default function Experience() {
                   {points.length > 0 && (
                     <ul className="mt-3 space-y-1.5">
                       {points.map((pt) => (
-                        <li
-                          key={pt}
-                          className="flex gap-2 text-sm text-muted"
-                        >
+                        <li key={pt} className="flex gap-2 text-sm text-muted">
                           <span className="text-lime">→</span>
                           <span>{pt}</span>
                         </li>

@@ -56,12 +56,12 @@ export default function About() {
               <Reveal variants={fadeUp} custom={2}>
                 <p>
                   I&apos;m a backend and AI systems engineer with four years of
-                  engineering experience across production REST APIs, LLM and ML
-                  integration, and IoT platforms&nbsp;&mdash; and a Computer
-                  Science graduate from Rutgers University (Magna Cum Laude,
-                  3.76 GPA). I&apos;ve built authentication systems, data
-                  pipelines, and AI tooling, including AgentMemry, my
-                  open-source memory library for AI agents published on PyPI.
+                  engineering experience across REST APIs and IoT platforms, and
+                  now LLM and ML integration, and a Computer Science graduate
+                  from Rutgers University (Magna Cum Laude, 3.76 GPA). I&apos;ve
+                  built authentication systems, data pipelines, and AI tooling,
+                  including AgentMemry, my open-source memory library for AI
+                  agents published on PyPI.
                 </p>
               </Reveal>
               <Reveal variants={fadeUp} custom={3}>
@@ -70,12 +70,12 @@ export default function About() {
                   <strong className="font-semibold text-paper">
                     Python, Java, and C
                   </strong>
-                  &nbsp;&mdash; FastAPI and Spring Boot, PostgreSQL, MySQL,
-                  SQLite, and Supabase, deployed with Docker, AWS, and
-                  Vercel&nbsp;&mdash; backed by a systems foundation most AI
-                  candidates don&apos;t have: compilers, a RISC-V CPU, and a
-                  Unix-style filesystem written from scratch. I reason about how
-                  code actually runs, not just how to call an API.
+                  : FastAPI and Spring Boot, PostgreSQL, MySQL, SQLite, and
+                  Supabase, deployed with Docker, AWS, and Vercel. It&apos;s
+                  backed by a systems foundation most AI candidates don&apos;t
+                  have: compilers, a RISC-V CPU, and a Unix-style filesystem
+                  written from scratch. I reason about how code actually runs,
+                  not just how to call an API.
                 </p>
               </Reveal>
               <Reveal variants={fadeUp} custom={4}>
@@ -96,7 +96,11 @@ export default function About() {
                         scale: 1.04,
                         borderColor: "rgba(204,255,0,0.3)",
                       }}
-                      transition={{ type: "spring", stiffness: 400, damping: 20 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 400,
+                        damping: 20,
+                      }}
                     >
                       <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-faint">
                         {sig.k}

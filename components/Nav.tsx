@@ -2,11 +2,13 @@
 
 import { useEffect, useState, useCallback } from "react";
 import { m, AnimatePresence } from "framer-motion";
+import { usePathname } from "next/navigation";
 import { profile } from "@/lib/profile";
 
 const LINKS = [
   { label: "Ask AI", href: "#chat" },
   { label: "About", href: "#about" },
+  { label: "ML Systems", href: "#ml-systems" },
   { label: "Projects", href: "#work" },
   { label: "Experience", href: "#experience" },
   { label: "Skills", href: "#skills" },
@@ -28,13 +30,15 @@ function NavLink({
     <a
       href={href}
       onClick={onClick}
-      className="group relative px-3 py-2 font-mono text-xs uppercase tracking-wider transition-colors"
+      className="group relative px-2 py-2 font-mono text-xs uppercase tracking-wider transition-colors lg:px-3"
     >
-      <span className={active ? "text-lime" : "text-muted group-hover:text-paper"}>
+      <span
+        className={active ? "text-lime" : "text-muted group-hover:text-paper"}
+      >
         {label}
       </span>
       <span
-        className={`absolute bottom-0.5 left-3 right-3 h-[2px] bg-gradient-to-r from-lime to-cyan transition-transform duration-300 origin-left ${
+        className={`absolute bottom-0.5 left-2 right-2 h-[2px] lg:left-3 lg:right-3 bg-gradient-to-r from-lime to-cyan transition-transform duration-300 origin-left ${
           active ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
         }`}
       />
@@ -74,6 +78,11 @@ const mobileItemVariants = {
 };
 
 export default function Nav() {
+  // On subpages (case studies) the in-page anchors must point back to the
+  // home page, e.g. "/#chat" instead of "#chat".
+  const pathname = usePathname();
+  const onHome = pathname === "/";
+  const to = (hash: string) => (onHome ? hash : `/${hash}`);
   const [scrolled, setScrolled] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [open, setOpen] = useState(false);
@@ -82,8 +91,10 @@ export default function Nav() {
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 24);
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = docHeight > 0 ? Math.min(window.scrollY / docHeight, 1) : 0;
+      const docHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
+      const progress =
+        docHeight > 0 ? Math.min(window.scrollY / docHeight, 1) : 0;
       setScrollProgress(progress);
     };
     onScroll();
@@ -95,11 +106,12 @@ export default function Nav() {
     const sectionIds = LINKS.map((l) => l.href.replace("#", ""));
     const observers: IntersectionObserver[] = [];
 
-    const handleIntersect = (id: string) => (entries: IntersectionObserverEntry[]) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) setActiveSection(id);
-      });
-    };
+    const handleIntersect =
+      (id: string) => (entries: IntersectionObserverEntry[]) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActiveSection(id);
+        });
+      };
 
     sectionIds.forEach((id) => {
       const el = document.getElementById(id);
@@ -142,7 +154,11 @@ export default function Nav() {
 
       <div className="mx-auto flex max-w-site items-center justify-between px-6 py-4">
         {/* Logo */}
-        <a href="#top" className="group flex items-center gap-2.5">
+        <a
+          href={to("#top")}
+          className="group flex items-center gap-2.5"
+          aria-label="Home"
+        >
           <m.span
             className="grid h-9 w-9 place-items-center bg-gradient-to-br from-lime to-cyan font-mono text-sm font-bold text-ink rounded-sm"
             whileHover={{ scale: 1.08, rotate: 3 }}
@@ -153,16 +169,18 @@ export default function Nav() {
           </m.span>
           <span className="font-mono text-sm tracking-tight text-paper">
             {profile.shortName.toLowerCase()}
-            <span className="bg-gradient-to-r from-lime to-cyan bg-clip-text text-transparent">.dev</span>
+            <span className="bg-gradient-to-r from-lime to-cyan bg-clip-text text-transparent">
+              .dev
+            </span>
           </span>
         </a>
 
         {/* Desktop nav */}
-        <nav className="hidden items-center gap-1 md:flex">
+        <nav className="hidden items-center gap-1 md:flex" aria-label="Primary">
           {LINKS.map((l) => (
             <NavLink
               key={l.href}
-              href={l.href}
+              href={to(l.href)}
               label={l.label}
               active={activeSection === l.href.replace("#", "")}
             />
@@ -197,6 +215,7 @@ export default function Nav() {
         {open && (
           <m.nav
             className="glass-strong overflow-hidden px-6 md:hidden"
+            aria-label="Mobile"
             variants={mobileMenuVariants}
             initial="hidden"
             animate="visible"
@@ -205,10 +224,12 @@ export default function Nav() {
             {LINKS.map((l) => (
               <m.a
                 key={l.href}
-                href={l.href}
+                href={to(l.href)}
                 onClick={closeMobile}
                 className={`block py-2.5 font-mono text-sm uppercase tracking-wider transition-colors hover:text-lime ${
-                  activeSection === l.href.replace("#", "") ? "text-lime" : "text-muted"
+                  activeSection === l.href.replace("#", "")
+                    ? "text-lime"
+                    : "text-muted"
                 }`}
                 variants={mobileItemVariants}
               >

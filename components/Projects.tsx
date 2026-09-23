@@ -26,6 +26,11 @@ function isPlaceholder(href: string) {
   return href.includes("[[");
 }
 
+/** Site-relative links (case studies) open in the same tab. */
+function isInternal(href: string) {
+  return href.startsWith("/");
+}
+
 /* ------------------------------------------------------------------ */
 /*  Main component                                                     */
 /* ------------------------------------------------------------------ */
@@ -183,11 +188,12 @@ export default function Projects() {
                           <a
                             key={l.label}
                             href={l.href}
-                            target="_blank"
-                            rel="noreferrer"
+                            {...(isInternal(l.href)
+                              ? {}
+                              : { target: "_blank", rel: "noreferrer" })}
                             className="font-mono text-xs uppercase tracking-wider text-paper underline underline-offset-4 transition-colors hover:text-lime"
                           >
-                            {l.label} ↗
+                            {l.label} {isInternal(l.href) ? "→" : "↗"}
                           </a>
                         ))}
                     </div>

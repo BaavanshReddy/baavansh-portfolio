@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from "react";
 import { m, AnimatePresence } from "framer-motion";
 import { Reveal, fadeUp } from "@/lib/animations";
 import { profile, suggestedQuestions } from "@/lib/profile";
-import { retrieveAnswer } from "@/lib/retrieval";
 
 interface Msg {
   role: "user" | "assistant";
@@ -15,12 +14,16 @@ interface Msg {
 const GREETING: Msg = {
   role: "assistant",
   content:
-    "Hey — I'm Baavansh (well, an AI trained on me). Ask me anything — my projects, what roles I'm targeting, why you should hire me, or my experience with backend, AI/ML, Python, or IoT. Answers come with sources.",
+    "Hey, I'm Baavansh (well, an assistant that answers from my portfolio's knowledge base, not a model trained on me). Ask me about my projects, my ML systems work, what roles I'm targeting, or my backend, AI/ML, Python, or IoT experience.",
 };
 
 const msgVariants = {
   hidden: { opacity: 0, y: 16 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.35, ease: [0.16, 1, 0.3, 1] } },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.35, ease: [0.16, 1, 0.3, 1] },
+  },
   exit: { opacity: 0, y: -8, transition: { duration: 0.2 } },
 };
 
@@ -71,8 +74,11 @@ export default function ChatBaavansh() {
     setInput("");
     setLoading(true);
 
-    const useFallback = async () => {
+    const runFallback = async () => {
       await new Promise((r) => setTimeout(r, 380));
+      // Loaded on demand: the offline engine and its knowledge base stay out
+      // of the initial page bundle until a question actually needs them.
+      const { retrieveAnswer } = await import("@/lib/retrieval");
       const result = retrieveAnswer(q);
       setMessages((m) => [
         ...m,
@@ -98,10 +104,10 @@ export default function ChatBaavansh() {
         setLiveMode(true);
       } else {
         if (data?.reason === "no_key") setLiveMode(false);
-        await useFallback();
+        await runFallback();
       }
     } catch {
-      await useFallback();
+      await runFallback();
     } finally {
       setLoading(false);
       inputRef.current?.focus();
@@ -113,7 +119,7 @@ export default function ChatBaavansh() {
       ? { dot: "bg-muted", label: "connecting", cls: "text-muted" }
       : liveMode
         ? { dot: "bg-lime", label: "Live AI · Claude", cls: "text-lime" }
-        : { dot: "bg-muted", label: "Offline RAG", cls: "text-muted" };
+        : { dot: "bg-muted", label: "Offline retrieval", cls: "text-muted" };
 
   function clearChat() {
     setMessages([GREETING]);
@@ -124,7 +130,10 @@ export default function ChatBaavansh() {
   const isEmptyState = messages.length === 1 && messages[0] === GREETING;
 
   return (
-    <section id="chat" className="relative scroll-mt-20 py-24 md:py-32">
+    <section
+      id="chat"
+      className="relative scroll-mt-20 overflow-x-clip py-24 md:py-32"
+    >
       <div className="absolute inset-x-0 top-0 section-divider" />
 
       {/* Ambient glow */}
@@ -148,9 +157,10 @@ export default function ChatBaavansh() {
         </Reveal>
         <Reveal variants={fadeUp} custom={2}>
           <p className="mt-5 max-w-2xl text-muted md:text-lg">
-            This is a RAG agent over my projects and experience. Ask it anything a
-            recruiter would — it answers from a structured knowledge base of my
-            work, with sources.
+            An assistant grounded in a structured knowledge base of my projects
+            and experience. Ask it anything a recruiter would; it answers only
+            from that knowledge base and says so when something isn&apos;t
+            covered.
           </p>
         </Reveal>
 
@@ -199,6 +209,9 @@ export default function ChatBaavansh() {
               {/* Messages */}
               <div
                 ref={scrollRef}
+                role="log"
+                aria-live="polite"
+                aria-label="Conversation"
                 className="scanlines h-[460px] space-y-5 overflow-y-auto px-4 py-6 md:px-6"
               >
                 <AnimatePresence mode="popLayout">
@@ -316,7 +329,10 @@ export default function ChatBaavansh() {
                     variants={chipVariants}
                     initial="hidden"
                     animate="visible"
-                    whileHover={{ scale: 1.04, borderColor: "rgba(204,255,0,0.6)" }}
+                    whileHover={{
+                      scale: 1.04,
+                      borderColor: "rgba(204,255,0,0.6)",
+                    }}
                     whileTap={{ scale: 0.97 }}
                     onClick={() => send(q)}
                     disabled={loading}
@@ -340,7 +356,7 @@ export default function ChatBaavansh() {
                   ref={inputRef}
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
-                  placeholder="Ask about my projects, backend work, AI/ML, Python, why hire me..."
+                  placeholder="Ask about my projects, ML systems, backend work, why hire me..."
                   className="flex-1 bg-transparent py-1.5 font-mono text-sm text-paper outline-none placeholder:text-faint"
                   aria-label="Ask a question"
                   autoComplete="off"
@@ -361,8 +377,10 @@ export default function ChatBaavansh() {
 
         <Reveal variants={fadeUp} custom={4}>
           <p className="mt-3 font-mono text-[11px] text-muted">
-            Powered by Claude when an API key is configured — otherwise an
-            in-browser retrieval engine answers, so the chat never breaks.
+            Live mode: Claude, given the whole knowledge base as context, with
+            replies screened for unsupported claims. Offline mode: keyword
+            retrieval over the same knowledge base, in your browser, with
+            sources. Not trained or fine-tuned on me.
           </p>
         </Reveal>
       </div>
