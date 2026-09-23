@@ -328,7 +328,7 @@ export const research = {
   title: "LLM FactCheck: Factual QA Evaluation Framework",
   tech: ["Python", "RAG", "BM25", "TriviaQA"],
   description:
-    "I co-authored an unpublished two-person research study benchmarking LLM factual question-answering across direct prompting, BM25 retrieval, and RAG on a controlled 100-question TriviaQA evaluation set. BM25 surfaced supporting evidence for 90% of questions, yet moving from direct answering to RAG raised normalized exact match by only 3 points (0.66 to 0.69) and token F1 from 0.784 to 0.803, pointing to evidence use and answer generation, not retrieval, as the main bottleneck. The framework includes an 11-class error taxonomy from a manual review and a Streamlit dashboard for inspecting individual failures.",
+    "I co-authored a two-person course research paper benchmarking LLM factual question-answering across direct prompting, BM25 retrieval, and RAG on a controlled 100-question TriviaQA evaluation set. BM25 surfaced supporting evidence for 90% of questions, yet moving from direct answering to RAG raised normalized exact match by only 3 points (0.66 to 0.69) and token F1 from 0.784 to 0.803, pointing to evidence use and answer generation, not retrieval, as the main bottleneck. The framework includes an 11-class error taxonomy from a manual review and a Streamlit dashboard for inspecting individual failures.",
   repo: "https://github.com/BaavanshReddy/LLM_factcheck",
 };
 

@@ -910,7 +910,7 @@ export const knowledgeChunks: KnowledgeChunk[] = [
       "coding",
       "assistant",
     ],
-    text: "The MLOps lab, the Responsible AI evaluation, and the training benchmark are solo personal projects: I defined the scope and the evidence rules, and built them with AI coding assistance (Claude) as part of my workflow; every metric comes from a committed results file, and I can walk through any component. AgentMemry is my own library, published on PyPI. LLM FactCheck was a two-person study: I co-authored the paper and shared the manual error review, and the repository's code commits are my teammate's. None of these projects was done for TAIRC, KAVACH, or any other employer.",
+    text: "The MLOps lab, the Responsible AI evaluation, and the training benchmark are solo personal projects: I defined the scope and the evidence rules, and built them with AI coding assistance (Claude) as part of my workflow; every metric comes from a committed results file, and I can walk through any component. AgentMemry is my own library, published on PyPI. LLM FactCheck was a two-person course research paper: I co-authored the paper and shared the manual error review, and the repository's code commits are my teammate's. None of these projects was done for TAIRC, KAVACH, or any other employer.",
   },
 
   // ---- Research ----
@@ -932,7 +932,7 @@ export const knowledgeChunks: KnowledgeChunk[] = [
       "co-author",
       "coauthor",
     ],
-    text: "I co-authored LLM FactCheck with one teammate: an unpublished research study (written in a conference paper template, not published at any venue) benchmarking factual QA across direct LLM answering, BM25 retrieval, and BM25-grounded RAG on a controlled 100-question TriviaQA pilot. BM25 found supporting evidence for 90% of questions, yet going from direct answering to RAG raised normalized exact match only from 0.66 to 0.69 and token F1 from 0.784 to 0.803 (RAG fixed 10 answers but regressed 9), which points to evidence use and answer generation rather than retrieval as the bottleneck. We scored with exact match, token F1, a lexical groundedness proxy, and an unsupported-answer proxy, and the paper's eleven-category manual error review was done by both co-authors. The repository's commits are my teammate's. Repo: github.com/BaavanshReddy/LLM_factcheck.",
+    text: "I co-authored LLM FactCheck with one teammate as a course research paper at Rutgers (written in a conference paper template, not published at any venue), benchmarking factual QA across direct LLM answering, BM25 retrieval, and BM25-grounded RAG on a controlled 100-question TriviaQA pilot. BM25 found supporting evidence for 90% of questions, yet going from direct answering to RAG raised normalized exact match only from 0.66 to 0.69 and token F1 from 0.784 to 0.803 (RAG fixed 10 answers but regressed 9), which points to evidence use and answer generation rather than retrieval as the bottleneck. We scored with exact match, token F1, a lexical groundedness proxy, and an unsupported-answer proxy, and the paper's eleven-category manual error review was done by both co-authors. The repository's commits are my teammate's. Repo: github.com/BaavanshReddy/LLM_factcheck.",
   },
 
   // ---- Portfolio ----

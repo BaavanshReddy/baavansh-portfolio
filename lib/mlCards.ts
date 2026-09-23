@@ -80,7 +80,7 @@ export const mlCards: MLCard[] = [
   {
     id: "llm-factcheck",
     title: "LLM FactCheck",
-    kind: "Co-authored research study",
+    kind: "Co-authored course research paper",
     blurb:
       "Direct LLM answering vs BM25 retrieval vs BM25-grounded RAG on a 100-question TriviaQA pilot, scored with exact match, token F1, a groundedness proxy, and an unsupported-answer proxy.",
     proof:

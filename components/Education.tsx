@@ -95,10 +95,10 @@ export default function Education() {
                   </p>
                   <p className="mt-2 text-sm text-muted">
                     Co-authored{" "}
-                    <span className="text-paper">LLM FactCheck</span>, an
-                    unpublished two-person research study benchmarking LLM
-                    factual QA across direct prompting, BM25 retrieval, and RAG
-                    on a TriviaQA evaluation set.
+                    <span className="text-paper">LLM FactCheck</span>, a
+                    two-person course research paper benchmarking LLM factual QA
+                    across direct prompting, BM25 retrieval, and RAG on a
+                    TriviaQA evaluation set.
                   </p>
                 </div>
               </div>
